@@ -4,6 +4,7 @@ import MyLogin from "./components/MyLogin";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyHomePage from "./components/MyHomePage";
 import MyReservation from "./components/MyReservation";
+import MyProfile from "./components/MyProfile";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<MyLogin />} />
           <Route path="/home" element={<MyHomePage />} />
           <Route path="/prenotazioni" element={<MyReservation />} />
+          <Route path="/profilo" element={<MyProfile />} />
         </Routes>
       </BrowserRouter>
     </>

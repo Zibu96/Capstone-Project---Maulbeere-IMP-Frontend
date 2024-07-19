@@ -52,7 +52,11 @@ const MyNavbar = () => {
                 Ciao {me && me.name ? me.name : "Utente"}
               </Dropdown.Toggle>
               <DropdownMenu>
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <Link to={"/profilo"}>
+                  <NavDropdown.Item href="#action/3.1">
+                    Profilo
+                  </NavDropdown.Item>
+                </Link>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>

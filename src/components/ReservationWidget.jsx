@@ -9,6 +9,9 @@ const ResevationWidget = () => {
   console.log(res);
 
   const getTotalSeats = (reservations) => {
+    if (!Array.isArray(reservations)) {
+      return 0;
+    }
     return reservations.reduce((total, reserv) => total + reserv.seats, 0);
   };
 
