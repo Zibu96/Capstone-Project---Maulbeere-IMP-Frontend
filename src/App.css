@@ -1,0 +1,25 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+body {
+  background-color: #1f2023;
+}
+
+.log-container-right {
+  background: linear-gradient(to right, #fad200, #f6921e);
+  box-shadow: 10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+}
+
+.log-container-left {
+  background-color: #383a3f;
+  box-shadow: -10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+}
+
+.reservation-card {
+  background-color: #383a3f;
+  color: white;
+}
+
+.bgAll {
+  background-color: #383a3f;
+  color: white;
+}
