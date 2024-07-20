@@ -4,6 +4,8 @@ import {
   GET_USER_LOGGED_TOKEN,
   GET_USER_LOGGED_PROFILE,
   GET_USER_ME,
+  PATCH_USER_ME_PASSWORD,
+  PATCH_USER_ME_EMAIL,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -36,6 +38,16 @@ const fetchUserReducer = (state = initialState, action) => {
         state: action.payload,
       };
     case GET_USER_ME:
+      return {
+        ...state,
+        state: action.payload,
+      };
+    case PATCH_USER_ME_PASSWORD:
+      return {
+        ...state,
+        state: action.payload,
+      };
+    case PATCH_USER_ME_EMAIL:
       return {
         ...state,
         state: action.payload,
