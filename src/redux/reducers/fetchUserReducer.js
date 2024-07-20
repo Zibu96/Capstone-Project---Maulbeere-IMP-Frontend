@@ -6,6 +6,7 @@ import {
   GET_USER_ME,
   PATCH_USER_ME_PASSWORD,
   PATCH_USER_ME_EMAIL,
+  POST_USER_REGISTER,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -33,6 +34,11 @@ const fetchUserReducer = (state = initialState, action) => {
         user_info: action.payload,
       };
     case TOGGLE_AUTHORITY:
+      return {
+        ...state,
+        state: action.payload,
+      };
+    case POST_USER_REGISTER:
       return {
         ...state,
         state: action.payload,
