@@ -57,9 +57,11 @@ const MyNavbar = () => {
                     Profilo
                   </NavDropdown.Item>
                 </Link>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
+                <Link to={"/personale"}>
+                  <NavDropdown.Item href="#action/3.2">
+                    Gestione Staff
+                  </NavDropdown.Item>
+                </Link>
                 <NavDropdown.Item href="#action/3.3">
                   Something
                 </NavDropdown.Item>

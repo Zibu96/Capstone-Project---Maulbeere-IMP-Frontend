@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyHomePage from "./components/MyHomePage";
 import MyReservation from "./components/MyReservation";
 import MyProfile from "./components/MyProfile";
+import StaffManagment from "./components/StaffManagment";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/home" element={<MyHomePage />} />
           <Route path="/prenotazioni" element={<MyReservation />} />
           <Route path="/profilo" element={<MyProfile />} />
+          <Route path="/personale" element={<StaffManagment />} />
         </Routes>
       </BrowserRouter>
     </>
