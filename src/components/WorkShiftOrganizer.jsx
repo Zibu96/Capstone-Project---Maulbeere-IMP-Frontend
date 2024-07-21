@@ -27,7 +27,7 @@ const WorkShiftOrganizer = () => {
 
   const handleShiftSubmit = (e) => {
     e.preventDefault();
-    console.log("Creating new reservation");
+    console.log("Creating new shift disponibility");
     const newLunch = {
       monday: mondayLunch,
       tuesday: tuesdayLunch,
@@ -59,9 +59,9 @@ const WorkShiftOrganizer = () => {
       <div className="bgAll border rounded ps-2 pt-2">
         <h4 className="mb-4">Inserisci le tue disponibilità</h4>
         <Form onSubmit={handleShiftSubmit}>
-          <div className="d-flex gap-4">
+          <div className="d-sm-block d-md-flex gap-4">
             <h5 className="shift-check">Pranzo:</h5>
-            <div className="mb-3">
+            <div className="mb-3  text-center">
               <Form.Check
                 inline
                 label="Lunedì"
@@ -106,9 +106,9 @@ const WorkShiftOrganizer = () => {
               />
             </div>
           </div>
-          <div className="d-flex gap-4">
+          <div className="d-sm-block d-md-flex gap-4">
             <h5 className="shift-check">Cena:</h5>
-            <div className="mb-3">
+            <div className="mb-3 text-center">
               <Form.Check
                 inline
                 label="Lunedì"

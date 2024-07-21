@@ -21,17 +21,17 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_LUNCH:
       return {
         ...state,
-        reservation: [...state.reservation, action.payload],
+        lunch: [...state.reservation, action.payload],
       };
     case GET_ALL_DINNER:
       return {
         ...state,
-        lunch: action.payload,
+        dinner: action.payload,
       };
     case POST_DINNER:
       return {
         ...state,
-        reservation: [...state.reservation, action.payload],
+        lunch: [...state.reservation, action.payload],
       };
     default:
       return state;

@@ -1,8 +1,28 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import WorkShiftOrganizer from "./WorkShiftOrganizer";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  fetchDinnerAction,
+  fetchLunchAction,
+} from "../redux/actions/workShiftAction";
 
 const WorkShift = () => {
+  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const lunch = useSelector((state) => state.workShift.lunch.content);
+  const dinner = useSelector((state) => state.workShift.dinner.content);
+  console.log(lunch);
+  console.log(dinner);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchLunchAction(token));
+      dispatch(fetchDinnerAction(token));
+    }
+  }, [dispatch, token]);
+
   return (
     <>
       <MyNavbar />
