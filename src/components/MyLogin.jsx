@@ -38,7 +38,7 @@ const MyLogin = () => {
           md={6}
           className="mb-5 rounded-start  log-container-left"
         >
-          <div className="d-flex flex-column ms-5 text-white text-center">
+          <div className="d-flex flex-column text-white text-center">
             <div className="text-center">
               <img
                 src={maulLogo}
@@ -77,7 +77,7 @@ const MyLogin = () => {
         <MDBCol
           sm={12}
           md={6}
-          className="mb-5 log-container-right rounded-end text-center"
+          className="mb-5 log-container-right rounded-end text-center "
         >
           <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">
             <div className="text-center">
