@@ -438,7 +438,7 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
-/* rtl:raw:
+/*!rtl:raw:
 [type="tel"],
 [type="url"],
 [type="email"],

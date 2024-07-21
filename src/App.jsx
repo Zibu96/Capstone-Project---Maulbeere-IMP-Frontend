@@ -6,6 +6,7 @@ import MyHomePage from "./components/MyHomePage";
 import MyReservation from "./components/MyReservation";
 import MyProfile from "./components/MyProfile";
 import StaffManagment from "./components/StaffManagment";
+import WorkShift from "./components/WorkShift";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/prenotazioni" element={<MyReservation />} />
           <Route path="/profilo" element={<MyProfile />} />
           <Route path="/personale" element={<StaffManagment />} />
+          <Route path="/turni" element={<WorkShift />} />
         </Routes>
       </BrowserRouter>
     </>

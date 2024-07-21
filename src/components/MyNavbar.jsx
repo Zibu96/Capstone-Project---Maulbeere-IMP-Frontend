@@ -43,7 +43,9 @@ const MyNavbar = () => {
             </Link>
             <Nav.Link href="#sala">Sala</Nav.Link>
             <Nav.Link href="#cucina">Cucina</Nav.Link>
-            <Nav.Link href="#turni">Turni</Nav.Link>
+            <Link to={"/turni"}>
+              <Nav.Link href="#turni">Turni</Nav.Link>
+            </Link>
           </Nav>
           <Nav className="ms-auto me-5">
             <Dropdown>
