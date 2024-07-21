@@ -39,9 +39,9 @@ const ResevationWidget = () => {
               key={reserv.id}
               className="d-flex justify-content-between text-white bgAll p-1"
             >
-              <p className="m-0">Nome: {reserv.name}</p>
-              <p className="m-0">Posti: {reserv.seats}</p>
-              <p className="m-0">Ore: {reserv.time}</p>
+              <p className="m-0 widget">Nome: {reserv.name}</p>
+              <p className="m-0 widget text-center">Posti: {reserv.seats}</p>
+              <p className="m-0 widget text-end">Ore: {reserv.time}</p>
             </ListGroup.Item>
           ))
         )}

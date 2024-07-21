@@ -9,6 +9,12 @@ body {
   color: white;
 }
 
+/* HOME PAGE */
+
+.widget {
+  width: 33%;
+}
+
 /* LOGIN PAGE */
 .log-container-right {
   background: linear-gradient(to right, #fad200, #f6921e);
@@ -29,4 +35,10 @@ body {
 .reservation-card {
   background-color: #383a3f;
   color: white;
+}
+
+/* STAFF PAGE */
+
+.card_bg {
+  background-color: #1f2023;
 }

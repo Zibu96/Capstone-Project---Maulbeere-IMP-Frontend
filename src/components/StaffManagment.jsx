@@ -38,7 +38,7 @@ const StaffManagment = () => {
       <Container className="text-white">
         <Row>
           <Col sm={12} className="bgAll border rounded mt-3">
-            <h3>Aggiungi Nuovo Dipendente:</h3>
+            <h3 className="mt-2">Aggiungi Nuovo Dipendente:</h3>
             <Form onSubmit={handleRegisterUserSubmit}>
               <div className="d-flex gap-3">
                 <div className="w-50">

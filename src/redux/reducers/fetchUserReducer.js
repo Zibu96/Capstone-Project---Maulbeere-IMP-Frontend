@@ -7,6 +7,7 @@ import {
   PATCH_USER_ME_PASSWORD,
   PATCH_USER_ME_EMAIL,
   POST_USER_REGISTER,
+  GET_USER_ALL,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   isAdmin: false,
   user_bearer: "",
   user_info: {},
+  user_list: {},
 };
 
 const fetchUserReducer = (state = initialState, action) => {
@@ -57,6 +59,11 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         state: action.payload,
+      };
+    case GET_USER_ALL:
+      return {
+        ...state,
+        user_list: action.payload,
       };
 
     default:
