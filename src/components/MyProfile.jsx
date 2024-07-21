@@ -39,12 +39,12 @@ const MyProfile = () => {
     <>
       <MyNavbar />
       <Container className="text-white">
-        <Row className="my-3">
+        <Row className="my-3 gap-2">
           <h1>
             Ciao, {me.name} {me.surname}
           </h1>
-          <Col lg={1}></Col>
-          <Col lg={5} className="border p-2 rounded">
+          <Col lg={1} className="d-sm-none d-md-block"></Col>
+          <Col sm={12} lg={5} className="border p-2 rounded">
             <ListGroup>
               <h4>Info Personali:</h4>
               <ListGroup.Item className="bgAll">Nome: {me.name}</ListGroup.Item>
@@ -62,7 +62,7 @@ const MyProfile = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col lg={5} className="border p-2 rounded">
+          <Col sm={12} lg={5} className="border p-2 rounded">
             <h4>Modifica:</h4>
             <Form onSubmit={handleModifyEmailSubmit}>
               <Form.Label>Email:</Form.Label>
@@ -101,7 +101,7 @@ const MyProfile = () => {
               Ricorda di modificare la password al primo accesso
             </Form.Text>
           </Col>
-          <Col lg={1}></Col>
+          <Col lg={1} className="d-sm-none d-md-block"></Col>
         </Row>
       </Container>
     </>

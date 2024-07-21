@@ -4,11 +4,25 @@
   box-shadow: 10px 7px 46px 0px rgba(0, 0, 0, 0.3);
 }
 
+@media screen and (max-width: 768px) {
+  .log-container-right {
+    background: linear-gradient(to right, #fad200, #f6921e);
+    box-shadow: 10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+  }
+}
 .log-container-left {
   background-color: #383a3f;
-  box-shadow: -10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 7px 46px 0px rgba(0, 0, 0, 0.3);
 }
 
+@media screen and (max-width: 768px) {
+  .log-container-left {
+    background-color: #383a3f;
+    box-shadow: 0px 7px 46px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+  }
+}
 .widget {
   width: 33%;
 }
@@ -54,4 +68,14 @@ body {
 .btn-primary:active {
   background-color: #f6921e;
   border-color: #f6921e;
+}
+
+.btn-secondary {
+  background-color: #fad200;
+  border-color: #fad200;
+}
+
+.btn-secondary:hover {
+  background-color: #c7a700;
+  border-color: #c7a700;
 }/*# sourceMappingURL=App.css.map */

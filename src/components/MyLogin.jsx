@@ -33,7 +33,11 @@ const MyLogin = () => {
   return (
     <MDBContainer className="my-5 gradient-form">
       <MDBRow>
-        <MDBCol col="6" className="mb-5 rounded-start  log-container-left">
+        <MDBCol
+          sm={12}
+          md={6}
+          className="mb-5 rounded-start  log-container-left"
+        >
           <div className="d-flex flex-column ms-5 text-white text-center">
             <div className="text-center">
               <img
@@ -71,7 +75,8 @@ const MyLogin = () => {
         </MDBCol>
 
         <MDBCol
-          col="6"
+          sm={12}
+          md={6}
           className="mb-5 log-container-right rounded-end text-center"
         >
           <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">

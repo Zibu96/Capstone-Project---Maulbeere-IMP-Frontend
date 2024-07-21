@@ -25,10 +25,10 @@ const MyNavbar = () => {
   return (
     <Navbar
       expand="lg"
-      className="bgAll align-items-center"
+      className="bgAll align-item-center"
       data-bs-theme="dark"
     >
-      <Container>
+      <Container className="align-item-center">
         <Navbar.Brand href="#home">
           <img src={maulLogo} style={{ width: "70px" }} alt="Maulbeerelogo" />
         </Navbar.Brand>
@@ -44,13 +44,17 @@ const MyNavbar = () => {
             <Nav.Link href="#sala">Sala</Nav.Link>
             <Nav.Link href="#cucina">Cucina</Nav.Link>
             <Nav.Link href="#turni">Turni</Nav.Link>
+          </Nav>
+          <Nav className="ms-auto me-5">
             <Dropdown>
               <Dropdown.Toggle
-                className="d-flex  align-items-center p-0 textfor"
+                variant="secondary"
+                className="d-flex text-dark align-items-center p-2 textfor rounded-pill"
                 id="dropdown-basic"
               >
                 Ciao {me && me.name ? me.name : "Utente"}
               </Dropdown.Toggle>
+
               <DropdownMenu>
                 <Link to={"/profilo"}>
                   <NavDropdown.Item href="#action/3.1">
