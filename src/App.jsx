@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./style/App.scss";
 import MyLogin from "./components/MyLogin";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyHomePage from "./components/MyHomePage";

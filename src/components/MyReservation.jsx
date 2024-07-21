@@ -108,7 +108,7 @@ const MyReservation = () => {
                       </Card.Text>
                     </div>
                     <div>
-                      <Button className="m-1 rounded-pill" variant="primary">
+                      <Button className="m-1 rounded-pill">
                         <i className="bi bi-pencil"></i>
                       </Button>
                       <Button

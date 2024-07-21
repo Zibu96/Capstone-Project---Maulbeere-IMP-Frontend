@@ -1,0 +1,57 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.log-container-right {
+  background: linear-gradient(to right, #fad200, #f6921e);
+  box-shadow: 10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+}
+
+.log-container-left {
+  background-color: #383a3f;
+  box-shadow: -10px 7px 46px 0px rgba(0, 0, 0, 0.3);
+}
+
+.widget {
+  width: 33%;
+}
+
+.form-text {
+  width: 80%;
+}
+
+.reservation-card {
+  background-color: #383a3f;
+  color: white;
+}
+
+.card_bg {
+  background-color: #1f2023;
+}
+
+/* MOIDIFICHE GENERALI */
+body {
+  background-color: #1f2023;
+}
+
+.bgAll {
+  background-color: #383a3f;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #f6921e;
+  border-color: #f6921e;
+}
+
+.btn-primary:hover {
+  background-color: #d87809;
+  border-color: #d87809;
+}
+
+.btn-primary:focus {
+  background-color: #f6921e;
+  border-color: #f6921e;
+}
+
+.btn-primary:active {
+  background-color: #f6921e;
+  border-color: #f6921e;
+}/*# sourceMappingURL=App.css.map */
