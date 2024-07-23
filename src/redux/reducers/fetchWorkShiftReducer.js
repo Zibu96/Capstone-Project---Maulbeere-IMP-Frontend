@@ -1,8 +1,10 @@
 import {
   GET_ALL_DINNER,
   GET_ALL_LUNCH,
+  GET_ALL_WEEK,
   POST_DINNER,
   POST_LUNCH,
+  POST_WEEK,
 } from "../actions/workShiftAction";
 
 const initialState = {
@@ -21,7 +23,7 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_LUNCH:
       return {
         ...state,
-        lunch: [...state.reservation, action.payload],
+        lunch: [...state.lunch, action.payload],
       };
     case GET_ALL_DINNER:
       return {
@@ -31,7 +33,17 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_DINNER:
       return {
         ...state,
-        lunch: [...state.reservation, action.payload],
+        dinner: [...state.dinner, action.payload],
+      };
+    case GET_ALL_WEEK:
+      return {
+        ...state,
+        workShift: action.payload,
+      };
+    case POST_WEEK:
+      return {
+        ...state,
+        workShift: [...state.workShift, action.payload],
       };
     default:
       return state;

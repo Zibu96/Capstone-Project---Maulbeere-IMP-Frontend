@@ -10,6 +10,7 @@ export const PATCH_USER_ME_PASSWORD = "PATCH_USER_ME_PASSWORD";
 export const PATCH_USER_ME_EMAIL = "PATCH_USER_ME_EMAIL";
 export const POST_USER_REGISTER = "POST_USER_REGISTER";
 export const GET_USER_ALL = "GET_USER_ALL";
+export const GET_SINGLE_USER = "GET_SINGLE_USER";
 
 export const fetchUserAction = (loginObject, navigate) => {
   return async (dispatch) => {
@@ -130,6 +131,26 @@ export const fetchAllUsersAction = (token) => {
       );
       dispatch({
         type: GET_USER_ALL,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchSingleUserAction = (token, id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/users/${id}`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: GET_SINGLE_USER,
         payload: response.data,
       });
       console.log(response.data);

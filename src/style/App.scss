@@ -36,8 +36,8 @@ $theme-colors: (
   border-color: $primary;
 }
 .btn-primary:active {
-  background-color: $primary;
-  border-color: $primary;
+  background-color: $primary !important;
+  border-color: $primary !important;
 }
 
 .btn-secondary {
