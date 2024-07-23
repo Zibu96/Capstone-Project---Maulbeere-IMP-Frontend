@@ -1,13 +1,11 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import WorkShiftOrganizer from "./WorkShiftOrganizer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import WorkShiftTable from "./WorkShiftTable";
-import { fetchWeekAction } from "../redux/actions/workShiftAction";
 
 const WorkShift = () => {
-  const token = useSelector((state) => state.user.user_bearer.accessToken);
   const weeks = useSelector((state) => state.workShift.workShift.content);
   const [sortedWeeks, setSortedWeeks] = useState([]);
 
@@ -49,7 +47,9 @@ const WorkShift = () => {
       <MyNavbar />
       <Container className="text-white">
         <Row>
-          <h1>Turni della settimana: </h1>
+          <div className="d-flex justify-content-between my-3">
+            <h1>Turni della settimana: </h1>
+          </div>
           <Col sm={12}>
             <div className="bgAll border rounded mt-3">
               <h3 className="text-center">Questa settimana</h3>

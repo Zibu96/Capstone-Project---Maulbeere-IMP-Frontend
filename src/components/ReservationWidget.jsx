@@ -23,29 +23,31 @@ const ResevationWidget = () => {
   }, [dispatch, token]);
 
   return (
-    <Col xs={12} md={6} className="text-white mt-3 border rounded p-2">
-      <ListGroup>
-        <div className="d-flex justify-content-between">
-          <h4>Prenotazioni: </h4>
-          <h4>Posti: {getTotalSeats(res)}/85 </h4>
-        </div>
-        {!res ? (
-          <ListGroup.Item className="text-white bgAll">
-            Non ci sono prenotazioni per oggi
-          </ListGroup.Item>
-        ) : (
-          res.map((reserv) => (
-            <ListGroup.Item
-              key={reserv.id}
-              className="d-flex justify-content-between text-white bgAll p-1"
-            >
-              <p className="m-0 widget">Nome: {reserv.name}</p>
-              <p className="m-0 widget text-center">Posti: {reserv.seats}</p>
-              <p className="m-0 widget text-end">Ore: {reserv.time}</p>
+    <Col xs={12} md={6} className="text-white">
+      <div className="border rounded p-2">
+        <ListGroup>
+          <div className="d-flex justify-content-between">
+            <h4>Prenotazioni: </h4>
+            <h4>Posti: {getTotalSeats(res)}/85 </h4>
+          </div>
+          {!res ? (
+            <ListGroup.Item className="text-white bgAll">
+              Non ci sono prenotazioni per oggi
             </ListGroup.Item>
-          ))
-        )}
-      </ListGroup>
+          ) : (
+            res.map((reserv) => (
+              <ListGroup.Item
+                key={reserv.id}
+                className="d-flex justify-content-between text-white bgAll p-1"
+              >
+                <p className="m-0 widget">Nome: {reserv.name}</p>
+                <p className="m-0 widget text-center">Posti: {reserv.seats}</p>
+                <p className="m-0 widget text-end">Ore: {reserv.time}</p>
+              </ListGroup.Item>
+            ))
+          )}
+        </ListGroup>
+      </div>
     </Col>
   );
 };

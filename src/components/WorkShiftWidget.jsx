@@ -44,27 +44,29 @@ const WorkShiftWidget = () => {
     }
   }, [weeks]);
   return (
-    <Col xs={12} md={6} className="text-white mt-3 border rounded p-2">
-      <div>
-        <h4>Oggi lavora:</h4>
-        <div className="d-flex bgAll  border rounded">
-          <div className="text-center w-50 border-end">
-            <h5 className="border-bottom pb-2">Pranzo</h5>
-            <p>
-              {filteredWeek
-                ? filteredWeek.lunchUser
-                : "Nessun dato disponibile"}
-            </p>
-          </div>
-          <div className="text-center w-50">
-            <h5 className="border-bottom pb-2">Cena</h5>
-            <p>
-              {filteredWeek
-                ? filteredWeek.dinnerUserOne
-                : "Nessun dato disponibile"}
-            </p>
-            <p>{filteredWeek ? filteredWeek.dinnerUserTwo : ""}</p>
-            <p>{filteredWeek ? filteredWeek.dinnerUserThree : ""}</p>
+    <Col xs={12} md={6} className="text-white ">
+      <div className="border rounded p-2">
+        <div>
+          <h4>Oggi lavora:</h4>
+          <div className="d-flex bgAll  border rounded">
+            <div className="text-center w-50 border-end">
+              <h5 className="border-bottom pb-2">Pranzo</h5>
+              <p>
+                {filteredWeek
+                  ? filteredWeek.lunchUser
+                  : "Nessun dato disponibile"}
+              </p>
+            </div>
+            <div className="text-center w-50">
+              <h5 className="border-bottom pb-2">Cena</h5>
+              <p>
+                {filteredWeek
+                  ? filteredWeek.dinnerUserOne
+                  : "Nessun dato disponibile"}
+              </p>
+              <p>{filteredWeek ? filteredWeek.dinnerUserTwo : ""}</p>
+              <p>{filteredWeek ? filteredWeek.dinnerUserThree : ""}</p>
+            </div>
           </div>
         </div>
       </div>
