@@ -70,8 +70,8 @@ body {
 }
 
 .btn-primary:active {
-  background-color: #f6921e;
-  border-color: #f6921e;
+  background-color: #f6921e !important;
+  border-color: #f6921e !important;
 }
 
 .btn-secondary {

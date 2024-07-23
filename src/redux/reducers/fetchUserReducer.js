@@ -8,6 +8,7 @@ import {
   PATCH_USER_ME_EMAIL,
   POST_USER_REGISTER,
   GET_USER_ALL,
+  GET_SINGLE_USER,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   user_bearer: "",
   user_info: {},
   user_list: {},
+  user: {},
 };
 
 const fetchUserReducer = (state = initialState, action) => {
@@ -64,6 +66,11 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         user_list: action.payload,
+      };
+    case GET_SINGLE_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:

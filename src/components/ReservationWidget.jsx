@@ -23,7 +23,7 @@ const ResevationWidget = () => {
   }, [dispatch, token]);
 
   return (
-    <Col xs={12} md={6} className="text-white mt-5 border rounded p-2">
+    <Col xs={12} md={6} className="text-white mt-3 border rounded p-2">
       <ListGroup>
         <div className="d-flex justify-content-between">
           <h4>Prenotazioni: </h4>

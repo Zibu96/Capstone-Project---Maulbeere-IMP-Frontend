@@ -1,40 +1,48 @@
-import { Col, Container, Form, Row, Table } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import WorkShiftOrganizer from "./WorkShiftOrganizer";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import {
-  fetchDinnerAction,
-  fetchLunchAction,
-} from "../redux/actions/workShiftAction";
+import { useEffect, useState } from "react";
+import WorkShiftTable from "./WorkShiftTable";
+import { fetchWeekAction } from "../redux/actions/workShiftAction";
 
 const WorkShift = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const lunches = useSelector((state) => state.workShift.lunch.content);
-  const dinners = useSelector((state) => state.workShift.dinner.content);
-  console.log(lunches);
-  console.log(dinners);
-  const dispatch = useDispatch();
+  const weeks = useSelector((state) => state.workShift.workShift.content);
+  const [sortedWeeks, setSortedWeeks] = useState([]);
 
+  console.log(weeks);
+
+  const daysOfWeek = [
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+    "SUNDAY",
+  ];
+
+  const sortWeeksByDay = (weeks) => {
+    if (weeks)
+      return weeks.sort((a, b) => {
+        return daysOfWeek.indexOf(a.weekDays) - daysOfWeek.indexOf(b.weekDays);
+      });
+  };
   useEffect(() => {
-    if (token) {
-      dispatch(fetchLunchAction(token));
-      dispatch(fetchDinnerAction(token));
-    }
-  }, [dispatch, token]);
+    setSortedWeeks(sortWeeksByDay(weeks));
+    console.log(sortedWeeks);
+  }, [weeks]);
 
-  const existLunchByDay = (lunch, days) => {
-    if (lunch[days] == true) {
-      return lunch.user.name;
-    }
-    return;
-  };
-  const existDinnerByDay = (dinner, days) => {
-    if (dinner[days] == true) {
-      return dinner.user.name;
-    }
-    return;
-  };
+  const daysOfWeekToUse = [
+    "Lunedì",
+    "Martedì",
+    "Mercoledì",
+    "Giovedì",
+    "Venerdì",
+    "Sabato",
+    "Domenica",
+  ];
 
   return (
     <>
@@ -54,236 +62,30 @@ const WorkShift = () => {
                     <th>Cena</th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  {lunches.map((lunch, index) => {
-                    const dinner = dinners[index];
-                    return (
-                      <>
-                        <tr key={lunch.id}>
-                          <td>Lunedì</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "monday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "monday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "monday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "monday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Martedì</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "tuesday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "tuesday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "tuesday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "tuesday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Mercoledì</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "wednesday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "wednesday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "wednesday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "wednesday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Giovedì</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "thursday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "thursday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "thursday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "thursday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Venerdì</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "friday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "friday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "friday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "friday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Sabato</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "saturday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "saturday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "saturday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "saturday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Domenica</td>
-                          <td>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existLunchByDay(lunch, "sunday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                          <td className="name d-flex gap-2">
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "sunday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "sunday")}
-                              </option>
-                            </Form.Select>
-                            <Form.Select aria-label="Default select example">
-                              <option>Dipendente</option>
-                              <option value="1">
-                                {existDinnerByDay(dinner, "sunday")}
-                              </option>
-                            </Form.Select>
-                          </td>
-                        </tr>
-                      </>
-                    );
-                  })}
+                  {!sortedWeeks ? (
+                    <p>Turni non disponibili</p>
+                  ) : (
+                    sortedWeeks.map((week, i) => (
+                      <tr key={week.id}>
+                        <td>{daysOfWeekToUse[i]}</td>
+
+                        <td>{week.lunchUser}</td>
+                        <td className="d-flex gap-3">
+                          <p className="m-0 widget">{week.dinnerUserOne}</p>
+                          <p className="m-0 widget">{week.dinnerUserTwo}</p>
+                          <p className="m-0 widget">{week.dinnerUserThree}</p>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </Table>
             </div>
           </Col>
           <WorkShiftOrganizer />
+          <WorkShiftTable />
         </Row>
       </Container>
     </>
