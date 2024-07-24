@@ -8,6 +8,7 @@ import MyProfile from "./components/MyProfile";
 import StaffManagment from "./components/StaffManagment";
 import WorkShift from "./components/WorkShift";
 import WaitStaff from "./components/WaitStaff";
+import SummaryShoppingList from "./components/SummaryShoppingList";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/personale" element={<StaffManagment />} />
           <Route path="/turni" element={<WorkShift />} />
           <Route path="/sala" element={<WaitStaff />} />
+
+          <Route path="/liste" element={<SummaryShoppingList />} />
         </Routes>
       </BrowserRouter>
     </>

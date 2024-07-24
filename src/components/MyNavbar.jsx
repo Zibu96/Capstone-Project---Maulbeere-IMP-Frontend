@@ -73,9 +73,11 @@ const MyNavbar = () => {
                     Gestione Staff
                   </NavDropdown.Item>
                 </Link>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+                <Link to={"/liste"}>
+                  <NavDropdown.Item href="#action/3.3">
+                    Riepilogo Liste
+                  </NavDropdown.Item>
+                </Link>
                 <NavDropdown.Divider />
                 <Link to={"/"}>
                   <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
