@@ -7,6 +7,7 @@ import MyReservation from "./components/MyReservation";
 import MyProfile from "./components/MyProfile";
 import StaffManagment from "./components/StaffManagment";
 import WorkShift from "./components/WorkShift";
+import WaitStaff from "./components/WaitStaff";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/profilo" element={<MyProfile />} />
           <Route path="/personale" element={<StaffManagment />} />
           <Route path="/turni" element={<WorkShift />} />
+          <Route path="/sala" element={<WaitStaff />} />
         </Routes>
       </BrowserRouter>
     </>

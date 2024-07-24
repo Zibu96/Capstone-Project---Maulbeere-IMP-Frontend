@@ -1,0 +1,41 @@
+.waitstaff-btn {
+  width: 10%;
+}
+
+.ws-table-principal {
+  width: 60%;
+}
+
+.ws-table-secondary {
+  width: 15%;
+}
+.ws-table-btn {
+  width: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .ws-table-principal {
+    width: 35%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ws-table-secondary {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ws-table-btn {
+    width: 15%;
+  }
+}
+
+.ws-btn {
+  width: 40px;
+  height: 35px;
+}
+@media screen and (max-width: 768px) {
+  .ws-btn {
+    width: 30px;
+    height: 27px;
+  }
+}

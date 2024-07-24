@@ -44,7 +44,9 @@ const MyNavbar = () => {
             <Link to={"/prenotazioni"}>
               <Nav.Link href="#prenotazioni">Prenotazioni</Nav.Link>
             </Link>
-            <Nav.Link href="#sala">Sala</Nav.Link>
+            <Link to={"/sala"}>
+              <Nav.Link href="#sala">Sala</Nav.Link>
+            </Link>
             <Nav.Link href="#cucina">Cucina</Nav.Link>
             <Link to={"/turni"}>
               <Nav.Link href="#turni">Turni</Nav.Link>

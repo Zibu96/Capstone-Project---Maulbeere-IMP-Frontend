@@ -27,6 +27,27 @@
   width: 33%;
 }
 
+.btn-pos {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.bg-home {
+  background-color: #f6921e;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-pos {
+    position: absolute;
+    width: 90%;
+    height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 .form-text {
   width: 80%;
 }
@@ -44,6 +65,14 @@
   width: 20%;
 }
 
+.waitstaff-list {
+  width: 80%;
+}
+
+.waitstaff-btn {
+  width: 20%;
+}
+
 /* MOIDIFICHE GENERALI */
 body {
   background-color: #1f2023;
@@ -52,6 +81,33 @@ body {
 .bgAll {
   background-color: #383a3f;
   color: white;
+}
+
+@font-face {
+  font-family: "Maulbeere-font";
+  src: url("../assets/fonts/romance fatal serif JC Fonts.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Maulbeere-font-two";
+  src: url("../assets/fonts/Juergen.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+h1 {
+  font-family: "Maulbeere-font", sans-serif;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-family: "Maulbeere-font", sans-serif;
+    font-size: 35px;
+  }
+}
+.font {
+  font-family: "Maulbeere-font", sans-serif;
 }
 
 .btn-primary {
@@ -82,4 +138,35 @@ body {
 .btn-secondary:hover {
   background-color: #c7a700;
   border-color: #c7a700;
+}
+
+.btn-outline-primary {
+  border-color: #f6921e;
+  color: #f6921e;
+}
+
+.btn-primary-outline:hover {
+  background-color: #d87809;
+  border-color: #d87809;
+}
+
+.btn-primary-outline:focus {
+  background-color: #f6921e;
+  border-color: #f6921e;
+}
+
+.btn.active {
+  background-color: #f6921e !important;
+  border-color: #f6921e !important;
+}
+
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: #f6921e !important;
+  border-color: #f6921e !important;
+}
+
+.btn:hover {
+  background-color: #f6921e !important;
+  border-color: #f6921e !important;
 }/*# sourceMappingURL=App.css.map */

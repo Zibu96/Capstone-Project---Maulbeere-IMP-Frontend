@@ -4,7 +4,7 @@
 @import "./partials/profilepage";
 @import "./partials/staffpage";
 @import "./partials/shiftpage";
-
+@import "./partials/waitstaffpage";
 /* MOIDIFICHE GENERALI */
 
 body {
@@ -62,12 +62,12 @@ $theme-colors: (
   border-color: darken($primary, 10%);
 }
 .btn-primary:focus {
-  background-color: $primary;
-  border-color: $primary;
+  background-color: darken($primary, 10%);
+  border-color: darken($primary, 10%);
 }
 .btn-primary:active {
-  background-color: $primary !important;
-  border-color: $primary !important;
+  background-color: darken($primary, 10%) !important;
+  border-color: darken($primary, 10%) !important;
 }
 
 .btn-secondary {
@@ -89,21 +89,21 @@ $theme-colors: (
   border-color: darken($primary, 10%);
 }
 .btn-primary-outline:focus {
-  background-color: $primary;
-  border-color: $primary;
+  background-color: darken($primary, 10%);
+  border-color: darken($primary, 10%);
 }
 .btn.active {
-  background-color: $primary !important;
-  border-color: $primary !important;
+  background-color: darken($primary, 10%) !important;
+  border-color: darken($primary, 10%) !important;
 }
 
 .btn:first-child:active,
 :not(.btn-check) + .btn:active {
-  background-color: $primary !important;
-  border-color: $primary !important;
+  background-color: darken($primary, 10%) !important;
+  border-color: darken($primary, 10%) !important;
 }
 
 .btn:hover {
-  background-color: $primary !important;
-  border-color: $primary !important;
+  background-color: darken($primary, 10%) !important;
+  border-color: darken($primary, 10%) !important;
 }
