@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserMeAction } from "../redux/actions/usersAction";
 import { useEffect } from "react";
+import NavDropDown from "./NavDropdown";
 
 const MyNavbar = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -32,7 +33,9 @@ const MyNavbar = () => {
         <Navbar.Brand href="#home">
           <img src={maulLogo} style={{ width: "70px" }} alt="Maulbeerelogo" />
         </Navbar.Brand>
+        <NavDropDown />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link to={"/home"}>
@@ -47,7 +50,7 @@ const MyNavbar = () => {
               <Nav.Link href="#turni">Turni</Nav.Link>
             </Link>
           </Nav>
-          <Nav className="ms-auto me-5">
+          <Nav className="ms-auto me-5  d-none d-lg-block">
             <Dropdown>
               <Dropdown.Toggle
                 variant="secondary"

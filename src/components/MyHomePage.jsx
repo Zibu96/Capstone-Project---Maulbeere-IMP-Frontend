@@ -2,6 +2,7 @@ import { Container, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import ResevationWidget from "./ReservationWidget";
 import WorkShiftWidget from "./WorkShiftWidget";
+import ReservationQuickButton from "./ReservationQuickButton";
 
 const MyHomePage = () => {
   return (
@@ -15,6 +16,7 @@ const MyHomePage = () => {
           <WorkShiftWidget />
           <ResevationWidget />
         </Row>
+        <ReservationQuickButton />
       </Container>
     </>
   );

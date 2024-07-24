@@ -15,6 +15,36 @@ body {
   color: white;
 }
 
+@font-face {
+  font-family: "Maulbeere-font";
+  src: url("../assets/fonts/romance\ fatal\ serif\ JC\ Fonts.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Maulbeere-font-two";
+  src: url("../assets/fonts/Juergen.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Maulbeere-font", sans-serif;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-family: "Maulbeere-font", sans-serif;
+    font-size: 35px;
+  }
+}
+
+.font {
+  font-family: "Maulbeere-font", sans-serif;
+}
+
 $primary: #f6921e;
 $secondary: #fad200;
 
@@ -47,4 +77,33 @@ $theme-colors: (
 .btn-secondary:hover {
   background-color: darken($secondary, 10%);
   border-color: darken($secondary, 10%);
+}
+
+.btn-outline-primary {
+  border-color: $primary;
+  color: $primary;
+}
+
+.btn-primary-outline:hover {
+  background-color: darken($primary, 10%);
+  border-color: darken($primary, 10%);
+}
+.btn-primary-outline:focus {
+  background-color: $primary;
+  border-color: $primary;
+}
+.btn.active {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn:hover {
+  background-color: $primary !important;
+  border-color: $primary !important;
 }

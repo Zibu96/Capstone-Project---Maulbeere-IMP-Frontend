@@ -44,7 +44,7 @@ const WorkShiftWidget = () => {
     }
   }, [weeks]);
   return (
-    <Col xs={12} md={6} className="text-white ">
+    <Col xs={12} md={6} className="text-white mb-3">
       <div className="border rounded p-2">
         <div>
           <h4>Oggi lavora:</h4>

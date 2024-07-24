@@ -24,7 +24,7 @@ const ResevationWidget = () => {
 
   return (
     <Col xs={12} md={6} className="text-white">
-      <div className="border rounded p-2">
+      <div className="border rounded p-2 mb-3 bg-home">
         <ListGroup>
           <div className="d-flex justify-content-between">
             <h4>Prenotazioni: </h4>
