@@ -3,8 +3,16 @@ import MyNavbar from "./MyNavbar";
 import WaitStaffToDo from "./WaitStaffToDo";
 import WaitStaffComunication from "./WaitStaffComunication";
 import WaitStaffShoppingList from "./WaitStaffShoppingList";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  fetchWaitStaffCommunicationAction,
+  fetchWaitStaffToDoAction,
+} from "../redux/actions/waitStaffAction";
 
 const WaitStaff = () => {
+  const token = useSelector((state) => state.user.user_bearer.accessToken);
+
   return (
     <>
       <MyNavbar />
