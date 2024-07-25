@@ -11,7 +11,7 @@ const WaitStaffToDoWidget = () => {
         <h4>Da fare:</h4>
 
         <ListGroup>
-          {toDoes.length === 0 ? (
+          {!toDoes ? (
             <ListGroup.Item className="bgAll rounded d-flex justify-content-between">
               Niente da fare per oggi
             </ListGroup.Item>
