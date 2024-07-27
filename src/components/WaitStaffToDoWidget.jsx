@@ -9,9 +9,10 @@ const WaitStaffToDoWidget = () => {
   const [toDoes, setToDoes] = useState([]);
 
   useEffect(() => {
-    setToDoes(toDoesDb);
+    if (toDoesDb) {
+      setToDoes(toDoesDb);
+    }
   }, [toDoesDb]);
-
   return (
     <Col sm={12} lg={6}>
       <div className="border rounded p-2 mb-2">

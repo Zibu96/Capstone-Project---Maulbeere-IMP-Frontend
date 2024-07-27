@@ -34,7 +34,9 @@ const WaitStaffComunication = () => {
   };
 
   useEffect(() => {
-    setCommunications(communicationsDb);
+    if (communicationsDb) {
+      setCommunications(communicationsDb);
+    }
   }, [communicationsDb]);
 
   const handleDeleteWaitStaff = (deleteId) => {

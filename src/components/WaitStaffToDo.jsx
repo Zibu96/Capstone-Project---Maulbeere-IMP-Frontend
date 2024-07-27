@@ -38,7 +38,9 @@ const WaitStaffToDo = () => {
   }, [dispatch, token]);
 
   useEffect(() => {
-    setToDoes(toDoesDb);
+    if (toDoesDb) {
+      setToDoes(toDoesDb);
+    }
   }, [toDoesDb]);
 
   const handleDeleteWaitStaff = (deleteId) => {
