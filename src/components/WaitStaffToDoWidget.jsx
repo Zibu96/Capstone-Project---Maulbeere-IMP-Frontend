@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, ListGroup } from "react-bootstrap";
+import { Col, ListGroup, Placeholder } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const WaitStaffToDoWidget = () => {
@@ -19,7 +19,14 @@ const WaitStaffToDoWidget = () => {
         <h4>Da fare:</h4>
 
         <ListGroup>
-          {toDoes.length == 0 ? (
+          {!toDoesDb ? (
+            <>
+              <Placeholder xs={12} size="lg" />
+              <Placeholder xs={12} />
+              <Placeholder xs={12} size="sm" />
+              <Placeholder xs={12} size="xs" />
+            </>
+          ) : toDoes.length == 0 ? (
             <ListGroup.Item className="bgAll rounded d-flex justify-content-between">
               Niente da fare per oggi
             </ListGroup.Item>
