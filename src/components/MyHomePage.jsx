@@ -4,6 +4,7 @@ import ResevationWidget from "./ReservationWidget";
 import WorkShiftWidget from "./WorkShiftWidget";
 import ReservationQuickButton from "./ReservationQuickButton";
 import WaitStaffWidget from "./WaitStaffWidget";
+import KitchenWidget from "./KitchenWidget";
 
 const MyHomePage = () => {
   return (
@@ -17,6 +18,7 @@ const MyHomePage = () => {
           <WorkShiftWidget />
           <ResevationWidget />
           <WaitStaffWidget />
+          <KitchenWidget />
           <ReservationQuickButton />
         </Row>
       </Container>

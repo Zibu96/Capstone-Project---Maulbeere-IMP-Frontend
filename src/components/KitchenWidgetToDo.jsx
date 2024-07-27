@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import { Col, ListGroup, Placeholder } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-const WaitStaffToDoWidget = () => {
-  const toDoesDb = useSelector(
-    (state) => state.waitStaff.waitStaff_toDo.content
-  );
+const KitchenWidgetToDo = () => {
+  const toDoesDb = useSelector((state) => state.kitchen.kitchen_toDo.content);
   const [toDoes, setToDoes] = useState([]);
 
   useEffect(() => {
@@ -13,6 +11,7 @@ const WaitStaffToDoWidget = () => {
       setToDoes(toDoesDb);
     }
   }, [toDoesDb]);
+
   return (
     <Col sm={12} lg={6}>
       <div className="border rounded p-2 mb-2">
@@ -45,4 +44,4 @@ const WaitStaffToDoWidget = () => {
     </Col>
   );
 };
-export default WaitStaffToDoWidget;
+export default KitchenWidgetToDo;

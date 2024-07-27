@@ -2,38 +2,36 @@ import { useEffect, useState } from "react";
 import { Button, Col, Form, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchDeleteWaitStaffAction,
-  fetchPostWaitStaffToDoAction,
-  fetchWaitStaffToDoAction,
-} from "../redux/actions/waitStaffAction";
+  fetchDeleteKitchenAction,
+  fetchKitchenToDoAction,
+  fetchPostKitchenToDoAction,
+} from "../redux/actions/kitchenAction";
 
-const WaitStaffToDo = () => {
+const KitchenToDo = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const toDoesDb = useSelector(
-    (state) => state.waitStaff.waitStaff_toDo.content
-  );
+  const toDoesDb = useSelector((state) => state.kitchen.kitchen_toDo.content);
   const [text, setText] = useState("");
   const [toDoes, setToDoes] = useState([]);
   const dispatch = useDispatch();
   console.log(toDoes);
 
-  const handleWaitStaffToDoSubmit = (e) => {
+  const handleKitchenToDoSubmit = (e) => {
     e.preventDefault();
     console.log("Creating new reservation");
     const newToDo = {
-      staffType: "CUCINA",
+      staffType: "SALA",
       actionType: "TO_DO",
       text: text,
     };
-    dispatch(fetchPostWaitStaffToDoAction(token, newToDo));
+    dispatch(fetchPostKitchenToDoAction(token, newToDo));
     setToDoes((toDoesDb) => [...toDoesDb, newToDo]);
     console.log(newToDo);
-    alert("To Do di cucina creata con successo");
+    alert("To Do di sala creata con successo");
   };
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchWaitStaffToDoAction(token));
+      dispatch(fetchKitchenToDoAction(token));
     }
   }, [dispatch, token]);
 
@@ -43,10 +41,11 @@ const WaitStaffToDo = () => {
     }
   }, [toDoesDb]);
 
-  const handleDeleteWaitStaff = (deleteId) => {
-    dispatch(fetchDeleteWaitStaffAction(token, deleteId));
+  const handleDeleteKitchen = (deleteId) => {
+    dispatch(fetchDeleteKitchenAction(token, deleteId));
     setToDoes((toDoesDb) => toDoesDb.filter((toDo) => toDo.id !== deleteId));
   };
+
   return (
     <Col sm={12} lg={6} className="text-white mb-3">
       <div className="border rounded p-2">
@@ -66,7 +65,7 @@ const WaitStaffToDo = () => {
                 {toDo.text}
                 <Button
                   className="waitstaff-btn p-0"
-                  onClick={() => handleDeleteWaitStaff(toDo.id)}
+                  onClick={() => handleDeleteKitchen(toDo.id)}
                 >
                   <i className="bi bi-check-lg "></i>
                 </Button>
@@ -75,7 +74,7 @@ const WaitStaffToDo = () => {
           )}
           <Form
             className="mt-2 d-flex justify-content-between"
-            onSubmit={handleWaitStaffToDoSubmit}
+            onSubmit={handleKitchenToDoSubmit}
           >
             <Form.Control
               size="md"
@@ -91,4 +90,4 @@ const WaitStaffToDo = () => {
     </Col>
   );
 };
-export default WaitStaffToDo;
+export default KitchenToDo;

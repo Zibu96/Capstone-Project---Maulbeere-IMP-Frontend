@@ -31,7 +31,7 @@ const WaitStaff = () => {
           <div className="d-flex justify-content-between my-3">
             <h1>Sala:</h1>
           </div>
-          <WaitStaffToDo toDoes={toDoes} />
+          <WaitStaffToDo />
           <WaitStaffComunication />
           <WaitStaffShoppingList />
         </Row>

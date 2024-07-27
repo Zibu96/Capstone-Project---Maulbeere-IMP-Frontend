@@ -9,6 +9,7 @@ import StaffManagment from "./components/StaffManagment";
 import WorkShift from "./components/WorkShift";
 import WaitStaff from "./components/WaitStaff";
 import SummaryShoppingList from "./components/SummaryShoppingList";
+import Kitchen from "./components/Kitchen";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/personale" element={<StaffManagment />} />
           <Route path="/turni" element={<WorkShift />} />
           <Route path="/sala" element={<WaitStaff />} />
-
+          <Route path="/cucina" element={<Kitchen />} />
           <Route path="/liste" element={<SummaryShoppingList />} />
         </Routes>
       </BrowserRouter>
