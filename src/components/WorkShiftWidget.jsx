@@ -58,13 +58,15 @@ const WorkShiftWidget = () => {
           </div>
           <div className="text-center w-50">
             <h5 className="border-bottom pb-2">Cena</h5>
-            <p>
-              {filteredWeek
-                ? filteredWeek.dinnerUserOne
-                : "Nessun dato disponibile"}
-            </p>
-            <p>{filteredWeek ? filteredWeek.dinnerUserTwo : ""}</p>
-            <p>{filteredWeek ? filteredWeek.dinnerUserThree : ""}</p>
+            <div className="d-flex justify-content-around text-center">
+              <p>
+                {filteredWeek
+                  ? filteredWeek.dinnerUserOne
+                  : "Nessun dato disponibile"}
+              </p>
+              <p>{filteredWeek ? filteredWeek.dinnerUserTwo : ""}</p>
+              <p>{filteredWeek ? filteredWeek.dinnerUserThree : ""}</p>
+            </div>
           </div>
         </div>
       </div>

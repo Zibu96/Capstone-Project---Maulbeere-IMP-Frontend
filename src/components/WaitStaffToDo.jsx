@@ -4,15 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchDeleteWaitStaffAction,
   fetchPostWaitStaffToDoAction,
+  fetchWaitStaffToDoAction,
 } from "../redux/actions/waitStaffAction";
 
 const WaitStaffToDo = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const toDoes = useSelector((state) => state.waitStaff.waitStaff_toDo.content);
-  console.log("toDoes" + toDoes);
+  const toDoesDb = useSelector(
+    (state) => state.waitStaff.waitStaff_toDo.content
+  );
   const [text, setText] = useState("");
-  const [waitStaff, setWaitStaff] = useState("");
+  const [toDoes, setToDoes] = useState([]);
   const dispatch = useDispatch();
+  console.log(toDoes);
 
   const handleWaitStaffToDoSubmit = (e) => {
     e.preventDefault();
@@ -23,12 +26,24 @@ const WaitStaffToDo = () => {
       text: text,
     };
     dispatch(fetchPostWaitStaffToDoAction(token, newToDo));
+    setToDoes((toDoesDb) => [...toDoesDb, newToDo]);
     console.log(newToDo);
     alert("To Do di sala creata con successo");
   };
 
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchWaitStaffToDoAction(token));
+    }
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    setToDoes(toDoesDb);
+  }, [toDoesDb]);
+
   const handleDeleteWaitStaff = (deleteId) => {
     dispatch(fetchDeleteWaitStaffAction(token, deleteId));
+    setToDoes((toDoesDb) => toDoesDb.filter((toDo) => toDo.id !== deleteId));
   };
   return (
     <Col sm={12} lg={6} className="text-white mb-3">
@@ -36,7 +51,7 @@ const WaitStaffToDo = () => {
         <h4>Da fare:</h4>
 
         <ListGroup>
-          {!toDoes ? (
+          {toDoes.length == 0 ? (
             <ListGroup.Item className="bgAll rounded d-flex justify-content-between">
               Niente da fare per oggi
             </ListGroup.Item>

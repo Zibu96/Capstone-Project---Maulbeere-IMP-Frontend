@@ -16,7 +16,8 @@
 
 @media screen and (max-width: 768px) {
   .btn-pos {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
 
     width: 90%;
     height: 60px;

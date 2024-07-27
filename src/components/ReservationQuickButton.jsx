@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReservationModal from "./ReservationModal";
+import { Col } from "react-bootstrap";
 
 const ReservationQuickButton = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -8,13 +9,15 @@ const ReservationQuickButton = () => {
   const handleShow = () => setModalShow(true);
   return (
     <>
-      <ReservationModal modalShow={modalShow} handleClose={handleClose} />
-      <button
-        className="btn btn-pos btn-outline-primary rounded-pill"
-        onClick={handleShow}
-      >
-        Prenota
-      </button>
+      <Col sm={12} className="text-center">
+        <ReservationModal modalShow={modalShow} handleClose={handleClose} />
+        <button
+          className="btn btn-pos btn-outline-primary rounded-pill"
+          onClick={handleShow}
+        >
+          Prenota
+        </button>
+      </Col>
     </>
   );
 };

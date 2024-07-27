@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,13 +8,13 @@ import {
 
 const WaitStaffComunication = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const communications = useSelector(
+  const communicationsDb = useSelector(
     (state) => state.waitStaff.waitStaff_communication.content
   );
-  console.log(communications);
-
+  const [communications, setCommunications] = useState([]);
   const [text, setText] = useState("");
   const dispatch = useDispatch();
+  console.log(communications);
 
   const handleWaitStaffCommunicationSubmit = (e) => {
     e.preventDefault();
@@ -25,20 +25,32 @@ const WaitStaffComunication = () => {
       text: text,
     };
     dispatch(fetchPostWaitStaffCommunicationAction(token, newCommunication));
-
+    setCommunications((communicationsDb) => [
+      ...communicationsDb,
+      newCommunication,
+    ]);
     console.log(newCommunication);
     alert("Comunicazione di sala creata con successo");
   };
 
+  useEffect(() => {
+    setCommunications(communicationsDb);
+  }, [communicationsDb]);
+
   const handleDeleteWaitStaff = (deleteId) => {
     dispatch(fetchDeleteWaitStaffAction(token, deleteId));
+    setCommunications((communicationsDb) =>
+      communicationsDb.filter(
+        (communications) => communications.id !== deleteId
+      )
+    );
   };
 
   return (
     <Col sm={12} lg={6} className="text-white mb-3">
       <div className="border rounded p-2">
         <h4>Comunicazioni:</h4>
-        {!communications ? (
+        {communications.length == 0 ? (
           <div className="border rounded p-2 bgAll mb-2">
             <p className="p-2 m-0">Nessuna comunicazione</p>
           </div>

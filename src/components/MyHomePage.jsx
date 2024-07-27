@@ -17,8 +17,8 @@ const MyHomePage = () => {
           <WorkShiftWidget />
           <ResevationWidget />
           <WaitStaffWidget />
+          <ReservationQuickButton />
         </Row>
-        <ReservationQuickButton />
       </Container>
     </>
   );
