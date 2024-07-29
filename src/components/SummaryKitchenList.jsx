@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDeleteShoppingListAction } from "../redux/actions/waitStaffAction";
+import { fetchDeleteShoppingListAction } from "../redux/actions/kitchenAction";
 
-const SummaryWaitStaffList = () => {
+const SummaryKitchenList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const shoppingListDb = useSelector(
-    (state) => state.waitStaff.waitStaff_shoppingList.content
+    (state) => state.kitchen.kitchen_shoppingList.content
   );
   const [shoppingList, setShoppingList] = useState([]);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const SummaryWaitStaffList = () => {
   return (
     <Col sm={12} className="text-white mb-3">
       <div className="border rounded p-2">
-        <h4>Lista Sala:</h4>
+        <h4>Lista Cucina:</h4>
         <div className="bgAll  border rounded">
           <div className="bgAll d-flex rounded-top align-items-center">
             <div className="ws-table-principal border-end text-center p-2">
@@ -75,4 +75,5 @@ const SummaryWaitStaffList = () => {
     </Col>
   );
 };
-export default SummaryWaitStaffList;
+
+export default SummaryKitchenList;

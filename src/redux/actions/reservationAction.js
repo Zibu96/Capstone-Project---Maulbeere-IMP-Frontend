@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_RESERVATION = "GET_RESERVATION";
 export const POST_RESERVATION = "POST_RESERVATION";
 export const DELETE_RESERVATION = "DELETE_RESERVATION";
+export const GET_RESERVATION_TODAY = "GET_RESERVATION_TODAY";
 
 export const fetchReservationAction = (token) => {
   return async (dispatch) => {
@@ -60,6 +61,26 @@ export const fetchDeleteReservationAction = (token, id) => {
       );
       dispatch({
         type: DELETE_RESERVATION,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchReservationTodayAction = (token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        "https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/reservations/today",
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: GET_RESERVATION_TODAY,
         payload: response.data,
       });
       console.log(response.data);

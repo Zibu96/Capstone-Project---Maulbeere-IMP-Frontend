@@ -5,6 +5,9 @@ export const GET_KITCHEN_COMMUNICATION = "GET_KITCHEN_COMMUNICATION";
 export const POST_KITCHEN_TODO = "POST_KITCHEN_TODO";
 export const POST_KITCHEN_COMMUNICATION = "POST_KITCHEN_COMMUNICATION";
 export const DELETE_KITCHEN = "DELETE_KITCHEN";
+export const GET_KITCHEN_SHOPPING_LIST = "GET_KITCHEN_SHOPPING_LIST";
+export const POST_KITCHEN_SHOPPING_LIST = "POST_KITCHEN_SHOPPING_LIST";
+export const DELETE_KITCHEN_SHOPPING_LIST = "DELETE_KITCHEN_SHOPPING_LIST";
 
 export const fetchKitchenToDoAction = (token) => {
   return async (dispatch) => {
@@ -110,6 +113,71 @@ export const fetchDeleteKitchenAction = (token, id) => {
       );
       dispatch({
         type: DELETE_KITCHEN,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchShoppingListAction = (token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        "https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/kitchen/shoppingLists",
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: GET_KITCHEN_SHOPPING_LIST,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchPostShoppingListsAction = (token, newShoppingList) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/kitchen/shoppingLists",
+        newShoppingList,
+
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      dispatch({
+        type: POST_KITCHEN_SHOPPING_LIST,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchDeleteShoppingListAction = (token, id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/kitchen/shoppingLists/ ${id}`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: DELETE_KITCHEN_SHOPPING_LIST,
         payload: response.data,
       });
       console.log(response.data);

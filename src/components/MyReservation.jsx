@@ -7,6 +7,7 @@ import { IoIosFootball } from "react-icons/io";
 import {
   fetchDeleteReservationAction,
   fetchReservationAction,
+  fetchReservationTodayAction,
 } from "../redux/actions/reservationAction";
 import ReservationModal from "./ReservationModal";
 import ReservationAside from "./ReservationAside";
@@ -14,6 +15,8 @@ import ReservationAside from "./ReservationAside";
 const MyReservation = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const res = useSelector((state) => state.reservation.reservation.content);
+  const today = useSelector((state) => state.reservation.today.content);
+  console.log(today);
   console.log(res);
   const [modalShow, setModalShow] = useState(false);
   const [reservation, setReservation] = useState([]);
@@ -46,13 +49,14 @@ const MyReservation = () => {
   };
 
   useEffect(() => {
-    setReservation(res);
-  }, [res]);
+    setReservation(today);
+  }, [today]);
 
   const dispatch = useDispatch();
   useEffect(() => {
     if (token) {
       dispatch(fetchReservationAction(token));
+      dispatch(fetchReservationTodayAction(token));
     }
   }, [dispatch, token]);
 

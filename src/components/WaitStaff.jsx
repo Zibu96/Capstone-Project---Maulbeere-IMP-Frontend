@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   fetchWaitStaffCommunicationAction,
+  fetchWaitStaffShoppingListAction,
   fetchWaitStaffToDoAction,
 } from "../redux/actions/waitStaffAction";
 
@@ -20,6 +21,7 @@ const WaitStaff = () => {
     if (token) {
       dispatch(fetchWaitStaffToDoAction(token));
       dispatch(fetchWaitStaffCommunicationAction(token));
+      dispatch(fetchWaitStaffShoppingListAction(token));
     }
   }, [dispatch, token]);
 

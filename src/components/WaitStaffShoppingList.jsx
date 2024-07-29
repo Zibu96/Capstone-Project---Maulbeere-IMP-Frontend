@@ -1,6 +1,49 @@
+import { useEffect, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchDeleteShoppingListAction,
+  fetchPostShoppingListsAction,
+} from "../redux/actions/waitStaffAction";
 
 const WaitStaffShoppingList = () => {
+  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const shoppingListDb = useSelector(
+    (state) => state.waitStaff.waitStaff_shoppingList.content
+  );
+  const [product, setProduct] = useState("");
+  const [quantity, SetQuantity] = useState("");
+  const [value, setValue] = useState("");
+  const [shoppingList, setShoppingList] = useState([]);
+  const dispatch = useDispatch();
+  console.log(shoppingListDb);
+
+  useEffect(() => {
+    setShoppingList(shoppingListDb);
+  }, [shoppingListDb]);
+
+  const handleKitchenShoppingListSubmit = (e) => {
+    e.preventDefault();
+    console.log("Creating new reservation");
+    const newShoppingList = {
+      staffType: "SALA",
+      product: product,
+      quantity: quantity,
+      value: value,
+    };
+
+    dispatch(fetchPostShoppingListsAction(token, newShoppingList));
+    setShoppingList((shoppingListDb) => [...shoppingListDb, newShoppingList]);
+    console.log(newShoppingList);
+  };
+
+  const handleShoppingListDelete = (deleteId) => {
+    dispatch(fetchDeleteShoppingListAction(token, deleteId));
+    setShoppingList((shoppingListDb) =>
+      shoppingListDb.filter((sl) => sl.id !== deleteId)
+    );
+  };
+
   return (
     <Col sm={12} className="text-white mb-3">
       <div className="border rounded p-2">
@@ -17,35 +60,60 @@ const WaitStaffShoppingList = () => {
               <h5 className="m-0">Data </h5>
             </div>
           </div>
-
-          {/* INSERIRE QUI IL MAP */}
-          <div className="bgAll d-flex border-top rounded-bottom align-items-center">
+          {!shoppingList ? (
             <div className="ws-table-principal border-end p-2">
-              <p className="m-0">Gin</p>
+              <p className="m-0">Niente in lista</p>
             </div>
-            <div className="ws-table-secondary border-end text-center p-2">
-              <p className="m-0">6 Btl</p>
-            </div>
-            <div className="ws-table-secondary border-end text-center p-2">
-              <p className="m-0">27/2024</p>
-            </div>
-            <div className="ws-table-btn text-center ">
-              <Button className="rounded p-0 ws-btn">
-                <i className="bi bi-check-lg "></i>
-              </Button>
-            </div>
-          </div>
+          ) : (
+            shoppingList.map((sl) => (
+              <div
+                className="bgAll d-flex border-top rounded-bottom align-items-center"
+                key={sl.id}
+              >
+                <div className="ws-table-principal border-end p-2">
+                  <p className="m-0">{sl.product}</p>
+                </div>
+                <div className="ws-table-secondary border-end text-center p-2">
+                  <p className="m-0">
+                    {sl.quantity} {sl.value}
+                  </p>
+                </div>
+                <div className="ws-table-secondary border-end text-center p-2">
+                  <p className="m-0">{sl.date}</p>
+                </div>
+                <div className="ws-table-btn text-center ">
+                  <Button
+                    className="rounded p-0 ws-btn"
+                    onClick={() => handleShoppingListDelete(sl.id)}
+                  >
+                    <i className="bi bi-check-lg "></i>
+                  </Button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
-        <Form className="mt-2 ">
+        <Form className="mt-2 " onSubmit={handleKitchenShoppingListSubmit}>
           <div className="d-flex gap-2">
-            <Form.Control type="text" placeholder="Prodotto" />
-            <Form.Control type="number" placeholder="Quantità" />
-            <Form.Select aria-label="Default select example">
+            <Form.Control
+              type="text"
+              placeholder="Prodotto"
+              onChange={(e) => setProduct(e.target.value)}
+            />
+            <Form.Control
+              type="number"
+              placeholder="Quantità"
+              onChange={(e) => SetQuantity(e.target.value)}
+            />
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) => setValue(e.target.value)}
+            >
               <option>Valore</option>
-              <option value="1">Kg</option>
-              <option value="2">Cartoni</option>
-              <option value="3">Buste</option>
+              <option>Kg</option>
+              <option>Cartoni</option>
+              <option>Buste</option>
             </Form.Select>
           </div>
           <div className="text-center mt-2">

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import {
   fetchKitchenCommunicationAction,
   fetchKitchenToDoAction,
+  fetchShoppingListAction,
 } from "../redux/actions/kitchenAction";
 
 const Kitchen = () => {
@@ -17,6 +18,7 @@ const Kitchen = () => {
     if (token) {
       dispatch(fetchKitchenToDoAction(token));
       dispatch(fetchKitchenCommunicationAction(token));
+      dispatch(fetchShoppingListAction(token));
     }
   }, [dispatch, token]);
   return (

@@ -1,12 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Col, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchReservationAction } from "../redux/actions/reservationAction";
+import {
+  fetchReservationAction,
+  fetchReservationTodayAction,
+} from "../redux/actions/reservationAction";
 
 const ResevationWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const res = useSelector((state) => state.reservation.reservation.content);
+  const res = useSelector((state) => state.reservation.today.content);
   console.log(res);
+  const [reservation, setReservation] = useState([]);
+
+  useEffect(() => {
+    if (res) {
+      setReservation(res);
+    }
+  }, [res]);
 
   const getTotalSeats = (reservations) => {
     if (!Array.isArray(reservations)) {
@@ -18,6 +28,7 @@ const ResevationWidget = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (token) {
+      dispatch(fetchReservationTodayAction(token));
       dispatch(fetchReservationAction(token));
     }
   }, [dispatch, token]);
@@ -30,12 +41,12 @@ const ResevationWidget = () => {
             <h4>Prenotazioni: </h4>
             <h4>Posti: {getTotalSeats(res)}/85 </h4>
           </div>
-          {!res ? (
+          {reservation.length == 0 ? (
             <ListGroup.Item className="text-white bgAll">
               Non ci sono prenotazioni per oggi
             </ListGroup.Item>
           ) : (
-            res.map((reserv) => (
+            reservation.map((reserv) => (
               <ListGroup.Item
                 key={reserv.id}
                 className="d-flex justify-content-between text-white bgAll p-1"

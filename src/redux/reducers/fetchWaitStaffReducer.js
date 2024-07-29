@@ -1,14 +1,18 @@
 import {
   DELETE_WAITSTAFF,
+  DELETE_WAITSTAFF_SHOPPING_LIST,
   GET_WAITSTAFF_COMMUNICATION,
+  GET_WAITSTAFF_SHOPPING_LIST,
   GET_WAITSTAFF_TODO,
   POST_WAITSTAFF_COMMUNICATION,
+  POST_WAITSTAFF_SHOPPING_LIST,
   POST_WAITSTAFF_TODO,
 } from "../actions/waitStaffAction";
 
 const initialState = {
   waitStaff_toDo: {},
   waitStaff_communication: {},
+  waitStaff_shoppingList: {},
   waitStaff: [],
 };
 
@@ -41,6 +45,27 @@ const fetchWaitStaffReducer = (state = initialState, action) => {
       return {
         ...state,
         waitStaff: [...state.waitStaff, action.payload],
+      };
+    case GET_WAITSTAFF_SHOPPING_LIST:
+      return {
+        ...state,
+        waitStaff_shoppingList: action.payload,
+      };
+    case POST_WAITSTAFF_SHOPPING_LIST:
+      return {
+        ...state,
+        waitStaff_shoppingList: [
+          ...state.waitStaff_shoppingList,
+          action.payload,
+        ],
+      };
+    case DELETE_WAITSTAFF_SHOPPING_LIST:
+      return {
+        ...state,
+        waitStaff_shoppingList: [
+          ...state.waitStaff_shoppingList,
+          action.payload,
+        ],
       };
     default:
       return state;
