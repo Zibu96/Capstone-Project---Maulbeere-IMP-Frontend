@@ -18,10 +18,13 @@
   .btn-pos {
     position: fixed;
     bottom: 0;
-
+    background: linear-gradient(to right, #fad200, #f6921e);
+    border: none;
     width: 90%;
     height: 60px;
     left: 50%;
     transform: translateX(-50%);
+    color: black !important;
+    font-weight: 500;
   }
 }

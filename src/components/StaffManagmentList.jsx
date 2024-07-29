@@ -16,25 +16,27 @@ const StaffManagmentList = () => {
   }, [dispatch, token]);
 
   return (
-    <Col className="bgAll border rounded mt-3">
-      <h3 className="mt-2">Lista Dipendenti:</h3>
-      {!users ? (
-        <h2>Non ci sono dipendendenti</h2>
-      ) : (
-        users.map((user) => (
-          <Card className="my-3" key={user.id}>
-            <Card.Body className="d-flex justify-content-between text-white card_bg align-items-center">
-              <Card.Title className="m-0 w-50">
-                {user.name} {user.surname}
-              </Card.Title>
-              <Card.Text className="m-0">{user.role}</Card.Text>
-              <Button variant="danger rounded-pill align-items-center">
-                <i className="bi bi-trash"></i>
-              </Button>
-            </Card.Body>
-          </Card>
-        ))
-      )}
+    <Col className="mb-3">
+      <div className="border rounded p-2 bgAll">
+        <h3 className="mt-2">Lista Dipendenti:</h3>
+        {!users ? (
+          <h2>Non ci sono dipendendenti</h2>
+        ) : (
+          users.map((user) => (
+            <Card className="my-3" key={user.id}>
+              <Card.Body className="d-flex justify-content-between text-white card_bg align-items-center rounded">
+                <Card.Title className="m-0 w-50">
+                  {user.name} {user.surname}
+                </Card.Title>
+                <Card.Text className="m-0">{user.role}</Card.Text>
+                <Button variant="danger rounded-pill align-items-center">
+                  <i className="bi bi-trash"></i>
+                </Button>
+              </Card.Body>
+            </Card>
+          ))
+        )}
+      </div>
     </Col>
   );
 };

@@ -81,52 +81,54 @@ const MyReservation = () => {
               setReservation={setReservation}
             />
           </div>
-          <Col sm={9} className="mb-3">
-            {reservation.map((reserv) => (
-              <Card
-                key={reserv.id}
-                className="reservation-card mb-3"
-                style={{
-                  backgroundColor: getBackgroundColor(reserv.reservationType),
-                }}
-              >
-                <Card.Header as="h5">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      {reserv.name} {reserv.surname}
-                    </div>
-
-                    <p>{getIcon(reserv.eventType)}</p>
-                  </div>
-                </Card.Header>
-                <Card.Body>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <Card.Title>Tel. {reserv.telephone}</Card.Title>
-                      <div className="d-flex gap-3">
-                        <Card.Text>Ore {reserv.time}</Card.Text>
-                        <Card.Text>N° posti: {reserv.seats}</Card.Text>
+          <Col sm={9}>
+            <div className="p-2">
+              {reservation.map((reserv) => (
+                <Card
+                  key={reserv.id}
+                  className="reservation-card mb-3"
+                  style={{
+                    backgroundColor: getBackgroundColor(reserv.reservationType),
+                  }}
+                >
+                  <Card.Header as="h5">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        {reserv.name} {reserv.surname}
                       </div>
-                      <Card.Text>
-                        Richieste speciali: {reserv.specialRequest}
-                      </Card.Text>
+
+                      <p>{getIcon(reserv.eventType)}</p>
                     </div>
-                    <div>
-                      <Button className="m-1 rounded-pill">
-                        <i className="bi bi-pencil"></i>
-                      </Button>
-                      <Button
-                        className="m-1 rounded-pill"
-                        variant="danger"
-                        onClick={() => handleReservationDelete(reserv.id)}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </Button>
+                  </Card.Header>
+                  <Card.Body>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <Card.Title>Tel. {reserv.telephone}</Card.Title>
+                        <div className="d-flex gap-3">
+                          <Card.Text>Ore {reserv.time}</Card.Text>
+                          <Card.Text>N° posti: {reserv.seats}</Card.Text>
+                        </div>
+                        <Card.Text>
+                          Richieste speciali: {reserv.specialRequest}
+                        </Card.Text>
+                      </div>
+                      <div>
+                        <Button className="m-1 rounded-pill">
+                          <i className="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          className="m-1 rounded-pill"
+                          variant="danger"
+                          onClick={() => handleReservationDelete(reserv.id)}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
           </Col>
           <ReservationAside />
         </Row>

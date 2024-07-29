@@ -33,12 +33,8 @@ const MyLogin = () => {
   return (
     <MDBContainer className="my-5 gradient-form">
       <MDBRow>
-        <MDBCol
-          sm={12}
-          md={6}
-          className="mb-5 rounded-start  log-container-left"
-        >
-          <div className="d-flex flex-column text-white text-center">
+        <MDBCol sm={12} md={6} className="mb-3 p-sm-2 p-lg-0">
+          <div className="d-flex flex-column rounded-start text-white text-center log-container-left">
             <div className="text-center">
               <img
                 src={maulLogo}
@@ -74,12 +70,8 @@ const MyLogin = () => {
           </div>
         </MDBCol>
 
-        <MDBCol
-          sm={12}
-          md={6}
-          className="mb-5 log-container-right rounded-end text-center "
-        >
-          <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">
+        <MDBCol sm={12} md={6} className="mb-3  text-center p-sm-2 p-lg-0">
+          <div className="d-flex flex-column rounded-end justify-content-center gradient-custom-2 h-100 mb-4 log-container-right">
             <div className="text-center">
               <img
                 src={maulTitle}
@@ -90,7 +82,7 @@ const MyLogin = () => {
             <div className="px-3 py-4 p-md-5 mx-md-4">
               <h4 className="mb-4">Benvenuto</h4>
               <p className=" mb-0">
-                Effettua il login con le credenziali forinte dall' admin della
+                Effettua il login con le credenziali forinte dall'admin della
                 pagina per accedere al gestionale interno del tuo locale. Potrai
                 trovare soluzioni rapide e intuitive per gestire al meglio il
                 tuo locale a 360°.
