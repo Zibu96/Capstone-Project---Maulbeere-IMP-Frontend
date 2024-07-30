@@ -46,7 +46,7 @@ const WorkShiftWidget = () => {
   return (
     <Col xs={12} md={6} className="text-white mb-3">
       <div className="border rounded p-2">
-        <h4>Oggi lavora:</h4>
+        <h4>In turno:</h4>
         <div className="d-flex bgAll  border rounded">
           <div className="text-center w-50 border-end">
             <h5 className="border-bottom pb-2">Pranzo</h5>
@@ -64,8 +64,12 @@ const WorkShiftWidget = () => {
                   ? filteredWeek.dinnerUserOne
                   : "Nessun dato disponibile"}
               </p>
-              <p>{filteredWeek ? filteredWeek.dinnerUserTwo : ""}</p>
-              <p>{filteredWeek ? filteredWeek.dinnerUserThree : ""}</p>
+              {filteredWeek && filteredWeek.dinnerUserTwo && (
+                <p>{filteredWeek.dinnerUserTwo}</p>
+              )}
+              {filteredWeek && filteredWeek.dinnerUserThree && (
+                <p>{filteredWeek.dinnerUserThree}</p>
+              )}
             </div>
           </div>
         </div>

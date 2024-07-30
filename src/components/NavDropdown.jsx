@@ -9,7 +9,9 @@ const NavDropDown = () => {
     <Nav>
       <Dropdown className="d-lg-none ">
         <Dropdown.Toggle
-          variant="secondary"
+          style={{
+            background: "linear-gradient(to right, #fad200, #f6921e)",
+          }}
           className="d-flex text-dark align-items-center p-2 textfor rounded-pill"
           id="dropdown-basic"
         >

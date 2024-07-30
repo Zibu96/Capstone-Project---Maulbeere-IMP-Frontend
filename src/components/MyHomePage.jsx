@@ -5,6 +5,7 @@ import WorkShiftWidget from "./WorkShiftWidget";
 import ReservationQuickButton from "./ReservationQuickButton";
 import WaitStaffWidget from "./WaitStaffWidget";
 import KitchenWidget from "./KitchenWidget";
+import MaulEe from "../assets/EE_white.svg";
 
 const MyHomePage = () => {
   return (
@@ -14,6 +15,7 @@ const MyHomePage = () => {
         <Row className="">
           <div className="d-flex justify-content-between my-3">
             <h1>Dashboard Giornaliera: </h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <WorkShiftWidget />
           <ResevationWidget />

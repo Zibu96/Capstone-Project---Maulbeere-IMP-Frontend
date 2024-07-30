@@ -4,6 +4,7 @@ import WorkShiftOrganizer from "./WorkShiftOrganizer";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import WorkShiftTable from "./WorkShiftTable";
+import MaulEe from "../assets/EE_white.svg";
 
 const WorkShift = () => {
   const weeks = useSelector((state) => state.workShift.workShift.content);
@@ -49,6 +50,7 @@ const WorkShift = () => {
         <Row>
           <div className="d-flex justify-content-between my-3">
             <h1>Turni della settimana: </h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <Col sm={12}>
             <div className="bgAll border rounded mt-3">

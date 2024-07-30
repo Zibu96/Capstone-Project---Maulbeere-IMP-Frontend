@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { fetchUserRegisterAction } from "../redux/actions/usersAction";
 import StaffManagmentList from "./StaffManagmentList";
+import MaulEe from "../assets/EE_white.svg";
 
 const StaffManagment = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -39,6 +40,7 @@ const StaffManagment = () => {
         <Row>
           <div className="d-flex justify-content-between my-3">
             <h1>Il tuo Staff:</h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <Col sm={12} className="mb-3 ">
             <div className="border rounded p-2 bgAll">

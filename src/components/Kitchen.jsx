@@ -10,6 +10,7 @@ import {
   fetchKitchenToDoAction,
   fetchShoppingListAction,
 } from "../redux/actions/kitchenAction";
+import MaulEe from "../assets/EE_white.svg";
 
 const Kitchen = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -28,6 +29,7 @@ const Kitchen = () => {
         <Row>
           <div className="d-flex justify-content-between my-3">
             <h1>Cucina:</h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <KitchenToDo />
           <KitechenCommunication />

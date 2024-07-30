@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchShoppingListAction } from "../redux/actions/kitchenAction";
 import { fetchWaitStaffShoppingListAction } from "../redux/actions/waitStaffAction";
 import SummaryKitchenList from "./SummaryKitchenList";
+import MaulEe from "../assets/EE_white.svg";
 
 const SummaryShoppingList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -24,6 +25,7 @@ const SummaryShoppingList = () => {
         <Row>
           <div className="d-flex justify-content-between my-3">
             <h1>Riepilogo Liste: </h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <SummaryWaitStaffList />
           <SummaryKitchenList />

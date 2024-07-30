@@ -57,8 +57,10 @@ const MyNavbar = () => {
           <Nav className="ms-auto me-5  d-none d-lg-block">
             <Dropdown>
               <Dropdown.Toggle
-                variant="secondary"
-                className="d-flex text-dark align-items-center p-2 textfor rounded-pill"
+                style={{
+                  background: "linear-gradient(to right, #fad200, #f6921e)",
+                }}
+                className="d-flex align-items-center text-dark p-2 textfor rounded-pill toggle-nav"
                 id="dropdown-basic"
               >
                 Ciao {me && me.name ? me.name : "Utente"}

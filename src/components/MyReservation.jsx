@@ -11,6 +11,7 @@ import {
 } from "../redux/actions/reservationAction";
 import ReservationModal from "./ReservationModal";
 import ReservationAside from "./ReservationAside";
+import { format } from "date-fns/format";
 
 const MyReservation = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -64,6 +65,11 @@ const MyReservation = () => {
     dispatch(fetchDeleteReservationAction(token, deleteId));
     setReservation((res) => res.filter((reserv) => reserv.id !== deleteId));
   };
+
+  const getTime = (time) => {
+    return format(new Date(`1970-01-01T${time}Z`), "k:m");
+  };
+
   return (
     <>
       <MyNavbar />
@@ -105,7 +111,7 @@ const MyReservation = () => {
                       <div>
                         <Card.Title>Tel. {reserv.telephone}</Card.Title>
                         <div className="d-flex gap-3">
-                          <Card.Text>Ore {reserv.time}</Card.Text>
+                          <Card.Text>Ore {getTime(reserv.time)}</Card.Text>
                           <Card.Text>N° posti: {reserv.seats}</Card.Text>
                         </div>
                         <Card.Text>

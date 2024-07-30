@@ -7,6 +7,7 @@ import {
 } from "../redux/actions/usersAction";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import MaulEe from "../assets/EE_white.svg";
 
 const MyProfile = () => {
   const [password, setPassword] = useState("");
@@ -39,10 +40,13 @@ const MyProfile = () => {
     <>
       <MyNavbar />
       <Container className="text-white">
-        <Row className="my-3">
-          <h1>
-            Ciao, {me.name} {me.surname}
-          </h1>
+        <Row>
+          <div className="d-flex justify-content-between my-3">
+            <h1>
+              Ciao, {me.name} {me.surname}
+            </h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
+          </div>
           <Col lg={1} className="d-sm-none d-md-block"></Col>
           <Col sm={12} lg={5} className="text-white mb-3">
             <div className="border rounded p-2">

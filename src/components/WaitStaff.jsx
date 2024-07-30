@@ -10,6 +10,7 @@ import {
   fetchWaitStaffShoppingListAction,
   fetchWaitStaffToDoAction,
 } from "../redux/actions/waitStaffAction";
+import MaulEe from "../assets/EE_white.svg";
 
 const WaitStaff = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -32,6 +33,7 @@ const WaitStaff = () => {
         <Row>
           <div className="d-flex justify-content-between my-3">
             <h1>Sala:</h1>
+            <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
           <WaitStaffToDo />
           <WaitStaffComunication />

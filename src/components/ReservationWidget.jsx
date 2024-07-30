@@ -5,6 +5,7 @@ import {
   fetchReservationAction,
   fetchReservationTodayAction,
 } from "../redux/actions/reservationAction";
+import { format } from "date-fns/format";
 
 const ResevationWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -23,6 +24,10 @@ const ResevationWidget = () => {
       return 0;
     }
     return reservations.reduce((total, reserv) => total + reserv.seats, 0);
+  };
+
+  const getTime = (time) => {
+    return format(new Date(`1970-01-01T${time}Z`), "k:m");
   };
 
   const dispatch = useDispatch();
@@ -53,7 +58,7 @@ const ResevationWidget = () => {
               >
                 <p className="m-0 widget">Nome: {reserv.name}</p>
                 <p className="m-0 widget text-center">Posti: {reserv.seats}</p>
-                <p className="m-0 widget text-end">Ore: {reserv.time}</p>
+                <p className="m-0 widget text-end">{getTime(reserv.time)}</p>
               </ListGroup.Item>
             ))
           )}
