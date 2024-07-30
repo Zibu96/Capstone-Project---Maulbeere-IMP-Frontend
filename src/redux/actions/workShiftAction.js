@@ -6,6 +6,7 @@ export const GET_ALL_DINNER = "GET_ALL_DINNER";
 export const POST_DINNER = "POST_DINNER";
 export const GET_ALL_WEEK = "GET_ALL_WEEK";
 export const POST_WEEK = "POST_WEEK";
+import { daysOfWeek } from "../../constants/daysOfWeek";
 
 export const fetchLunchAction = (token) => {
   return async (dispatch) => {
@@ -42,6 +43,7 @@ export const fetchPostLunchAction = (token, lunchObject) => {
         type: POST_LUNCH,
         payload: response.data,
       });
+
       console.log(response.data);
     } catch (err) {
       console.log(err.message);
@@ -99,11 +101,22 @@ export const fetchWeekAction = (token) => {
           headers: { Authorization: "Bearer " + token },
         }
       );
-      dispatch({
-        type: GET_ALL_WEEK,
-        payload: response.data,
-      });
-      console.log(response.data);
+
+      if (Array.isArray(response.data.content)) {
+        const sortedData = response.data.content.sort((a, b) => {
+          return (
+            daysOfWeek.indexOf(a.weekDays) - daysOfWeek.indexOf(b.weekDays)
+          );
+        });
+
+        dispatch({
+          type: GET_ALL_WEEK,
+          payload: sortedData,
+        });
+        console.log(sortedData);
+      } else {
+        console.error("I dati ricevuti non sono un array:", response.data);
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -125,6 +138,7 @@ export const fetchPostWeekAction = (token, weekObject) => {
         type: POST_WEEK,
         payload: response.data,
       });
+      dispatch(fetchWeekAction(token));
       console.log(response.data);
     } catch (err) {
       console.log(err.message);

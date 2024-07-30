@@ -1,38 +1,36 @@
 import { Col, Container, Row, Table } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import WorkShiftOrganizer from "./WorkShiftOrganizer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import WorkShiftTable from "./WorkShiftTable";
 import MaulEe from "../assets/EE_white.svg";
+import {
+  fetchDinnerAction,
+  fetchLunchAction,
+  fetchWeekAction,
+} from "../redux/actions/workShiftAction";
 
 const WorkShift = () => {
-  const weeks = useSelector((state) => state.workShift.workShift.content);
+  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const weeks = useSelector((state) => state.workShift.workShift);
   const [sortedWeeks, setSortedWeeks] = useState([]);
-
+  const dispatch = useDispatch();
   console.log(weeks);
 
-  const daysOfWeek = [
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
-    "SUNDAY",
-  ];
-
-  const sortWeeksByDay = (weeks) => {
-    if (weeks)
-      return weeks.sort((a, b) => {
-        return daysOfWeek.indexOf(a.weekDays) - daysOfWeek.indexOf(b.weekDays);
-      });
-  };
   useEffect(() => {
-    setSortedWeeks(sortWeeksByDay(weeks));
-    console.log(sortedWeeks);
-  }, [weeks]);
+    if (token) {
+      dispatch(fetchWeekAction(token));
+      dispatch(fetchLunchAction(token));
+      dispatch(fetchDinnerAction(token));
+    }
+  }, [dispatch, token]);
 
+  useEffect(() => {
+    if (weeks) {
+      setSortedWeeks(weeks);
+    }
+  }, [weeks]);
   const daysOfWeekToUse = [
     "Lunedì",
     "Martedì",
@@ -66,7 +64,7 @@ const WorkShift = () => {
                 </thead>
 
                 <tbody>
-                  {!sortedWeeks ? (
+                  {sortedWeeks.length == 0 ? (
                     <p>Turni non disponibili</p>
                   ) : (
                     sortedWeeks.map((week, i) => (
@@ -74,7 +72,7 @@ const WorkShift = () => {
                         <td>{daysOfWeekToUse[i]}</td>
 
                         <td>{week.lunchUser}</td>
-                        <td className="d-flex gap-3">
+                        <td className="d-flex justify-content-between ">
                           <p className="m-0 widget">{week.dinnerUserOne}</p>
                           <p className="m-0 widget">{week.dinnerUserTwo}</p>
                           <p className="m-0 widget">{week.dinnerUserThree}</p>
