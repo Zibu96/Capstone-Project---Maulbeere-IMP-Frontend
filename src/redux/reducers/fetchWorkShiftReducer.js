@@ -10,7 +10,7 @@ import {
 const initialState = {
   lunch: {},
   dinner: {},
-  workShift: {},
+  workShift: [],
 };
 
 const fetchWorkShiftReducer = (state = initialState, action) => {

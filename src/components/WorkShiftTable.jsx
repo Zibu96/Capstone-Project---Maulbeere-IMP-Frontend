@@ -1,20 +1,20 @@
 import { Button, Col, Form, Table } from "react-bootstrap";
-import {
-  fetchDinnerAction,
-  fetchLunchAction,
-  fetchPostWeekAction,
-} from "../redux/actions/workShiftAction";
-import { useEffect, useState } from "react";
+import { fetchPostWeekAction } from "../redux/actions/workShiftAction";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const WorkShiftTable = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const lunches = useSelector((state) => state.workShift.lunch.content);
   const dinners = useSelector((state) => state.workShift.dinner.content);
+
   const [lunchUsers, setLunchUsers] = useState({});
   const [dinnerUsersOne, setDinnerUsersOne] = useState({});
   const [dinnerUsersTwo, setDinnerUsersTwo] = useState({});
   const [dinnerUsersThree, setDinnerUsersThree] = useState({});
+
+  console.log(lunches);
+  console.log(dinners);
 
   const handleLunchUserChange = (day, value) => {
     setLunchUsers((prevState) => ({ ...prevState, [day]: value || null }));
@@ -35,8 +35,6 @@ const WorkShiftTable = () => {
     }));
   };
 
-  console.log(lunches);
-  console.log(dinners);
   const dispatch = useDispatch();
 
   const daysOfWeek = [
@@ -63,8 +61,10 @@ const WorkShiftTable = () => {
     console.log("Creating new shifts");
     newWeeks.forEach((newWeek) => {
       dispatch(fetchPostWeekAction(token, newWeek));
+
       console.log(newWeek);
     });
+    alert("creazione turni avvenuta con successo");
   };
 
   const newWeeks = daysOfWeek.map((day) => {
@@ -76,12 +76,6 @@ const WorkShiftTable = () => {
       dinnerUserThree: dinnerUsersThree[day] || null,
     };
   });
-  useEffect(() => {
-    if (token) {
-      dispatch(fetchLunchAction(token));
-      dispatch(fetchDinnerAction(token));
-    }
-  }, [dispatch, token]);
 
   const existLunchByDay = (lunch, days) => {
     if (lunch[days] == true) {
@@ -127,6 +121,7 @@ const WorkShiftTable = () => {
                     <td>
                       <Form.Select
                         aria-label="Default select example"
+                        value={lunchUsers[day] || ""}
                         onChange={(e) =>
                           handleLunchUserChange(day, e.target.value)
                         }
@@ -149,6 +144,7 @@ const WorkShiftTable = () => {
                     <td className="name d-flex gap-2">
                       <Form.Select
                         aria-label="Default select example"
+                        value={dinnerUsersOne[day] || ""}
                         onChange={(e) =>
                           handleDinnerUserOneChange(day, e.target.value)
                         }
@@ -169,6 +165,7 @@ const WorkShiftTable = () => {
                       </Form.Select>
                       <Form.Select
                         aria-label="Default select example"
+                        value={dinnerUsersTwo[day] || ""}
                         onChange={(e) =>
                           handleDinnerUserTwoChange(day, e.target.value)
                         }
@@ -189,6 +186,7 @@ const WorkShiftTable = () => {
                       </Form.Select>
                       <Form.Select
                         aria-label="Default select example"
+                        value={dinnerUsersThree[day] || ""}
                         onChange={(e) =>
                           handleDinnerUserThreeChange(day, e.target.value)
                         }
