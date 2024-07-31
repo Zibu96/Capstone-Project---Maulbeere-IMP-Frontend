@@ -5,7 +5,7 @@ import { fetchWeekAction } from "../redux/actions/workShiftAction";
 
 const WorkShiftWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const weeks = useSelector((state) => state.workShift.workShift.content);
+  const weeks = useSelector((state) => state.workShift.workShift);
   console.log(weeks);
   const [filteredWeek, setFilteredWeek] = useState(null);
 

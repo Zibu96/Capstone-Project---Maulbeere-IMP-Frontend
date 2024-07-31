@@ -15,6 +15,7 @@ import MaulEe from "../assets/EE_white.svg";
 const WaitStaff = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const toDoes = useSelector((state) => state.waitStaff);
+  const me = useSelector((state) => state.user.state);
   console.log(toDoes);
 
   const dispatch = useDispatch();

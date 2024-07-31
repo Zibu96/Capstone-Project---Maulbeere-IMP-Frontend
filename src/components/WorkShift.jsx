@@ -14,6 +14,7 @@ import {
 const WorkShift = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const weeks = useSelector((state) => state.workShift.workShift);
+  const me = useSelector((state) => state.user.state);
   const [sortedWeeks, setSortedWeeks] = useState([]);
   const dispatch = useDispatch();
   console.log(weeks);
@@ -84,8 +85,16 @@ const WorkShift = () => {
               </Table>
             </div>
           </Col>
-          <WorkShiftOrganizer />
-          <WorkShiftTable />
+          {["SALA", "GESTORE", "ADMIN"].includes(me.role) ? (
+            <WorkShiftOrganizer />
+          ) : (
+            <div></div>
+          )}
+          {["GESTORE", "ADMIN"].includes(me.role) ? (
+            <WorkShiftTable />
+          ) : (
+            <div></div>
+          )}
         </Row>
       </Container>
     </>
