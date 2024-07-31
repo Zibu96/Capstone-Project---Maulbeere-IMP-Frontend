@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Alert, Container, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import KitchenToDo from "./KitchenToDo";
 import KitechenCommunication from "./KitchenCommunication";
@@ -11,9 +11,11 @@ import {
   fetchShoppingListAction,
 } from "../redux/actions/kitchenAction";
 import MaulEe from "../assets/EE_white.svg";
+import { Link } from "react-router-dom";
 
 const Kitchen = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const me = useSelector((state) => state.user.state);
   const dispatch = useDispatch();
   useEffect(() => {
     if (token) {
@@ -31,9 +33,19 @@ const Kitchen = () => {
             <h1>Cucina:</h1>
             <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
-          <KitchenToDo />
-          <KitechenCommunication />
-          <KitchenShoppingList />
+          {["CUCINA", "GESTORE", "ADMIN"].includes(me.role) ? (
+            <>
+              <KitchenToDo />
+              <KitechenCommunication />
+              <KitchenShoppingList />
+            </>
+          ) : (
+            <Alert variant="primary" className="">
+              Non hai accesso a questa pagina, torna alla
+              <Link to={"/home"}> home </Link>
+              per vedere un riepilogo delle comunicazioni.
+            </Alert>
+          )}
         </Row>
       </Container>
     </>

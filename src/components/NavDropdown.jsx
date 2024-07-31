@@ -22,14 +22,22 @@ const NavDropDown = () => {
           <Link to={"/profilo"}>
             <NavDropdown.Item href="#action/3.1">Profilo</NavDropdown.Item>
           </Link>
-          <Link to={"/personale"}>
-            <NavDropdown.Item href="#action/3.2">
-              Gestione Staff
-            </NavDropdown.Item>
-          </Link>
-          <Link to={"/liste"}>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          </Link>
+          {["GESTORE", "ADMIN"].includes(me.role) ? (
+            <>
+              <Link to={"/personale"}>
+                <NavDropdown.Item href="#action/3.2">
+                  Gestione Staff
+                </NavDropdown.Item>
+              </Link>
+              <Link to={"/liste"}>
+                <NavDropdown.Item href="#action/3.3">
+                  Riepilogo Liste
+                </NavDropdown.Item>
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
           <NavDropdown.Divider />
           <Link to={"/"}>
             <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>

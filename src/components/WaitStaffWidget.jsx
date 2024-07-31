@@ -11,6 +11,7 @@ import WaitStaffComunicationWidget from "./WaitStaffCommunicationWidget";
 
 const WaitStaffWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const me = useSelector((state) => state.user.state);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,10 +22,14 @@ const WaitStaffWidget = () => {
   }, [dispatch, token]);
   return (
     <Col>
-      <div className="border rounded p-2">
+      <div className="border rounded p-2 mb-3">
         <h4>Riepilogo Sala:</h4>
         <div className="d-sm-block d-lg-flex gap-2">
-          <WaitStaffToDoWidget />
+          {["SALA", "GESTORE", "ADMIN"].includes(me.role) ? (
+            <WaitStaffToDoWidget />
+          ) : (
+            <></>
+          )}
           <WaitStaffComunicationWidget />
         </div>
       </div>

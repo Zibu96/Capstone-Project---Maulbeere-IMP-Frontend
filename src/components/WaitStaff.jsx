@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Alert, Container, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import WaitStaffToDo from "./WaitStaffToDo";
 import WaitStaffComunication from "./WaitStaffComunication";
@@ -11,6 +11,7 @@ import {
   fetchWaitStaffToDoAction,
 } from "../redux/actions/waitStaffAction";
 import MaulEe from "../assets/EE_white.svg";
+import { Link } from "react-router-dom";
 
 const WaitStaff = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -36,9 +37,19 @@ const WaitStaff = () => {
             <h1>Sala:</h1>
             <img className="right-logo" src={MaulEe} alt="Alt logo" />
           </div>
-          <WaitStaffToDo />
-          <WaitStaffComunication />
-          <WaitStaffShoppingList />
+          {["SALA", "GESTORE", "ADMIN"].includes(me.role) ? (
+            <>
+              <WaitStaffToDo />
+              <WaitStaffComunication />
+              <WaitStaffShoppingList />
+            </>
+          ) : (
+            <Alert variant="primary" className="">
+              Non hai accesso a questa pagina, torna alla
+              <Link to={"/home"}> home </Link>
+              per vedere un riepilogo delle comunicazioni.
+            </Alert>
+          )}
         </Row>
       </Container>
     </>

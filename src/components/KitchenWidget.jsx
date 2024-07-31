@@ -10,6 +10,7 @@ import KitchenWidgetCommunication from "./KitchenWidgetCommunication";
 
 const KitchenWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const me = useSelector((state) => state.user.state);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,7 +24,11 @@ const KitchenWidget = () => {
       <div className="border rounded p-2">
         <h4>Riepilogo Cucina:</h4>
         <div className="d-sm-block d-lg-flex gap-2">
-          <KitchenWidgetToDo />
+          {["CUCINA", "GESTORE", "ADMIN"].includes(me.role) ? (
+            <KitchenWidgetToDo />
+          ) : (
+            <></>
+          )}
           <KitchenWidgetCommunication />
         </div>
       </div>

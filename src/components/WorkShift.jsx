@@ -85,7 +85,7 @@ const WorkShift = () => {
               </Table>
             </div>
           </Col>
-          {["SALA", "GESTORE", "ADMIN"].includes(me.role) ? (
+          {["SALA", "ADMIN"].includes(me.role) ? (
             <WorkShiftOrganizer />
           ) : (
             <div></div>
