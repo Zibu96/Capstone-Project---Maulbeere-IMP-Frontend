@@ -12,6 +12,7 @@ import {
 import ReservationModal from "./ReservationModal";
 import ReservationAside from "./ReservationAside";
 import { format } from "date-fns/format";
+import ModifyReservationModal from "./ModifyReservationModal";
 
 const MyReservation = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -20,9 +21,13 @@ const MyReservation = () => {
   console.log(today);
   console.log(res);
   const [modalShow, setModalShow] = useState(false);
+  const [modalShowM, setModalShowM] = useState(false);
   const [reservation, setReservation] = useState([]);
+  const [id, setId] = useState("");
   const handleClose = () => setModalShow(false);
   const handleShow = () => setModalShow(true);
+  const handleCloseM = () => setModalShowM(false);
+  const handleShowM = () => setModalShowM(true);
   const getBackgroundColor = (reservationType) => {
     switch (reservationType) {
       case "THEFORK":
@@ -86,6 +91,12 @@ const MyReservation = () => {
               handleClose={handleClose}
               setReservation={setReservation}
             />
+            <ModifyReservationModal
+              modalShowM={modalShowM}
+              handleCloseM={handleCloseM}
+              id={id}
+              setId={setId}
+            />
           </div>
           <Col sm={9}>
             <div className="p-2">
@@ -126,7 +137,13 @@ const MyReservation = () => {
                           </Card.Text>
                         </div>
                         <div>
-                          <Button className="m-1 rounded-pill">
+                          <Button
+                            className="m-1 rounded-pill"
+                            onClick={() => {
+                              setId(reserv.id);
+                              handleShowM();
+                            }}
+                          >
                             <i className="bi bi-pencil"></i>
                           </Button>
                           <Button

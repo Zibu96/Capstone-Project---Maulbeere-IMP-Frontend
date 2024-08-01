@@ -9,6 +9,7 @@ import {
   POST_USER_REGISTER,
   GET_USER_ALL,
   GET_SINGLE_USER,
+  DELETE_USER,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -72,7 +73,11 @@ const fetchUserReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-
+    case DELETE_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }

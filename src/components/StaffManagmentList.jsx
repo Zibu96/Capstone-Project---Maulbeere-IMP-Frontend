@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllUsersAction } from "../redux/actions/usersAction";
+import {
+  fetchAllUsersAction,
+  fetchDeleteUserAction,
+} from "../redux/actions/usersAction";
 
 const StaffManagmentList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -14,6 +17,10 @@ const StaffManagmentList = () => {
       dispatch(fetchAllUsersAction(token));
     }
   }, [dispatch, token]);
+
+  const handleUserDelete = (deleteId) => {
+    dispatch(fetchDeleteUserAction(token, deleteId));
+  };
 
   return (
     <Col className="mb-3">
@@ -29,7 +36,10 @@ const StaffManagmentList = () => {
                   {user.name} {user.surname}
                 </Card.Title>
                 <Card.Text className="m-0">{user.role}</Card.Text>
-                <Button variant="danger rounded-pill align-items-center">
+                <Button
+                  variant="danger rounded-pill align-items-center"
+                  onClick={() => handleUserDelete(user.id)}
+                >
                   <i className="bi bi-trash"></i>
                 </Button>
               </Card.Body>

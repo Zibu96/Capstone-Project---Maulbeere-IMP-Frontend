@@ -11,6 +11,7 @@ export const PATCH_USER_ME_EMAIL = "PATCH_USER_ME_EMAIL";
 export const POST_USER_REGISTER = "POST_USER_REGISTER";
 export const GET_USER_ALL = "GET_USER_ALL";
 export const GET_SINGLE_USER = "GET_SINGLE_USER";
+export const DELETE_USER = "DELETE_USER";
 
 export const fetchUserAction = (loginObject, navigate) => {
   return async (dispatch) => {
@@ -153,6 +154,27 @@ export const fetchSingleUserAction = (token, id) => {
         type: GET_SINGLE_USER,
         payload: response.data,
       });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchDeleteUserAction = (token, id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/users/ ${id}`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: DELETE_USER,
+        payload: response.data,
+      });
+      dispatch(fetchAllUsersAction(token));
       console.log(response.data);
     } catch (err) {
       console.log(err.message);
