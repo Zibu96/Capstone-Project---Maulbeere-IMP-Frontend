@@ -10,6 +10,7 @@ import {
   GET_USER_ALL,
   GET_SINGLE_USER,
   DELETE_USER,
+  RESET_STATE,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -27,6 +28,10 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogged: true,
+      };
+    case RESET_STATE:
+      return {
+        state: initialState,
       };
     case GET_USER_LOGGED_TOKEN:
       return {

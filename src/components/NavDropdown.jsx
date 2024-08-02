@@ -5,12 +5,16 @@ import {
   NavDropdown,
   Placeholder,
 } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logOutAction } from "../redux/actions/usersAction";
 
 const NavDropDown = () => {
   const me = useSelector((state) => state.user.state);
-
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    dispatch(logOutAction());
+  };
   return (
     <Nav>
       {!me ? (
@@ -53,7 +57,7 @@ const NavDropDown = () => {
               <></>
             )}
             <NavDropdown.Divider />
-            <Link to={"/"}>
+            <Link to={"/"} onClick={handleLogOut}>
               <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
             </Link>
           </DropdownMenu>

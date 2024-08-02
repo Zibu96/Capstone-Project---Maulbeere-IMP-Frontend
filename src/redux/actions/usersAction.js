@@ -12,6 +12,7 @@ export const POST_USER_REGISTER = "POST_USER_REGISTER";
 export const GET_USER_ALL = "GET_USER_ALL";
 export const GET_SINGLE_USER = "GET_SINGLE_USER";
 export const DELETE_USER = "DELETE_USER";
+export const RESET_STATE = "RESET_STATE";
 
 export const fetchUserAction = (loginObject, navigate) => {
   return async (dispatch) => {
@@ -30,6 +31,13 @@ export const fetchUserAction = (loginObject, navigate) => {
     } catch (err) {
       console.log(err.message);
     }
+  };
+};
+
+export const logOutAction = () => {
+  localStorage.removeItem("Bearer ");
+  return async (dispatch) => {
+    dispatch({ type: RESET_STATE });
   };
 };
 

@@ -9,13 +9,17 @@ import {
 import maulLogo from "../assets/Maulbeere_Logo_CMYK.svg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserMeAction } from "../redux/actions/usersAction";
+import { fetchUserMeAction, logOutAction } from "../redux/actions/usersAction";
 import { useEffect } from "react";
 import NavDropDown from "./NavDropdown";
 
 const MyNavbar = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const me = useSelector((state) => state.user.state);
+
+  const handleLogOut = () => {
+    dispatch(logOutAction());
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -83,7 +87,7 @@ const MyNavbar = () => {
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <Link to={"/"}>
+                <Link to={"/"} onClick={handleLogOut}>
                   <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
                 </Link>
               </DropdownMenu>
