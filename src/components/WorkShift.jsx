@@ -10,9 +10,10 @@ import {
   fetchLunchAction,
   fetchWeekAction,
 } from "../redux/actions/workShiftAction";
+import RedirectPage from "./RedirectPage";
 
 const WorkShift = () => {
-  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const weeks = useSelector((state) => state.workShift.workShift);
   const me = useSelector((state) => state.user.state);
   const [sortedWeeks, setSortedWeeks] = useState([]);
@@ -44,59 +45,67 @@ const WorkShift = () => {
 
   return (
     <>
-      <MyNavbar />
-      <Container className="text-white">
-        <Row>
-          <div className="d-flex justify-content-between my-3">
-            <h1>Turni della settimana: </h1>
-            <img className="right-logo" src={MaulEe} alt="Alt logo" />
-          </div>
-          <Col sm={12}>
-            <div className="bgAll border rounded mt-3">
-              <h3 className="text-center">Questa settimana</h3>
+      {!token ? (
+        <RedirectPage />
+      ) : (
+        <>
+          <MyNavbar />
+          <Container className="text-white">
+            <Row>
+              <div className="d-flex justify-content-between my-3">
+                <h1>Turni della settimana: </h1>
+                <img className="right-logo" src={MaulEe} alt="Alt logo" />
+              </div>
+              <Col sm={12}>
+                <div className="bgAll border rounded mt-3">
+                  <h3 className="text-center">Questa settimana</h3>
 
-              <Table striped bordered variant="dark">
-                <thead>
-                  <tr className="text-center">
-                    <th>Giorno</th>
-                    <th>Pranzo</th>
-                    <th>Cena</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {sortedWeeks.length == 0 ? (
-                    <p>Turni non disponibili</p>
-                  ) : (
-                    sortedWeeks.map((week, i) => (
-                      <tr key={week.id}>
-                        <td>{daysOfWeekToUse[i]}</td>
-
-                        <td>{week.lunchUser}</td>
-                        <td className="d-flex justify-content-between ">
-                          <p className="m-0 widget">{week.dinnerUserOne}</p>
-                          <p className="m-0 widget">{week.dinnerUserTwo}</p>
-                          <p className="m-0 widget">{week.dinnerUserThree}</p>
-                        </td>
+                  <Table striped bordered variant="dark">
+                    <thead>
+                      <tr className="text-center">
+                        <th>Giorno</th>
+                        <th>Pranzo</th>
+                        <th>Cena</th>
                       </tr>
-                    ))
-                  )}
-                </tbody>
-              </Table>
-            </div>
-          </Col>
-          {["SALA", "ADMIN"].includes(me.role) ? (
-            <WorkShiftOrganizer />
-          ) : (
-            <div></div>
-          )}
-          {["GESTORE", "ADMIN"].includes(me.role) ? (
-            <WorkShiftTable />
-          ) : (
-            <div></div>
-          )}
-        </Row>
-      </Container>
+                    </thead>
+
+                    <tbody>
+                      {sortedWeeks.length == 0 ? (
+                        <p>Turni non disponibili</p>
+                      ) : (
+                        sortedWeeks.map((week, i) => (
+                          <tr key={week.id}>
+                            <td>{daysOfWeekToUse[i]}</td>
+
+                            <td>{week.lunchUser}</td>
+                            <td className="d-flex justify-content-between ">
+                              <p className="m-0 widget">{week.dinnerUserOne}</p>
+                              <p className="m-0 widget">{week.dinnerUserTwo}</p>
+                              <p className="m-0 widget">
+                                {week.dinnerUserThree}
+                              </p>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </Table>
+                </div>
+              </Col>
+              {["SALA", "ADMIN"].includes(me.role) ? (
+                <WorkShiftOrganizer />
+              ) : (
+                <div></div>
+              )}
+              {["GESTORE", "ADMIN"].includes(me.role) ? (
+                <WorkShiftTable />
+              ) : (
+                <div></div>
+              )}
+            </Row>
+          </Container>
+        </>
+      )}
     </>
   );
 };

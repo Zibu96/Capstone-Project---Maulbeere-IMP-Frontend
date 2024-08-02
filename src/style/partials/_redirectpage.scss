@@ -1,0 +1,18 @@
+.bw-logo {
+  width: 500px;
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .bw-logo {
+    width: 200px;
+    margin-bottom: 2rem;
+  }
+}
+
+.centered-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Assicura che il contenitore prenda l'intera altezza della viewport */
+}
