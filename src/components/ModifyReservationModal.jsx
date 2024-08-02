@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPutReservationAction,
+  fetchReservationTodayAction,
   fetchSingleReservationAction,
 } from "../redux/actions/reservationAction";
 
@@ -36,6 +37,7 @@ const ModifyReservationModal = ({
     }
   }, [dispatch, token, id]);
 
+  console.log(id);
   useEffect(() => {
     if (res) {
       console.log("Updating state with reservation data:", res);
@@ -66,7 +68,9 @@ const ModifyReservationModal = ({
       user: me.id,
     };
     dispatch(fetchPutReservationAction(token, modReservation, id));
-
+    setReservation((res) =>
+      res.map((reserv) => (reserv.id === id ? modReservation : reserv))
+    );
     alert("Prenotazione modificata con successo");
   };
 
@@ -176,11 +180,8 @@ const ModifyReservationModal = ({
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseM}>
-            Chiudi
-          </Button>
-          <Button variant="primary" type="submit">
-            Salva modifiche
+          <Button variant="primary" type="submit" onClick={handleCloseM}>
+            Modifica Prenotazione
           </Button>
         </Modal.Footer>
       </Form>

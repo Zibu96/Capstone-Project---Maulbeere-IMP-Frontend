@@ -95,6 +95,7 @@ const MyReservation = () => {
               modalShowM={modalShowM}
               handleCloseM={handleCloseM}
               id={id}
+              setReservation={setReservation}
               setId={setId}
             />
           </div>

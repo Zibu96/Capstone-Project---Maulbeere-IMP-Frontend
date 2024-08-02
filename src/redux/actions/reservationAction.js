@@ -112,6 +112,8 @@ export const fetchPutReservationAction = (token, modReservation, id) => {
       });
       await dispatch(fetchReservationAction(token));
       await dispatch(fetchReservationTodayAction(token));
+      await dispatch(fetchSingleReservationAction(token));
+
       console.log(response.data);
     } catch (err) {
       console.log(err.message);
