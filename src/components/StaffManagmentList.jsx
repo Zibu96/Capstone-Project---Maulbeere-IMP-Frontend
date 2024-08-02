@@ -8,10 +8,11 @@ import {
 
 const StaffManagmentList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
-  const users = useSelector((state) => state.user.user_list.content);
+  const users = useSelector((state) => state.user.user_list?.content);
   console.log(users);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (token) {
       dispatch(fetchAllUsersAction(token));
