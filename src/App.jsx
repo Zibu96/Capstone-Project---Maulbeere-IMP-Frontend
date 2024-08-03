@@ -10,6 +10,7 @@ import WorkShift from "./components/WorkShift";
 import WaitStaff from "./components/WaitStaff";
 import SummaryShoppingList from "./components/SummaryShoppingList";
 import Kitchen from "./components/Kitchen";
+import CalendarPage from "./components/CalendarPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/sala" element={<WaitStaff />} />
           <Route path="/cucina" element={<Kitchen />} />
           <Route path="/liste" element={<SummaryShoppingList />} />
+          <Route path="/calendario" element={<CalendarPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -57,6 +57,9 @@ const MyNavbar = () => {
             <Link to={"/turni"}>
               <Nav.Link href="#turni">Turni</Nav.Link>
             </Link>
+            <Link to={"/calendario"}>
+              <Nav.Link href="#calendario">Calendario</Nav.Link>
+            </Link>
           </Nav>
           <Nav className="ms-auto me-5  d-none d-lg-block">
             <Dropdown>
