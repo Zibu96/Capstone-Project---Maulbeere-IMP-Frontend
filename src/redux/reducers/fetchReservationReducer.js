@@ -1,6 +1,7 @@
 import {
   DELETE_RESERVATION,
   GET_RESERVATION,
+  GET_RESERVATION_BY_DATE,
   GET_RESERVATION_TODAY,
   GET_SINGLE_RESERVATION,
   POST_RESERVATION,
@@ -11,6 +12,7 @@ const initialState = {
   reservation: {},
   reservation_signle: {},
   today: {},
+  reservation_by_date: {},
 };
 
 const fetchReservationReducer = (state = initialState, action) => {
@@ -44,6 +46,11 @@ const fetchReservationReducer = (state = initialState, action) => {
       return {
         ...state,
         reservation_single: action.payload,
+      };
+    case GET_RESERVATION_BY_DATE:
+      return {
+        ...state,
+        reservation_by_date: action.payload,
       };
     default:
       return state;

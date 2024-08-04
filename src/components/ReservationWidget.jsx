@@ -5,7 +5,6 @@ import {
   fetchReservationAction,
   fetchReservationTodayAction,
 } from "../redux/actions/reservationAction";
-import { format } from "date-fns/format";
 
 const ResevationWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -27,7 +26,11 @@ const ResevationWidget = () => {
   };
 
   const getTime = (time) => {
-    return format(new Date(`1970-01-01T${time}Z`), "k:m");
+    const [hours, minutes] = time.split(":");
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date.toTimeString().slice(0, 5);
   };
 
   const dispatch = useDispatch();

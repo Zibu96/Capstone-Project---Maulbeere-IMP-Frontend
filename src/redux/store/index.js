@@ -8,6 +8,7 @@ import fetchKitchenReducer from "../reducers/fetchKitchenReducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import fetchEventReducer from "../reducers/fetchEventReduce";
 
 const rootReducer = combineReducers({
   user: fetchUserReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   workShift: fetchWorkShiftReducer,
   waitStaff: fetchWaitStaffReducer,
   kitchen: fetchKitchenReducer,
+  event: fetchEventReducer,
 });
 
 const persistConfig = {

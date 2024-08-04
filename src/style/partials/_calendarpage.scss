@@ -198,11 +198,6 @@
   background: #a9d4ff;
 }
 
-.react-calendar__tile--active {
-  background: #f6921e;
-  color: white;
-}
-
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
   background: #f6921e;
@@ -234,4 +229,43 @@
 
 .react-calendar__month-view__days__day--neighboringMonth {
   color: gray;
+}
+
+// prova
+
+.react-calendar__tile--partita {
+  background-color: #a5c10b !important;
+}
+.partita {
+  background-color: #a5c10b !important;
+}
+.react-calendar__tile--festa {
+  background-color: #401654 !important;
+}
+.festa {
+  background-color: #401654 !important;
+}
+.react-calendar__tile--musica {
+  background-color: #e545a0 !important;
+}
+.musica {
+  background-color: #e545a0 !important;
+}
+.react-calendar__tile--evento {
+  background-color: #6ab4fe !important;
+}
+.evento {
+  background-color: #6ab4fe !important;
+}
+
+.react-calendar__tile--multiple-events {
+  background-color: #ff3333 !important;
+}
+.multiple-events {
+  background-color: #ff3333 !important;
+}
+
+.react-calendar__tile--active {
+  background: #f6921e !important;
+  color: white;
 }

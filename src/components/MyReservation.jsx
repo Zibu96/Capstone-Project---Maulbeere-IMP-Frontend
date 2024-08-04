@@ -11,7 +11,6 @@ import {
 } from "../redux/actions/reservationAction";
 import ReservationModal from "./ReservationModal";
 import ReservationAside from "./ReservationAside";
-import { format } from "date-fns/format";
 import ModifyReservationModal from "./ModifyReservationModal";
 import RedirectPage from "./RedirectPage";
 
@@ -73,7 +72,11 @@ const MyReservation = () => {
   };
 
   const getTime = (time) => {
-    return format(new Date(`1970-01-01T${time}Z`), "k:m");
+    const [hours, minutes] = time.split(":");
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date.toTimeString().slice(0, 5);
   };
 
   return (
