@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Placeholder } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchDeleteEventAction,
@@ -67,54 +67,63 @@ const CalendarEvent = ({ dateToUse }) => {
       /> */}
       <Col className=" d-lg-block d-none">
         <h3>Eventi:</h3>
-        <div className="p-2">
-          {event.length == 0 ? (
-            <h2 className="text-center mt-5">Nessun evento oggi!</h2>
-          ) : (
-            event.map((ev) => (
-              <Card
-                key={ev.id}
-                className="reservation-card mb-3"
-                style={{
-                  backgroundColor: getBackgroundColor(ev.eventType),
-                }}
-              >
-                <Card.Header as="h5">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>{ev.name}</div>
-                  </div>
-                </Card.Header>
-                <Card.Body>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <Card.Title>Tel. {ev.description}</Card.Title>
-                      <div className="d-flex gap-3">
-                        <Card.Text>Ore {getTime(ev.time)}</Card.Text>
+        {!eventDate ? (
+          <>
+            <Placeholder xs={12} size="lg" />
+            <Placeholder xs={12} />
+            <Placeholder xs={12} size="sm" />
+            <Placeholder xs={12} size="xs" />
+          </>
+        ) : (
+          <div className="p-2">
+            {event.length == 0 ? (
+              <h2 className="text-center mt-5">Nessun evento oggi!</h2>
+            ) : (
+              event.map((ev) => (
+                <Card
+                  key={ev.id}
+                  className="reservation-card mb-3"
+                  style={{
+                    backgroundColor: getBackgroundColor(ev.eventType),
+                  }}
+                >
+                  <Card.Header as="h5">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>{ev.name}</div>
+                    </div>
+                  </Card.Header>
+                  <Card.Body>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <Card.Title>Tel. {ev.description}</Card.Title>
+                        <div className="d-flex gap-3">
+                          <Card.Text>Ore {getTime(ev.time)}</Card.Text>
+                        </div>
+                      </div>
+                      <div>
+                        <Button
+                          className="m-1 rounded-pill"
+                          onClick={() => {
+                            setId(ev.id);
+                          }}
+                        >
+                          <i className="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          className="m-1 rounded-pill"
+                          variant="danger"
+                          onClick={() => handleReservationDelete(ev.id)}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
                       </div>
                     </div>
-                    <div>
-                      <Button
-                        className="m-1 rounded-pill"
-                        onClick={() => {
-                          setId(ev.id);
-                        }}
-                      >
-                        <i className="bi bi-pencil"></i>
-                      </Button>
-                      <Button
-                        className="m-1 rounded-pill"
-                        variant="danger"
-                        onClick={() => handleReservationDelete(ev.id)}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </Button>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))
-          )}
-        </div>
+                  </Card.Body>
+                </Card>
+              ))
+            )}
+          </div>
+        )}
       </Col>
     </>
   );

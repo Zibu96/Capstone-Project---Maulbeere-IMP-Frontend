@@ -4,7 +4,7 @@ import {
   fetchDeleteEventAction,
   fetchEventByDateAction,
 } from "../redux/actions/eventAction";
-import { Button, Col, Dropdown } from "react-bootstrap";
+import { Button, Col, Dropdown, Placeholder } from "react-bootstrap";
 
 const CalendaEventSm = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
@@ -67,54 +67,63 @@ const CalendaEventSm = ({ dateToUse }) => {
         /> */}
       <Col className="d-lg-none">
         <h3>Eventi:</h3>
-        <div className="p-2">
-          {event.length == 0 ? (
-            <h2 className="text-center mt-2">Nessun evento oggi!</h2>
-          ) : (
-            event.map((ev) => (
-              <Dropdown key={ev.id} className="mb-2">
-                <Dropdown.Toggle
-                  style={{
-                    backgroundColor: getBackgroundColor(ev.eventType),
-                  }}
-                  className="w-100 border-0"
-                >
-                  {ev.name}
-                </Dropdown.Toggle>
-                <Dropdown.Menu
-                  style={{
-                    backgroundColor: getBackgroundColor(ev.eventType),
-                  }}
-                  className="text-white w-100 p-2"
-                >
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      {ev.description}
-                      <div className="d-flex gap-3">{getTime(ev.time)}</div>
+        {!eventDate ? (
+          <>
+            <Placeholder xs={12} size="lg" />
+            <Placeholder xs={12} />
+            <Placeholder xs={12} size="sm" />
+            <Placeholder xs={12} size="xs" />
+          </>
+        ) : (
+          <div className="p-2">
+            {event.length == 0 ? (
+              <h2 className="text-center mt-2">Nessun evento oggi!</h2>
+            ) : (
+              event.map((ev) => (
+                <Dropdown key={ev.id} className="mb-2">
+                  <Dropdown.Toggle
+                    style={{
+                      backgroundColor: getBackgroundColor(ev.eventType),
+                    }}
+                    className="w-100 border-0"
+                  >
+                    {ev.name}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu
+                    style={{
+                      backgroundColor: getBackgroundColor(ev.eventType),
+                    }}
+                    className="text-white w-100 p-2"
+                  >
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        {ev.description}
+                        <div className="d-flex gap-3">{getTime(ev.time)}</div>
+                      </div>
+                      <div>
+                        <Button
+                          className="m-1 rounded-pill"
+                          onClick={() => {
+                            setId(ev.id);
+                          }}
+                        >
+                          <i className="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          className="m-1 rounded-pill"
+                          variant="danger"
+                          onClick={() => handleReservationDelete(ev.id)}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
+                      </div>
                     </div>
-                    <div>
-                      <Button
-                        className="m-1 rounded-pill"
-                        onClick={() => {
-                          setId(ev.id);
-                        }}
-                      >
-                        <i className="bi bi-pencil"></i>
-                      </Button>
-                      <Button
-                        className="m-1 rounded-pill"
-                        variant="danger"
-                        onClick={() => handleReservationDelete(ev.id)}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </Button>
-                    </div>
-                  </div>
-                </Dropdown.Menu>
-              </Dropdown>
-            ))
-          )}
-        </div>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ))
+            )}
+          </div>
+        )}
       </Col>
     </>
   );

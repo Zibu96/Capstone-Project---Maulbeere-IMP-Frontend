@@ -5,7 +5,7 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosFootball } from "react-icons/io";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Placeholder } from "react-bootstrap";
 import ModifyReservationModal from "./ModifyReservationModal";
 
 const CalendarReservation = ({ dateToUse }) => {
@@ -83,63 +83,74 @@ const CalendarReservation = ({ dateToUse }) => {
       />
       <Col sm={6}>
         <h3>Prenotazioni:</h3>
-        <div className="p-2">
-          {reservation.length == 0 ? (
-            <h2 className="text-center mt-5">Nessuna Prenotazione per oggi!</h2>
-          ) : (
-            reservation.map((reserv) => (
-              <Card
-                key={reserv.id}
-                className="reservation-card mb-3"
-                style={{
-                  backgroundColor: getBackgroundColor(reserv.reservationType),
-                }}
-              >
-                <Card.Header as="h5">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      {reserv.name} {reserv.surname}
-                    </div>
-
-                    <p>{getIcon(reserv.eventType)}</p>
-                  </div>
-                </Card.Header>
-                <Card.Body>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <Card.Title>Tel. {reserv.telephone}</Card.Title>
-                      <div className="d-flex gap-3">
-                        <Card.Text>Ore {getTime(reserv.time)}</Card.Text>
-                        <Card.Text>N° posti: {reserv.seats}</Card.Text>
+        {!resDate ? (
+          <>
+            <Placeholder xs={12} size="lg" />
+            <Placeholder xs={12} />
+            <Placeholder xs={12} size="sm" />
+            <Placeholder xs={12} size="xs" />
+          </>
+        ) : (
+          <div className="p-2">
+            {reservation.length == 0 ? (
+              <h2 className="text-center mt-5">
+                Nessuna Prenotazione per oggi!
+              </h2>
+            ) : (
+              reservation.map((reserv) => (
+                <Card
+                  key={reserv.id}
+                  className="reservation-card mb-3"
+                  style={{
+                    backgroundColor: getBackgroundColor(reserv.reservationType),
+                  }}
+                >
+                  <Card.Header as="h5">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        {reserv.name} {reserv.surname}
                       </div>
-                      <Card.Text>
-                        Richieste speciali: {reserv.specialRequest}
-                      </Card.Text>
+
+                      <p>{getIcon(reserv.eventType)}</p>
                     </div>
-                    <div>
-                      <Button
-                        className="m-1 rounded-pill"
-                        onClick={() => {
-                          setId(reserv.id);
-                          handleShowM();
-                        }}
-                      >
-                        <i className="bi bi-pencil"></i>
-                      </Button>
-                      <Button
-                        className="m-1 rounded-pill"
-                        variant="danger"
-                        onClick={() => handleReservationDelete(reserv.id)}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </Button>
+                  </Card.Header>
+                  <Card.Body>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <Card.Title>Tel. {reserv.telephone}</Card.Title>
+                        <div className="d-flex gap-3">
+                          <Card.Text>Ore {getTime(reserv.time)}</Card.Text>
+                          <Card.Text>N° posti: {reserv.seats}</Card.Text>
+                        </div>
+                        <Card.Text>
+                          Richieste speciali: {reserv.specialRequest}
+                        </Card.Text>
+                      </div>
+                      <div>
+                        <Button
+                          className="m-1 rounded-pill"
+                          onClick={() => {
+                            setId(reserv.id);
+                            handleShowM();
+                          }}
+                        >
+                          <i className="bi bi-pencil"></i>
+                        </Button>
+                        <Button
+                          className="m-1 rounded-pill"
+                          variant="danger"
+                          onClick={() => handleReservationDelete(reserv.id)}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))
-          )}
-        </div>
+                  </Card.Body>
+                </Card>
+              ))
+            )}
+          </div>
+        )}
       </Col>
     </>
   );
