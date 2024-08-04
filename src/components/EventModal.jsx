@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPostEventAction } from "../redux/actions/eventAction";
 
 const EventModal = ({ modalShowEvent, handleCloseEvent, setReservation }) => {
-  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const token = useSelector((state) => state.user.user_bearer?.accessToken);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");

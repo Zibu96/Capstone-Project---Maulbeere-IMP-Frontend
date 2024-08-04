@@ -11,7 +11,9 @@ import ModifyReservationModal from "./ModifyReservationModal";
 const CalendarReservation = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
 
-  const resDate = useSelector((state) => state.reservation.reservation_by_date);
+  const resDate = useSelector(
+    (state) => state.reservation?.reservation_by_date
+  );
   console.log(resDate);
   console.log(dateToUse);
   const dispatch = useDispatch();

@@ -17,7 +17,7 @@ import CalendaEventSm from "./CalendarEventSm";
 
 const CalendarPage = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
-  const eventDb = useSelector((state) => state?.event?.event.content);
+  const eventDb = useSelector((state) => state?.event?.event?.content);
   const [value, onChange] = useState(new Date());
   const [event, setEvent] = useState([]);
   const [modalShow, setModalShow] = useState(false);
