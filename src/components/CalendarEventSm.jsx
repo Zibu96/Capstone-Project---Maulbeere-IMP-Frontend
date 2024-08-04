@@ -69,7 +69,7 @@ const CalendaEventSm = ({ dateToUse }) => {
         <h3>Eventi:</h3>
         <div className="p-2">
           {event.length == 0 ? (
-            <h2 className="text-center mt-5">Nessun evento oggi!</h2>
+            <h2 className="text-center mt-2">Nessun evento oggi!</h2>
           ) : (
             event.map((ev) => (
               <Dropdown key={ev.id} className="mb-2">
