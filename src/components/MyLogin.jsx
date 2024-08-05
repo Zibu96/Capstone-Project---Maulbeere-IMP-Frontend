@@ -2,18 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import maulLogo from "../assets/Maulbeere_Logo_CMYK.svg";
 import maulTitle from "../assets/Maulbeere_logotype.svg";
-import {
-  MDBBtn,
-  MDBCol,
-  MDBContainer,
-  MDBInput,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 import { fetchUserAction } from "../redux/actions/usersAction";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 const MyLogin = () => {
-  const [isLogged, setIsLogged] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -64,7 +57,9 @@ const MyLogin = () => {
               />
 
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn className="mb-4 w-30 gradient-custom-2">Sign in</MDBBtn>
+                <Button className="mb-4 w-30 gradient-custom-2" type="submit">
+                  Sign in
+                </Button>
               </div>
             </Form>
           </div>

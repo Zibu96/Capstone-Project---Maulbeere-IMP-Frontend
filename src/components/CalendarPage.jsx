@@ -14,6 +14,7 @@ import { fetchEventAction } from "../redux/actions/eventAction";
 import { useDispatch, useSelector } from "react-redux";
 import CalendarEvent from "./CalendarEvent";
 import CalendaEventSm from "./CalendarEventSm";
+import RedirectPage from "./RedirectPage";
 
 const CalendarPage = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
@@ -71,50 +72,59 @@ const CalendarPage = () => {
 
   return (
     <>
-      <MyNavbar />
-      <Container className="text-white">
-        <ReservationModal modalShow={modalShow} handleClose={handleClose} />
-        <EventModal
-          modalShowEvent={modalShowEvent}
-          handleCloseEvent={handleCloseEvent}
-        />
-        <Row>
-          <div className="d-flex justify-content-between my-3">
-            <h1>Calendario:</h1>
-            <img className="right-logo" src={MaulEe} alt="Alt logo" />
-          </div>
-          <Col>
-            <Calendar
-              onChange={onChange}
-              value={value}
-              tileClassName={getTileClassName}
+      {!token ? (
+        <RedirectPage />
+      ) : (
+        <>
+          <MyNavbar />
+          <Container className="text-white">
+            <ReservationModal modalShow={modalShow} handleClose={handleClose} />
+            <EventModal
+              modalShowEvent={modalShowEvent}
+              handleCloseEvent={handleCloseEvent}
             />
-            <div className="d-flex gap-2 mt-2">
-              <h5>Legenda:</h5>
+            <Row>
+              <div className="d-flex justify-content-between my-3">
+                <h1>Calendario:</h1>
+                <img className="right-logo" src={MaulEe} alt="Alt logo" />
+              </div>
+              <Col>
+                <Calendar
+                  onChange={onChange}
+                  value={value}
+                  tileClassName={getTileClassName}
+                />
+                <div className="d-flex gap-2 mt-2">
+                  <h5>Legenda:</h5>
 
-              <Stack direction="horizontal" gap={2}>
-                <Badge className="partita">Partita</Badge>
-                <Badge className="musica">Musica</Badge>
-                <Badge className="festa">Festa</Badge>
-                <Badge className="evento">Evento</Badge>
-                <Badge className="multiple-events">Più eventi</Badge>
-              </Stack>
-            </div>
-            <div className="text-center my-3">
-              <Button className="rounded-pill me-2" onClick={handleShowEvent}>
-                Nuovo Evento
-              </Button>
-              <Button className="rounded-pill ms-2" onClick={handleShow}>
-                Nuova Prenotazione
-              </Button>
-            </div>
-          </Col>
-          <h1>Oggi {dateToConsult} abbiamo:</h1>
-          <CalendaEventSm />
-          <CalendarReservation dateToUse={dateToUse} />
-          <CalendarEvent dateToUse={dateToUse} />
-        </Row>
-      </Container>
+                  <Stack direction="horizontal" gap={2}>
+                    <Badge className="partita">Partita</Badge>
+                    <Badge className="musica">Musica</Badge>
+                    <Badge className="festa">Festa</Badge>
+                    <Badge className="evento">Evento</Badge>
+                    <Badge className="multiple-events">Più eventi</Badge>
+                  </Stack>
+                </div>
+                <div className="text-center my-3">
+                  <Button
+                    className="rounded-pill me-2"
+                    onClick={handleShowEvent}
+                  >
+                    Nuovo Evento
+                  </Button>
+                  <Button className="rounded-pill ms-2" onClick={handleShow}>
+                    Nuova Prenotazione
+                  </Button>
+                </div>
+              </Col>
+              <h1>Oggi {dateToConsult} abbiamo:</h1>
+              <CalendaEventSm />
+              <CalendarReservation dateToUse={dateToUse} />
+              <CalendarEvent dateToUse={dateToUse} />
+            </Row>
+          </Container>
+        </>
+      )}
     </>
   );
 };

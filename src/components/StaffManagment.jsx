@@ -14,7 +14,7 @@ const StaffManagment = () => {
   const [surname, setSurname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [role, setRole] = useState("");
   const dispatch = useDispatch();
 
@@ -26,7 +26,6 @@ const StaffManagment = () => {
       surname: surname,
       username: username,
       email: email,
-      password: password,
       role: role,
     };
     console.log(registerUser);
@@ -100,17 +99,6 @@ const StaffManagment = () => {
                       </div>
                     </div>
                     <div className="d-flex gap-3">
-                      <div className="w-50">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control
-                          size="sm"
-                          type="password"
-                          placeholder="Password"
-                          required
-                          className="mb-3"
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </div>
                       <div>
                         <Form.Label>Ruolo</Form.Label>
                         <Form.Select
