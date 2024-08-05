@@ -34,9 +34,11 @@ const MyNavbar = () => {
       data-bs-theme="dark"
     >
       <Container className="align-item-center">
-        <Navbar.Brand href="#home">
-          <img src={maulLogo} style={{ width: "70px" }} alt="Maulbeerelogo" />
-        </Navbar.Brand>
+        <Link to={"/home"}>
+          <Navbar.Brand href="#home">
+            <img src={maulLogo} style={{ width: "70px" }} alt="Maulbeerelogo" />
+          </Navbar.Brand>
+        </Link>
         <NavDropDown />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 

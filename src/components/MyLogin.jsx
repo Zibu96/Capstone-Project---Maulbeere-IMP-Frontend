@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import maulLogo from "../assets/Maulbeere_Logo_CMYK.svg";
 import maulTitle from "../assets/Maulbeere_logotype.svg";
 import { MDBCol, MDBContainer, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 import { fetchUserAction } from "../redux/actions/usersAction";
-import { Button, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 const MyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const error = useSelector((state) => state.user.error);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const MyLogin = () => {
             </div>
 
             <h4>Effettua il login con il tuo account</h4>
+            {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleLoginSubmit}>
               <MDBInput
                 wrapperClass="mb-4"

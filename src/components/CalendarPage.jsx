@@ -117,7 +117,7 @@ const CalendarPage = () => {
                   </Button>
                 </div>
               </Col>
-              <h1>Oggi {dateToConsult} abbiamo:</h1>
+              <h1>Recap {dateToConsult}:</h1>
               <CalendaEventSm />
               <CalendarReservation dateToUse={dateToUse} />
               <CalendarEvent dateToUse={dateToUse} />

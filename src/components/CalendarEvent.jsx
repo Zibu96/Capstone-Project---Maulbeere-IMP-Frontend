@@ -95,7 +95,7 @@ const CalendarEvent = ({ dateToUse }) => {
                   <Card.Body>
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
-                        <Card.Title>Tel. {ev.description}</Card.Title>
+                        <Card.Title>{ev.description}</Card.Title>
                         <div className="d-flex gap-3">
                           <Card.Text>Ore {getTime(ev.time)}</Card.Text>
                         </div>

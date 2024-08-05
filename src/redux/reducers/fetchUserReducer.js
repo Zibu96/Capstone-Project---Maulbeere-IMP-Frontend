@@ -11,6 +11,7 @@ import {
   GET_SINGLE_USER,
   DELETE_USER,
   RESET_STATE,
+  LOGIN_ERROR,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -37,6 +38,11 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         user_bearer: action.payload,
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     case GET_USER_LOGGED_PROFILE:
       return {
