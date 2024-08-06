@@ -9,6 +9,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import fetchEventReducer from "../reducers/fetchEventReduce";
+import fetchErrorReducer from "../reducers/fetchErrorReduce";
 
 const rootReducer = combineReducers({
   user: fetchUserReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   waitStaff: fetchWaitStaffReducer,
   kitchen: fetchKitchenReducer,
   event: fetchEventReducer,
+  error: fetchErrorReducer,
 });
 
 const persistConfig = {
@@ -27,6 +29,7 @@ const persistConfig = {
       secretKey: import.meta.env.VITE_APP_PERSIST_KEY,
     }),
   ],
+  blacklist: ["error"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

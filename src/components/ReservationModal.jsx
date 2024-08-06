@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import { fetchPostReservationAction } from "../redux/actions/reservationAction";
 const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const me = useSelector((state) => state.user.state);
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState(null);
   const [seats, setSeats] = useState(0);
@@ -36,10 +37,11 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
       reservationType: reservationType,
       user: `${me.id}`,
     };
+
     dispatch(fetchPostReservationAction(token, newReservation));
     setReservation((res) => [...res, newReservation]);
     console.log(newReservation);
-    alert("Prenotazione creata con successo");
+    handleClose();
   };
 
   return (
@@ -56,6 +58,7 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
       <Form onSubmit={handleReservationSubmit} className="bgAll">
         <Modal.Body>
           <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
+
           <Form.Group>
             <Form.Label className="m-0">Nome*</Form.Label>
             <Form.Control
@@ -150,7 +153,7 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose} type="submit">
+          <Button variant="primary" type="submit">
             Invia prenotazione
           </Button>
         </Modal.Footer>

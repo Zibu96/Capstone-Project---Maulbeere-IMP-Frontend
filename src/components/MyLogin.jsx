@@ -9,7 +9,8 @@ import { Alert, Button, Form } from "react-bootstrap";
 const MyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const error = useSelector((state) => state.user.error);
+  const error = useSelector((state) => state.error?.login_error);
+  console.log(error);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

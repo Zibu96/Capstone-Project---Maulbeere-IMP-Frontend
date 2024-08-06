@@ -39,11 +39,6 @@ const fetchUserReducer = (state = initialState, action) => {
         ...state,
         user_bearer: action.payload,
       };
-    case LOGIN_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-      };
     case GET_USER_LOGGED_PROFILE:
       return {
         ...state,

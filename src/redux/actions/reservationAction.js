@@ -7,6 +7,7 @@ export const GET_RESERVATION_TODAY = "GET_RESERVATION_TODAY";
 export const PUT_RESERVATION = "PUT_RESERVATION";
 export const GET_SINGLE_RESERVATION = "GET_SINGLE_RESERVATION";
 export const GET_RESERVATION_BY_DATE = "GET_RESERVATION_BY_DATE";
+export const RESERVATION_ERROR = "RESERVATION_ERROR";
 
 export const fetchReservationAction = (token) => {
   return async (dispatch) => {
@@ -47,8 +48,13 @@ export const fetchPostReservationAction = (token, newReservation) => {
         payload: response.data,
       });
       console.log(response.data);
+      alert("Prenotazione creata con successo");
     } catch (err) {
       console.log(err.message);
+      dispatch({
+        type: RESERVATION_ERROR,
+        payload: err.response,
+      });
     }
   };
 };
@@ -116,8 +122,13 @@ export const fetchPutReservationAction = (token, modReservation, id) => {
       await dispatch(fetchSingleReservationAction(token));
 
       console.log(response.data);
+      alert("Prenotazione modificata con successo");
     } catch (err) {
       console.log(err.message);
+      dispatch({
+        type: RESERVATION_ERROR,
+        payload: err.response,
+      });
     }
   };
 };

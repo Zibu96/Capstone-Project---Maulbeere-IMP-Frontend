@@ -4,6 +4,7 @@ export const POST_EVENT = "POST_EVENT";
 export const PUT_EVENT = "PUT_EVENT";
 export const GET_EVENT_BY_DATE = "GET_EVENT_BY_DATE";
 export const DELETE_EVENT = "DELETE_EVENT";
+export const EVENT_ERROR = "EVENT_ERROR";
 
 export const fetchEventAction = (token) => {
   return async (dispatch) => {
@@ -44,8 +45,13 @@ export const fetchPostEventAction = (token, newEvent) => {
         payload: response.data,
       });
       console.log(response.data);
+      alert("Evento creato con successo");
     } catch (err) {
       console.log(err.message);
+      dispatch({
+        type: EVENT_ERROR,
+        payload: err.response,
+      });
     }
   };
 };
@@ -70,8 +76,13 @@ export const fetchPutEventsAction = (token, modEvents, id) => {
       });
       await dispatch(fetchEventAction(token));
       console.log(response.data);
+      alert("Evento modificato con successo");
     } catch (err) {
       console.log(err.message);
+      dispatch({
+        type: EVENT_ERROR,
+        payload: err.response,
+      });
     }
   };
 };

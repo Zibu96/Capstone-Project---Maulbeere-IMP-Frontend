@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -18,14 +18,19 @@ const MyReservation = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const res = useSelector((state) => state.reservation.reservation.content);
   const today = useSelector((state) => state.reservation.today.content);
+  const error = useSelector(
+    (state) => state.error?.reservation_error?.data.message
+  );
+
   console.log(today);
   console.log(res);
   const [modalShow, setModalShow] = useState(false);
   const [modalShowM, setModalShowM] = useState(false);
   const [reservation, setReservation] = useState([]);
   const [id, setId] = useState("");
-  const handleClose = () => setModalShow(false);
+
   const handleShow = () => setModalShow(true);
+  const handleClose = () => setModalShow(false);
   const handleCloseM = () => setModalShowM(false);
   const handleShowM = () => setModalShowM(true);
   const getBackgroundColor = (reservationType) => {
@@ -91,6 +96,7 @@ const MyReservation = () => {
             <Row>
               <div className="d-flex justify-content-between my-3">
                 <h1>Prenotazioni:</h1>
+
                 <Button onClick={handleShow} className="rounded-pill">
                   Nuova Prenotazione
                 </Button>
@@ -104,10 +110,14 @@ const MyReservation = () => {
                   handleCloseM={handleCloseM}
                   id={id}
                   setReservation={setReservation}
-                  setId={setId}
                 />
               </div>
               <Col sm={9}>
+                {error && (
+                  <Alert variant="danger">
+                    La prenotazione non è stata inserita correttamente: {error}
+                  </Alert>
+                )}
                 <div className="p-2">
                   {reservation.length == 0 ? (
                     <h2 className="text-center mt-5">

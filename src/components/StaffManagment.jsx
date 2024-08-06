@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -9,6 +9,8 @@ import RedirectPage from "./RedirectPage";
 
 const StaffManagment = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
+  const error = useSelector((state) => state.error?.register_error?.data);
+  console.log(error);
   console.log(token);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -30,7 +32,6 @@ const StaffManagment = () => {
     };
     console.log(registerUser);
     dispatch(fetchUserRegisterAction(registerUser, token));
-    alert("Dipendente creato con successo");
   };
 
   return (
@@ -49,6 +50,7 @@ const StaffManagment = () => {
               <Col sm={12} className="mb-3 ">
                 <div className="border rounded p-2 bgAll">
                   <h3 className="mt-2">Aggiungi Nuovo Dipendente:</h3>
+                  {error && <Alert variant="danger">{error.message}</Alert>}
                   <Form onSubmit={handleRegisterUserSubmit}>
                     <div className="d-flex gap-3">
                       <div className="w-50">

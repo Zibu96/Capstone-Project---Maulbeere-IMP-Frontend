@@ -3,7 +3,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPostEventAction } from "../redux/actions/eventAction";
 
-const EventModal = ({ modalShowEvent, handleCloseEvent, setReservation }) => {
+const EventModal = ({ modalShowEvent, handleCloseEvent }) => {
   const token = useSelector((state) => state.user.user_bearer?.accessToken);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -25,6 +25,7 @@ const EventModal = ({ modalShowEvent, handleCloseEvent, setReservation }) => {
     dispatch(fetchPostEventAction(token, newEvent));
     console.log(newEvent);
     alert("Evento creato con successo");
+    handleCloseEvent();
   };
 
   return (
@@ -82,6 +83,7 @@ const EventModal = ({ modalShowEvent, handleCloseEvent, setReservation }) => {
               size="sm"
               className="mb-3"
               onChange={(e) => setEventType(e.target.value)}
+              required
             >
               <option>Nessun evento</option>
               <option>PARTITA</option>
@@ -92,7 +94,7 @@ const EventModal = ({ modalShowEvent, handleCloseEvent, setReservation }) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseEvent} type="submit">
+          <Button variant="primary" type="submit">
             Crea evento
           </Button>
         </Modal.Footer>

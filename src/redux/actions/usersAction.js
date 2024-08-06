@@ -5,6 +5,7 @@ export const TOGGLE_AUTHORITY = "TOGGLE_AUTHORITY";
 
 export const GET_USER_LOGGED_PROFILE = "GET_USER_LOGGED_PROFILE";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const REGISTER_ERROR = "REGISTER_ERROR";
 export const GET_USER_LOGGED_TOKEN = "GET_USER_LOGGED_TOKEN";
 export const GET_USER_ME = "GET_USER_ME";
 export const PATCH_USER_ME_PASSWORD = "PATCH_USER_ME_PASSWORD";
@@ -64,7 +65,11 @@ export const fetchUserRegisterAction = (registerObject, token) => {
       localStorage.setItem("Bearer", response.data.token);
       console.log(response.data);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
+      dispatch({
+        type: REGISTER_ERROR,
+        payload: err.response,
+      });
     }
   };
 };

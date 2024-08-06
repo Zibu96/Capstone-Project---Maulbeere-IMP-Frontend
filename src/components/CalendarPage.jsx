@@ -2,7 +2,15 @@ import Calendar from "react-calendar";
 import MyNavbar from "./MyNavbar";
 import "react-calendar/dist/Calendar.css";
 import "../style/partials/_calendarpage.scss";
-import { Badge, Button, Col, Container, Row, Stack } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Col,
+  Container,
+  Placeholder,
+  Row,
+  Stack,
+} from "react-bootstrap";
 import MaulEe from "../assets/EE_white.svg";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
@@ -19,6 +27,7 @@ import RedirectPage from "./RedirectPage";
 const CalendarPage = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const eventDb = useSelector((state) => state?.event?.event?.content);
+
   const [value, onChange] = useState(new Date());
   const [event, setEvent] = useState([]);
   const [modalShow, setModalShow] = useState(false);
@@ -77,52 +86,64 @@ const CalendarPage = () => {
       ) : (
         <>
           <MyNavbar />
-          <Container className="text-white">
-            <ReservationModal modalShow={modalShow} handleClose={handleClose} />
-            <EventModal
-              modalShowEvent={modalShowEvent}
-              handleCloseEvent={handleCloseEvent}
-            />
-            <Row>
-              <div className="d-flex justify-content-between my-3">
-                <h1>Calendario:</h1>
-                <img className="right-logo" src={MaulEe} alt="Alt logo" />
-              </div>
-              <Col>
-                <Calendar
-                  onChange={onChange}
-                  value={value}
-                  tileClassName={getTileClassName}
-                />
-                <div className="d-flex gap-2 mt-2">
-                  <h5>Legenda:</h5>
+          {!event ? (
+            <>
+              <Placeholder xs={12} size="lg" />
+              <Placeholder xs={12} />
+              <Placeholder xs={12} size="sm" />
+              <Placeholder xs={12} size="xs" />
+            </>
+          ) : (
+            <Container className="text-white">
+              <ReservationModal
+                modalShow={modalShow}
+                handleClose={handleClose}
+              />
+              <EventModal
+                modalShowEvent={modalShowEvent}
+                handleCloseEvent={handleCloseEvent}
+              />
+              <Row>
+                <div className="d-flex justify-content-between my-3">
+                  <h1>Calendario:</h1>
+                  <img className="right-logo" src={MaulEe} alt="Alt logo" />
+                </div>
+                <Col>
+                  <Calendar
+                    onChange={onChange}
+                    value={value}
+                    tileClassName={getTileClassName}
+                  />
+                  <div className="d-flex gap-2 mt-2">
+                    <h5>Legenda:</h5>
 
-                  <Stack direction="horizontal" gap={2}>
-                    <Badge className="partita">Partita</Badge>
-                    <Badge className="musica">Musica</Badge>
-                    <Badge className="festa">Festa</Badge>
-                    <Badge className="evento">Evento</Badge>
-                    <Badge className="multiple-events">Più eventi</Badge>
-                  </Stack>
-                </div>
-                <div className="text-center my-3">
-                  <Button
-                    className="rounded-pill me-2"
-                    onClick={handleShowEvent}
-                  >
-                    Nuovo Evento
-                  </Button>
-                  <Button className="rounded-pill ms-2" onClick={handleShow}>
-                    Nuova Prenotazione
-                  </Button>
-                </div>
-              </Col>
-              <h1>Recap {dateToConsult}:</h1>
-              <CalendaEventSm />
-              <CalendarReservation dateToUse={dateToUse} />
-              <CalendarEvent dateToUse={dateToUse} />
-            </Row>
-          </Container>
+                    <Stack direction="horizontal" gap={2}>
+                      <Badge className="partita">Partita</Badge>
+                      <Badge className="musica">Musica</Badge>
+                      <Badge className="festa">Festa</Badge>
+                      <Badge className="evento">Evento</Badge>
+                      <Badge className="multiple-events">Più eventi</Badge>
+                    </Stack>
+                  </div>
+                  <div className="text-center my-3">
+                    <Button
+                      className="rounded-pill me-2"
+                      onClick={handleShowEvent}
+                    >
+                      Nuovo Evento
+                    </Button>
+                    <Button className="rounded-pill ms-2" onClick={handleShow}>
+                      Nuova Prenotazione
+                    </Button>
+                  </div>
+                </Col>
+                <h1>Recap {dateToConsult}:</h1>
+                <CalendaEventSm />
+                <CalendarReservation dateToUse={dateToUse} />
+                <CalendarEvent dateToUse={dateToUse} />
+              </Row>
+            </Container>
+          )}
         </>
       )}
     </>
