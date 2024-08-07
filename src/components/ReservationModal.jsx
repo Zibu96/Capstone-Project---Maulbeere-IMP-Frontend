@@ -8,6 +8,9 @@ import { fetchPostReservationAction } from "../redux/actions/reservationAction";
 const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const me = useSelector((state) => state.user.state);
+  const error = useSelector(
+    (state) => state.error?.reservation_error?.data.message
+  );
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState(null);
@@ -38,10 +41,8 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
       user: `${me.id}`,
     };
 
-    dispatch(fetchPostReservationAction(token, newReservation));
+    dispatch(fetchPostReservationAction(token, newReservation, handleClose));
     setReservation((res) => [...res, newReservation]);
-    console.log(newReservation);
-    handleClose();
   };
 
   return (
@@ -58,7 +59,11 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
       <Form onSubmit={handleReservationSubmit} className="bgAll">
         <Modal.Body>
           <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
-
+          {error && (
+            <Alert variant="danger">
+              La prenotazione non è stata inserita correttamente: {error}
+            </Alert>
+          )}
           <Form.Group>
             <Form.Label className="m-0">Nome*</Form.Label>
             <Form.Control

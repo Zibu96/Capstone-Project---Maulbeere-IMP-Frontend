@@ -11,7 +11,6 @@ import {
   GET_SINGLE_USER,
   DELETE_USER,
   RESET_STATE,
-  LOGIN_ERROR,
 } from "../actions/usersAction";
 
 const initialState = {

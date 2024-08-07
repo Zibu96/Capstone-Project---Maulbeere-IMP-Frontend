@@ -1,4 +1,4 @@
-import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -18,9 +18,6 @@ const MyReservation = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const res = useSelector((state) => state.reservation.reservation.content);
   const today = useSelector((state) => state.reservation.today.content);
-  const error = useSelector(
-    (state) => state.error?.reservation_error?.data.message
-  );
 
   console.log(today);
   console.log(res);
@@ -113,11 +110,6 @@ const MyReservation = () => {
                 />
               </div>
               <Col sm={9}>
-                {error && (
-                  <Alert variant="danger">
-                    La prenotazione non è stata inserita correttamente: {error}
-                  </Alert>
-                )}
                 <div className="p-2">
                   {reservation.length == 0 ? (
                     <h2 className="text-center mt-5">

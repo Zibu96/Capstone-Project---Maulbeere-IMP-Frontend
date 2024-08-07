@@ -31,7 +31,7 @@ const fetchWaitStaffReducer = (state = initialState, action) => {
     case POST_WAITSTAFF_TODO:
       return {
         ...state,
-        waitStaff_toDo: [...state.waitStaff_toDo, action.payload],
+        waitStaff_toDo: action.payload,
       };
     case POST_WAITSTAFF_COMMUNICATION:
       return {
@@ -44,7 +44,7 @@ const fetchWaitStaffReducer = (state = initialState, action) => {
     case DELETE_WAITSTAFF:
       return {
         ...state,
-        waitStaff: [...state.waitStaff, action.payload],
+        waitStaff: action.payload,
       };
     case GET_WAITSTAFF_SHOPPING_LIST:
       return {
@@ -54,18 +54,12 @@ const fetchWaitStaffReducer = (state = initialState, action) => {
     case POST_WAITSTAFF_SHOPPING_LIST:
       return {
         ...state,
-        waitStaff_shoppingList: [
-          ...state.waitStaff_shoppingList,
-          action.payload,
-        ],
+        waitStaff_shoppingList: action.payload,
       };
     case DELETE_WAITSTAFF_SHOPPING_LIST:
       return {
         ...state,
-        waitStaff_shoppingList: [
-          ...state.waitStaff_shoppingList,
-          action.payload,
-        ],
+        waitStaff_shoppingList: action.payload,
       };
     default:
       return state;

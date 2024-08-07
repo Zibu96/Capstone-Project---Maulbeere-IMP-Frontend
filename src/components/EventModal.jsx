@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPostEventAction } from "../redux/actions/eventAction";
 
 const EventModal = ({ modalShowEvent, handleCloseEvent }) => {
   const token = useSelector((state) => state.user.user_bearer?.accessToken);
+  const error = useSelector((state) => state.error?.event_error?.data.message);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -22,10 +23,8 @@ const EventModal = ({ modalShowEvent, handleCloseEvent }) => {
       time: `${time}`,
       eventType: eventType,
     };
-    dispatch(fetchPostEventAction(token, newEvent));
+    dispatch(fetchPostEventAction(token, newEvent, handleCloseEvent));
     console.log(newEvent);
-    alert("Evento creato con successo");
-    handleCloseEvent();
   };
 
   return (
@@ -42,6 +41,11 @@ const EventModal = ({ modalShowEvent, handleCloseEvent }) => {
       <Form className="bgAll" onSubmit={handleEventSubmit}>
         <Modal.Body>
           <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
+          {error && (
+            <Alert variant="danger">
+              La prenotazione non è stata inserita correttamente: {error}
+            </Alert>
+          )}
           <Form.Group>
             <Form.Label className="m-0">Nome*</Form.Label>
             <Form.Control

@@ -31,17 +31,17 @@ const fetchKitchenReducer = (state = initialState, action) => {
     case POST_KITCHEN_TODO:
       return {
         ...state,
-        kitchen_toDo: [...state.kitchen_toDo, action.payload],
+        kitchen_toDo: action.payload,
       };
     case POST_KITCHEN_COMMUNICATION:
       return {
         ...state,
-        kitchen_communication: [...state.kitchen_communication, action.payload],
+        kitchen_communication: action.payload,
       };
     case DELETE_KITCHEN:
       return {
         ...state,
-        kitchen: [...state.kitchen, action.payload],
+        kitchen: action.payload,
       };
     case GET_KITCHEN_SHOPPING_LIST:
       return {
@@ -51,12 +51,12 @@ const fetchKitchenReducer = (state = initialState, action) => {
     case POST_KITCHEN_SHOPPING_LIST:
       return {
         ...state,
-        kitchen_shoppingList: [...state.kitchen_shoppingList, action.payload],
+        kitchen_shoppingList: action.payload,
       };
     case DELETE_KITCHEN_SHOPPING_LIST:
       return {
         ...state,
-        kitchen_shoppingList: [...state.kitchen_shoppingList, action.payload],
+        kitchen_shoppingList: action.payload,
       };
     default:
       return state;

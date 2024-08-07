@@ -21,17 +21,17 @@ const fetchEventReducer = (state = initialState, action) => {
     case POST_EVENT:
       return {
         ...state,
-        event: [...state.event, action.payload],
+        event: action.payload,
       };
     case DELETE_EVENT:
       return {
         ...state,
-        event: [...state.event, action.payload],
+        event: action.payload,
       };
     case PUT_EVENT:
       return {
         ...state,
-        event: [...state.event, action.payload],
+        event: action.payload,
       };
     case GET_EVENT_BY_DATE:
       return {

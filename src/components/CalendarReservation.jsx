@@ -5,14 +5,11 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosFootball } from "react-icons/io";
-import { Alert, Button, Card, Col, Placeholder } from "react-bootstrap";
+import { Button, Card, Col, Placeholder } from "react-bootstrap";
 import ModifyReservationModal from "./ModifyReservationModal";
 
 const CalendarReservation = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
-  const error = useSelector(
-    (state) => state.error?.reservation_error?.data.message
-  );
   const resDate = useSelector(
     (state) => state.reservation?.reservation_by_date
   );
@@ -85,11 +82,7 @@ const CalendarReservation = ({ dateToUse }) => {
       />
       <Col sm={6}>
         <h3>Prenotazioni:</h3>
-        {error && (
-          <Alert variant="danger">
-            La prenotazione non è stata inserita correttamente: {error}
-          </Alert>
-        )}
+
         {!resDate ? (
           <>
             <Placeholder xs={12} size="lg" />

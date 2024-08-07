@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,9 @@ const ModifyReservationModal = ({
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const me = useSelector((state) => state.user.state);
   const res = useSelector((state) => state.reservation.reservation_single);
+  const error = useSelector(
+    (state) => state.error?.reservation_error?.data.message
+  );
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [seats, setSeats] = useState(0);
@@ -65,12 +68,12 @@ const ModifyReservationModal = ({
       reservationType,
       user: me.id,
     };
-    dispatch(fetchPutReservationAction(token, modReservation, id));
+    dispatch(
+      fetchPutReservationAction(token, modReservation, id, handleCloseM)
+    );
     setReservation((res) =>
       res.map((reserv) => (reserv.id === id ? modReservation : reserv))
     );
-    alert("Prenotazione modificata con successo");
-    handleCloseM();
   };
 
   return (
@@ -87,6 +90,12 @@ const ModifyReservationModal = ({
       <Form onSubmit={handleModReservationSubmit} className="bgAll">
         <Modal.Body>
           <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
+          <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
+          {error && (
+            <Alert variant="danger">
+              La prenotazione non è stata inserita correttamente: {error}
+            </Alert>
+          )}
           <Form.Group>
             <Form.Label className="m-0">Nome*</Form.Label>
             <Form.Control

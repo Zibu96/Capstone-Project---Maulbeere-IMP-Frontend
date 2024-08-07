@@ -23,7 +23,7 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_LUNCH:
       return {
         ...state,
-        lunch: [...state.lunch, action.payload],
+        lunch: action.payload,
       };
     case GET_ALL_DINNER:
       return {
@@ -33,7 +33,7 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_DINNER:
       return {
         ...state,
-        dinner: [...state.dinner, action.payload],
+        dinner: action.payload,
       };
     case GET_ALL_WEEK:
       return {
@@ -43,7 +43,7 @@ const fetchWorkShiftReducer = (state = initialState, action) => {
     case POST_WEEK:
       return {
         ...state,
-        workShift: [...state.workShift, action.payload],
+        workShift: action.payload,
       };
     default:
       return state;

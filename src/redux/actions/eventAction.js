@@ -26,7 +26,7 @@ export const fetchEventAction = (token) => {
   };
 };
 
-export const fetchPostEventAction = (token, newEvent) => {
+export const fetchPostEventAction = (token, newEvent, handleCloseEvent) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
@@ -46,6 +46,7 @@ export const fetchPostEventAction = (token, newEvent) => {
       });
       console.log(response.data);
       alert("Evento creato con successo");
+      handleCloseEvent();
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -56,7 +57,12 @@ export const fetchPostEventAction = (token, newEvent) => {
   };
 };
 
-export const fetchPutEventsAction = (token, modEvents, id) => {
+export const fetchPutEventsAction = (
+  token,
+  modEvents,
+  id,
+  handleCloseEvent
+) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
@@ -76,7 +82,8 @@ export const fetchPutEventsAction = (token, modEvents, id) => {
       });
       await dispatch(fetchEventAction(token));
       console.log(response.data);
-      alert("Evento modificato con successo");
+      alert("Evento creato con successo");
+      handleCloseEvent();
     } catch (err) {
       console.log(err.message);
       dispatch({

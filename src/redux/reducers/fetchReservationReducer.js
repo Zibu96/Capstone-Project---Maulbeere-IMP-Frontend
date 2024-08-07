@@ -9,10 +9,11 @@ import {
 } from "../actions/reservationAction";
 
 const initialState = {
-  reservation: {},
-  reservation_signle: {},
-  today: {},
-  reservation_by_date: {},
+  reservation: [],
+  post_reservation: [],
+  reservation_signle: [],
+  today: [],
+  reservation_by_date: [],
 };
 
 const fetchReservationReducer = (state = initialState, action) => {
@@ -25,12 +26,12 @@ const fetchReservationReducer = (state = initialState, action) => {
     case POST_RESERVATION:
       return {
         ...state,
-        reservation: [...state.reservation, action.payload],
+        post_reservation: action.payload,
       };
     case DELETE_RESERVATION:
       return {
         ...state,
-        reservation: [...state.reservation, action.payload],
+        reservation: action.payload,
       };
     case GET_RESERVATION_TODAY:
       return {
@@ -40,7 +41,7 @@ const fetchReservationReducer = (state = initialState, action) => {
     case PUT_RESERVATION:
       return {
         ...state,
-        reservation: [...state.reservation, action.payload],
+        reservation: action.payload,
       };
     case GET_SINGLE_RESERVATION:
       return {

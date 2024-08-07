@@ -29,7 +29,11 @@ export const fetchReservationAction = (token) => {
   };
 };
 
-export const fetchPostReservationAction = (token, newReservation) => {
+export const fetchPostReservationAction = (
+  token,
+  newReservation,
+  handleClose
+) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
@@ -49,6 +53,7 @@ export const fetchPostReservationAction = (token, newReservation) => {
       });
       console.log(response.data);
       alert("Prenotazione creata con successo");
+      handleClose();
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -99,7 +104,12 @@ export const fetchReservationTodayAction = (token) => {
   };
 };
 
-export const fetchPutReservationAction = (token, modReservation, id) => {
+export const fetchPutReservationAction = (
+  token,
+  modReservation,
+  id,
+  handleCloseM
+) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
@@ -123,6 +133,7 @@ export const fetchPutReservationAction = (token, modReservation, id) => {
 
       console.log(response.data);
       alert("Prenotazione modificata con successo");
+      handleCloseM();
     } catch (err) {
       console.log(err.message);
       dispatch({
