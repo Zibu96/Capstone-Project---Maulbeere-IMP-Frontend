@@ -15,16 +15,14 @@ const manifestForPlugin = {
     description: "L'app di gestione interna del tuo locale.",
     icons: [
       {
-        src: "android-launchericon-192-192",
+        src: "android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
-        purpose: "any",
       },
       {
-        src: "android-launchericon-512-512",
+        src: "/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
-        purpose: "any",
       },
       {
         src: "apple-touch-icon-180x180.png",
@@ -33,7 +31,7 @@ const manifestForPlugin = {
         purpose: "apple touch icon",
       },
       {
-        src: "180.png",
+        src: "maskable_icon.png",
         sizes: "225x225",
         type: "image/png",
         purpose: "any maskable",
