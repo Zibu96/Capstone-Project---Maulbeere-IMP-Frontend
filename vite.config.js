@@ -11,25 +11,25 @@ const manifestForPlugin = {
     description: "L'app di gestione interna del tuo locale.",
     icons: [
       {
-        src: "src/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
         sizes: "192x192",
         type: "image/svg+xml",
       },
       {
-        src: "/android-chrome-512x512.png",
+        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
         sizes: "512x512",
-        type: "image/png",
+        type: "image/svg+xml",
       },
       {
-        src: "/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
         sizes: "180x180",
         type: "image/svg+xml",
         purpose: "apple touch icon",
       },
       {
-        src: "/maskable_icon.png",
+        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
         sizes: "225x225",
-        type: "image/png",
+        type: "image/svg+xml",
         purpose: "any maskable",
       },
     ],
