@@ -5,6 +5,7 @@ export const PUT_EVENT = "PUT_EVENT";
 export const GET_EVENT_BY_DATE = "GET_EVENT_BY_DATE";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EVENT_ERROR = "EVENT_ERROR";
+export const GET_SINGLE_EVENT = "GET_SINGLE_EVENT";
 
 export const fetchEventAction = (token) => {
   return async (dispatch) => {
@@ -125,6 +126,26 @@ export const fetchDeleteEventAction = (token, id) => {
       );
       dispatch({
         type: DELETE_EVENT,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+export const fetchSingleReservationAction = (token, id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://implicit-geralda-giovannighirardelli-311f3521.koyeb.app/events/ ${id}`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      dispatch({
+        type: GET_SINGLE_EVENT,
         payload: response.data,
       });
       console.log(response.data);

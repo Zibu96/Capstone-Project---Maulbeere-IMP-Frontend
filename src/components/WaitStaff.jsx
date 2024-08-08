@@ -42,7 +42,7 @@ const WaitStaff = () => {
                 <h1>Sala:</h1>
                 <img className="right-logo" src={MaulEe} alt="Alt logo" />
               </div>
-              {["SALA", "GESTORE", "ADMIN"].includes(me.role) ? (
+              {["SALA", "GESTORE", "ADMIN", "DIRETTORE"].includes(me.role) ? (
                 <>
                   <WaitStaffToDo />
                   <WaitStaffComunication />

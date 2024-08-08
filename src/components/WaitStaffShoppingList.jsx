@@ -5,6 +5,7 @@ import {
   fetchDeleteShoppingListAction,
   fetchPostShoppingListsAction,
 } from "../redux/actions/waitStaffAction";
+import { format } from "date-fns";
 
 const WaitStaffShoppingList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -44,6 +45,10 @@ const WaitStaffShoppingList = () => {
     );
   };
 
+  const dateToUse = (date) => {
+    return format(new Date(date), "dd-MM");
+  };
+
   return (
     <Col sm={12} className="text-white mb-3">
       <div className="border rounded p-2">
@@ -79,7 +84,7 @@ const WaitStaffShoppingList = () => {
                   </p>
                 </div>
                 <div className="ws-table-secondary border-end text-center p-2">
-                  <p className="m-0">{sl.date}</p>
+                  <p className="m-0">{dateToUse(sl.date)}</p>
                 </div>
                 <div className="ws-table-btn text-center ">
                   <Button

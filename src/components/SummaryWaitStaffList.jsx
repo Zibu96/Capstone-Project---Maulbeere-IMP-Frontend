@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeleteShoppingListAction } from "../redux/actions/waitStaffAction";
+import { format } from "date-fns";
 
 const SummaryWaitStaffList = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
@@ -21,6 +22,11 @@ const SummaryWaitStaffList = () => {
       shoppingListDb.filter((sl) => sl.id !== deleteId)
     );
   };
+
+  const dateToUse = (date) => {
+    return format(new Date(date), "dd-MM");
+  };
+
   return (
     <Col sm={12} className="text-white mb-3">
       <div className="border rounded p-2">
@@ -57,7 +63,7 @@ const SummaryWaitStaffList = () => {
                   </p>
                 </div>
                 <div className="ws-table-secondary border-end text-center p-2">
-                  <p className="m-0">{sl.date}</p>
+                  <p className="m-0">{dateToUse(sl.date)}</p>
                 </div>
                 <div className="ws-table-btn text-center ">
                   <Button

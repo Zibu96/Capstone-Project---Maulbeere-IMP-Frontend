@@ -64,6 +64,7 @@ export const fetchUserRegisterAction = (registerObject, token) => {
       });
       localStorage.setItem("Bearer", response.data.token);
       console.log(response.data);
+      alert("Dipendente creato con successo");
     } catch (err) {
       console.log(err);
       dispatch({

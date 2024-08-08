@@ -38,7 +38,7 @@ const Kitchen = () => {
                 <h1>Cucina:</h1>
                 <img className="right-logo" src={MaulEe} alt="Alt logo" />
               </div>
-              {["CUCINA", "GESTORE", "ADMIN"].includes(me.role) ? (
+              {["CUCINA", "GESTORE", "ADMIN", "DIRETTORE"].includes(me.role) ? (
                 <>
                   <KitchenToDo />
                   <KitechenCommunication />
