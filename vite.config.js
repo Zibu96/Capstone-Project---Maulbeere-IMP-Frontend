@@ -4,32 +4,36 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const manifestForPlugin = {
   registerType: "prompt",
-  includeAssets: ["Maulbeere_Logo_CMYK.svg", "vite.svg"],
+  includeAssets: [
+    "android-launchericon-192-192",
+    "android-launchericon-192-192",
+    "180.png",
+  ],
   manifest: {
     name: "Maulbeere IMP",
     short_name: "Maulbeere",
     description: "L'app di gestione interna del tuo locale.",
     icons: [
       {
-        src: "/vite.svg",
+        src: "/android-launchericon-192-192",
         sizes: "192x192",
-        type: "image/svg+xml",
+        type: "image/png",
       },
       {
-        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/android-launchericon-512-512",
         sizes: "512x512",
-        type: "image/svg+xml",
+        type: "image/png",
       },
       {
-        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/180.png",
         sizes: "180x180",
-        type: "image/svg+xml",
+        type: "image/png",
         purpose: "apple touch icon",
       },
       {
-        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/180.png",
         sizes: "225x225",
-        type: "image/svg+xml",
+        type: "image/png",
         purpose: "any maskable",
       },
     ],
