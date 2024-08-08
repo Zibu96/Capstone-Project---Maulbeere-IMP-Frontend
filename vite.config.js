@@ -18,14 +18,16 @@ const manifestForPlugin = {
         src: "/android-launchericon-192-192",
         sizes: "192x192",
         type: "image/png",
+        purpose: "any",
       },
       {
         src: "/android-launchericon-512-512",
         sizes: "512x512",
         type: "image/png",
+        purpose: "any",
       },
       {
-        src: "/180.png",
+        src: "apple-touch-icon-180x180.png",
         sizes: "180x180",
         type: "image/png",
         purpose: "apple touch icon",
