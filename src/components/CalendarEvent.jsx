@@ -5,6 +5,7 @@ import {
   fetchDeleteEventAction,
   fetchEventByDateAction,
 } from "../redux/actions/eventAction";
+import EventModify from "./EventModify";
 
 const CalendarEvent = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
@@ -13,6 +14,9 @@ const CalendarEvent = ({ dateToUse }) => {
   console.log(dateToUse);
   const dispatch = useDispatch();
 
+  const [modalShowM, setModalShowM] = useState(false);
+  const handleCloseM = () => setModalShowM(false);
+  const handleShowM = () => setModalShowM(true);
   const [event, setEvent] = useState([]);
   const [id, setId] = useState("");
 
@@ -58,13 +62,12 @@ const CalendarEvent = ({ dateToUse }) => {
 
   return (
     <>
-      {/* <ModifyReservationModal
+      <EventModify
         modalShowM={modalShowM}
         handleCloseM={handleCloseM}
         id={id}
-        setReservation={setReservation}
-        setId={setId}
-      /> */}
+        setEvent={setEvent}
+      />
       <Col className=" d-lg-block d-none">
         <h3>Eventi:</h3>
         {!eventDate ? (
@@ -105,6 +108,7 @@ const CalendarEvent = ({ dateToUse }) => {
                           className="m-1 rounded-pill"
                           onClick={() => {
                             setId(ev.id);
+                            handleShowM();
                           }}
                         >
                           <i className="bi bi-pencil"></i>
