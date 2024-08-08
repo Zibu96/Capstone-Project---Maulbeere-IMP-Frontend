@@ -4,11 +4,11 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const manifestForPlugin = {
   registerType: "prompt",
-  includeAssets: [
-    "android-launchericon-192-192",
-    "android-launchericon-192-192",
-    "180.png",
-  ],
+  // includeAssets: [
+  //   "android-launchericon-192-192",
+  //   "android-launchericon-192-192",
+  //   "180.png",
+  // ],
   manifest: {
     name: "Maulbeere IMP",
     short_name: "Maulbeere",
