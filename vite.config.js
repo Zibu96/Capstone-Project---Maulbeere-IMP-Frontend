@@ -11,7 +11,7 @@ const manifestForPlugin = {
     description: "L'app di gestione interna del tuo locale.",
     icons: [
       {
-        src: "/src/assets/Maulbeere_Logo_CMYK.svg",
+        src: "/vite.svg",
         sizes: "192x192",
         type: "image/svg+xml",
       },
