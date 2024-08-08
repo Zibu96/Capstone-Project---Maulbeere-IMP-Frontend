@@ -4,7 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const manifestForPlugin = {
   registerType: "prompt",
-  includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
+  includeAssets: ["Maulbeere_Logo_CMYK.svg", "vite.svg"],
   manifest: {
     name: "Maulbeere IMP",
     short_name: "Maulbeere",
