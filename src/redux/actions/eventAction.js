@@ -6,6 +6,7 @@ export const GET_EVENT_BY_DATE = "GET_EVENT_BY_DATE";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const EVENT_ERROR = "EVENT_ERROR";
 export const GET_SINGLE_EVENT = "GET_SINGLE_EVENT";
+export const RESET_ERROR = "RESET_ERROR";
 
 export const fetchEventAction = (token) => {
   return async (dispatch) => {
@@ -20,10 +21,15 @@ export const fetchEventAction = (token) => {
         type: GET_EVENT,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
+  };
+};
+
+export const resetErrorAction = () => {
+  return {
+    type: RESET_ERROR,
   };
 };
 
@@ -45,9 +51,10 @@ export const fetchPostEventAction = (token, newEvent, handleCloseEvent) => {
         type: POST_EVENT,
         payload: response.data,
       });
-      console.log(response.data);
+
       alert("Evento creato con successo");
       handleCloseEvent();
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -82,9 +89,10 @@ export const fetchPutEventsAction = (
         payload: response.data,
       });
       await dispatch(fetchEventAction(token));
-      console.log(response.data);
+
       alert("Evento creato con successo");
       handleCloseEvent();
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -108,7 +116,6 @@ export const fetchEventByDateAction = (token, date) => {
         type: GET_EVENT_BY_DATE,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -128,14 +135,13 @@ export const fetchDeleteEventAction = (token, id) => {
         type: DELETE_EVENT,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
   };
 };
 
-export const fetchSingleReservationAction = (token, id) => {
+export const fetchSingleEventAction = (token, id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
@@ -148,7 +154,6 @@ export const fetchSingleReservationAction = (token, id) => {
         type: GET_SINGLE_EVENT,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

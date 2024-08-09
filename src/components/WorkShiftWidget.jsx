@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +7,7 @@ import { fetchWeekAction } from "../redux/actions/workShiftAction";
 const WorkShiftWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const weeks = useSelector((state) => state.workShift.workShift);
-  console.log(weeks);
+
   const [filteredWeek, setFilteredWeek] = useState(null);
 
   const dispatch = useDispatch();

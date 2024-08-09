@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const TOGGLE_IS_LOGGED = "TOGGLE_IS_LOGGED";
 export const TOGGLE_AUTHORITY = "TOGGLE_AUTHORITY";
+export const TOGGLE_IS_LOGGGED_FALSE = "TOGGLE_IS_LOGGGED_FALSE";
 
 export const GET_USER_LOGGED_PROFILE = "GET_USER_LOGGED_PROFILE";
 export const LOGIN_ERROR = "LOGIN_ERROR";
@@ -15,6 +16,7 @@ export const GET_USER_ALL = "GET_USER_ALL";
 export const GET_SINGLE_USER = "GET_SINGLE_USER";
 export const DELETE_USER = "DELETE_USER";
 export const RESET_STATE = "RESET_STATE";
+export const RESET_ERROR = "RESET_ERROR";
 
 export const fetchUserAction = (loginObject, navigate) => {
   return async (dispatch) => {
@@ -28,13 +30,18 @@ export const fetchUserAction = (loginObject, navigate) => {
         payload: response.data,
       });
       localStorage.setItem("Bearer", response.data.token);
-      console.log(response.data);
+
       navigate("/home");
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err.message);
       dispatch({
         type: LOGIN_ERROR,
         payload: "Credenziali non corrette, riprova a fare il login",
+      });
+    } finally {
+      dispatch({
+        type: TOGGLE_IS_LOGGGED_FALSE,
       });
     }
   };
@@ -44,6 +51,12 @@ export const logOutAction = () => {
   localStorage.removeItem("Bearer ");
   return async (dispatch) => {
     dispatch({ type: RESET_STATE });
+  };
+};
+
+export const resetErrorAction = () => {
+  return {
+    type: RESET_ERROR,
   };
 };
 
@@ -63,8 +76,9 @@ export const fetchUserRegisterAction = (registerObject, token) => {
         payload: response.data,
       });
       localStorage.setItem("Bearer", response.data.token);
-      console.log(response.data);
+
       alert("Dipendente creato con successo");
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err);
       dispatch({
@@ -88,7 +102,6 @@ export const fetchUserMeAction = (token) => {
         type: GET_USER_ME,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -111,7 +124,6 @@ export const fetchUserModifyPasswordAction = (token, navigate, modPassword) => {
         payload: response.data,
       });
       navigate("/");
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -133,7 +145,6 @@ export const fetchUserModifyEmailAction = (token, navigate, modEmail) => {
         payload: response.data,
       });
       navigate("/");
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -153,7 +164,6 @@ export const fetchAllUsersAction = (token) => {
         type: GET_USER_ALL,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -173,7 +183,6 @@ export const fetchSingleUserAction = (token, id) => {
         type: GET_SINGLE_USER,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -194,7 +203,6 @@ export const fetchDeleteUserAction = (token, id) => {
         payload: response.data,
       });
       dispatch(fetchAllUsersAction(token));
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

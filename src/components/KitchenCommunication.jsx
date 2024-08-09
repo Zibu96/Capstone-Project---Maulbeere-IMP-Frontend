@@ -14,7 +14,6 @@ const KitechenCommunication = () => {
   const [communications, setCommunications] = useState([]);
   const [text, setText] = useState("");
   const dispatch = useDispatch();
-  console.log(communications);
 
   const handleKitchenCommunicationSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +28,7 @@ const KitechenCommunication = () => {
       ...communicationsDb,
       newCommunication,
     ]);
-    console.log(newCommunication);
+
     alert("Comunicazione di cucina creata con successo");
   };
 

@@ -22,7 +22,7 @@ const KitchenShoppingList = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
   const dispatch = useDispatch();
-  console.log(shoppingListDb);
+
   const handleKitchenShoppingListSubmit = (e) => {
     e.preventDefault();
     console.log("Creating new reservation");
@@ -35,7 +35,6 @@ const KitchenShoppingList = () => {
 
     dispatch(fetchPostShoppingListsAction(token, newShoppingList));
     setShoppingList((shoppingListDb) => [...shoppingListDb, newShoppingList]);
-    console.log(newShoppingList);
   };
 
   const handleShoppingListDelete = (deleteId) => {

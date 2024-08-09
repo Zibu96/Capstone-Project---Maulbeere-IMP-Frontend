@@ -33,15 +33,12 @@ const ModifyReservationModal = ({
 
   useEffect(() => {
     if (token && id) {
-      console.log("Fetching reservation for ID:", id);
       dispatch(fetchSingleReservationAction(token, id));
     }
   }, [dispatch, token, id]);
 
-  console.log(id);
   useEffect(() => {
     if (res) {
-      console.log("Updating state with reservation data:", res);
       setName(res.name || "");
       setSurname(res.surname || "");
       setSeats(res.seats || 0);
@@ -89,7 +86,6 @@ const ModifyReservationModal = ({
       </Modal.Header>
       <Form onSubmit={handleModReservationSubmit} className="bgAll">
         <Modal.Body>
-          <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
           <p>ATTENZIONE! - I campi che contengono * sono OBBLIGATORI</p>
           {error && (
             <Alert variant="danger">
@@ -162,6 +158,7 @@ const ModifyReservationModal = ({
             <Form.Select
               size="sm"
               className="mb-3"
+              value={eventType}
               onChange={(e) => setEventType(e.target.value)}
             >
               <option>Nessun evento</option>

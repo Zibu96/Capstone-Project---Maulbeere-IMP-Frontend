@@ -9,7 +9,7 @@ import {
 const ResevationWidget = () => {
   const token = useSelector((state) => state.user.user_bearer.accessToken);
   const res = useSelector((state) => state.reservation.today.content);
-  console.log(res);
+
   const [reservation, setReservation] = useState([]);
 
   useEffect(() => {

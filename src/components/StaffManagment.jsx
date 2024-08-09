@@ -10,8 +10,7 @@ import RedirectPage from "./RedirectPage";
 const StaffManagment = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const error = useSelector((state) => state.error?.register_error?.data);
-  console.log(error);
-  console.log(token);
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [username, setUsername] = useState("");

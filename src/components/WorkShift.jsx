@@ -18,7 +18,6 @@ const WorkShift = () => {
   const me = useSelector((state) => state.user.state);
   const [sortedWeeks, setSortedWeeks] = useState([]);
   const dispatch = useDispatch();
-  console.log(weeks);
 
   useEffect(() => {
     if (token) {

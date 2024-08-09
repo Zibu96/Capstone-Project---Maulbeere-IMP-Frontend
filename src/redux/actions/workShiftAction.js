@@ -21,7 +21,6 @@ export const fetchLunchAction = (token) => {
         type: GET_ALL_LUNCH,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -43,8 +42,6 @@ export const fetchPostLunchAction = (token, lunchObject) => {
         type: POST_LUNCH,
         payload: response.data,
       });
-
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -64,7 +61,6 @@ export const fetchDinnerAction = (token) => {
         type: GET_ALL_DINNER,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -86,7 +82,6 @@ export const fetchPostDinnerAction = (token, dinnerObject) => {
         type: POST_DINNER,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -113,7 +108,6 @@ export const fetchWeekAction = (token) => {
           type: GET_ALL_WEEK,
           payload: sortedData,
         });
-        console.log(sortedData);
       } else {
         console.error("I dati ricevuti non sono un array:", response.data);
       }
@@ -139,7 +133,6 @@ export const fetchPostWeekAction = (token, weekObject) => {
         payload: response.data,
       });
       dispatch(fetchWeekAction(token));
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

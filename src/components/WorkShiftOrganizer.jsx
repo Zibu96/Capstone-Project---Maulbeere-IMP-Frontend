@@ -50,8 +50,6 @@ const WorkShiftOrganizer = () => {
     };
     dispatch(fetchPostLunchAction(token, newLunch));
     dispatch(fetchPostDinnerAction(token, newDinner));
-    console.log(newLunch);
-    console.log(newDinner);
   };
 
   return (

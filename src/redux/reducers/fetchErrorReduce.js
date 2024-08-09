@@ -1,6 +1,10 @@
 import { EVENT_ERROR } from "../actions/eventAction";
 import { RESERVATION_ERROR } from "../actions/reservationAction";
-import { LOGIN_ERROR, REGISTER_ERROR } from "../actions/usersAction";
+import {
+  LOGIN_ERROR,
+  REGISTER_ERROR,
+  RESET_ERROR,
+} from "../actions/usersAction";
 
 const initialState = {
   login_error: null,
@@ -15,6 +19,10 @@ const fetchErrorReducer = (state = initialState, action) => {
       return {
         ...state,
         login_error: action.payload,
+      };
+    case RESET_ERROR:
+      return {
+        state: initialState,
       };
     case RESERVATION_ERROR:
       return {

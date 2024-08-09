@@ -11,6 +11,7 @@ import {
   GET_SINGLE_USER,
   DELETE_USER,
   RESET_STATE,
+  TOGGLE_IS_LOGGGED_FALSE,
 } from "../actions/usersAction";
 
 const initialState = {
@@ -28,6 +29,11 @@ const fetchUserReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogged: true,
+      };
+    case TOGGLE_IS_LOGGGED_FALSE:
+      return {
+        ...state,
+        isLogged: false,
       };
     case RESET_STATE:
       return {

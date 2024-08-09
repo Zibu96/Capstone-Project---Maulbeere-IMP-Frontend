@@ -39,9 +39,7 @@ const CalendarPage = () => {
   const dispatch = useDispatch();
   const dateToUse = format(new Date(value), "yyyy-MM-dd").trim();
   const dateToConsult = format(new Date(value), "cccc dd LLLL", { locale: it });
-  console.log(dateToUse);
 
-  console.log(eventDb);
   useEffect(() => {
     setEvent(eventDb);
   }, [eventDb]);
@@ -114,7 +112,7 @@ const CalendarPage = () => {
                     value={value}
                     tileClassName={getTileClassName}
                   />
-                  <div className="d-flex gap-2 mt-2">
+                  <div className="d-sm-block d-lg-flex gap-2 mt-2">
                     <h5>Legenda:</h5>
 
                     <Stack direction="horizontal" gap={2}>

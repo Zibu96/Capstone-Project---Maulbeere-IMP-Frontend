@@ -11,7 +11,6 @@ const ReservationAside = () => {
       setReservations(res);
     }
   }, [res]);
-  console.log(reservations);
 
   const getTotalSeats = (reservations) => {
     return reservations.reduce((total, reserv) => total + reserv.seats, 0);

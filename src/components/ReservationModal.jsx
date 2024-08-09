@@ -23,8 +23,6 @@ const ReservationModal = ({ modalShow, handleClose, setReservation }) => {
   const [reservationType, setReservationType] = useState(null);
   const dispatch = useDispatch();
 
-  console.log(token);
-
   const handleReservationSubmit = (e) => {
     e.preventDefault();
     console.log("Creating new reservation");

@@ -10,7 +10,7 @@ import WaitStaffToDoWidget from "./WaitStaffToDoWidget";
 import WaitStaffComunicationWidget from "./WaitStaffCommunicationWidget";
 
 const WaitStaffWidget = () => {
-  const token = useSelector((state) => state.user.user_bearer.accessToken);
+  const token = useSelector((state) => state.user?.user_bearer?.accessToken);
   const me = useSelector((state) => state.user?.state);
 
   const dispatch = useDispatch();

@@ -17,7 +17,6 @@ const WaitStaffShoppingList = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
   const dispatch = useDispatch();
-  console.log(shoppingListDb);
 
   useEffect(() => {
     setShoppingList(shoppingListDb);
@@ -25,7 +24,7 @@ const WaitStaffShoppingList = () => {
 
   const handleKitchenShoppingListSubmit = (e) => {
     e.preventDefault();
-    console.log("Creating new reservation");
+
     const newShoppingList = {
       staffType: "SALA",
       product: product,

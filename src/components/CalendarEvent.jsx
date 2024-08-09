@@ -10,8 +10,7 @@ import EventModify from "./EventModify";
 const CalendarEvent = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const eventDate = useSelector((state) => state.event?.event_by_date);
-  console.log(eventDate);
-  console.log(dateToUse);
+
   const dispatch = useDispatch();
 
   const [modalShowM, setModalShowM] = useState(false);
@@ -39,10 +38,8 @@ const CalendarEvent = ({ dateToUse }) => {
     setEvent(eventDate);
   }, [eventDate]);
 
-  console.log(event);
-
   useEffect(() => {
-    if (token) {
+    if (token && dateToUse) {
       dispatch(fetchEventByDateAction(token, dateToUse));
     }
   }, [dispatch, token, dateToUse]);

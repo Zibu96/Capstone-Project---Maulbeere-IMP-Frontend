@@ -8,6 +8,7 @@ export const PUT_RESERVATION = "PUT_RESERVATION";
 export const GET_SINGLE_RESERVATION = "GET_SINGLE_RESERVATION";
 export const GET_RESERVATION_BY_DATE = "GET_RESERVATION_BY_DATE";
 export const RESERVATION_ERROR = "RESERVATION_ERROR";
+export const RESET_ERROR = "RESET_ERROR";
 
 export const fetchReservationAction = (token) => {
   return async (dispatch) => {
@@ -22,10 +23,14 @@ export const fetchReservationAction = (token) => {
         type: GET_RESERVATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
+  };
+};
+export const resetErrorAction = () => {
+  return {
+    type: RESET_ERROR,
   };
 };
 
@@ -51,9 +56,10 @@ export const fetchPostReservationAction = (
         type: POST_RESERVATION,
         payload: response.data,
       });
-      console.log(response.data);
+
       alert("Prenotazione creata con successo");
       handleClose();
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -77,7 +83,6 @@ export const fetchDeleteReservationAction = (token, id) => {
         type: DELETE_RESERVATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -97,7 +102,6 @@ export const fetchReservationTodayAction = (token) => {
         type: GET_RESERVATION_TODAY,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -131,9 +135,9 @@ export const fetchPutReservationAction = (
       await dispatch(fetchReservationTodayAction(token));
       await dispatch(fetchSingleReservationAction(token));
 
-      console.log(response.data);
       alert("Prenotazione modificata con successo");
       handleCloseM();
+      dispatch(resetErrorAction());
     } catch (err) {
       console.log(err.message);
       dispatch({
@@ -157,7 +161,6 @@ export const fetchSingleReservationAction = (token, id) => {
         type: GET_SINGLE_RESERVATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -177,7 +180,6 @@ export const fetchReservationsByDateAction = (token, date) => {
         type: GET_RESERVATION_BY_DATE,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

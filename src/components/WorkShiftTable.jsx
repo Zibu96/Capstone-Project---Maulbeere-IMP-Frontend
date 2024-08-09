@@ -13,9 +13,6 @@ const WorkShiftTable = () => {
   const [dinnerUsersTwo, setDinnerUsersTwo] = useState({});
   const [dinnerUsersThree, setDinnerUsersThree] = useState({});
 
-  console.log(lunches);
-  console.log(dinners);
-
   const handleLunchUserChange = (day, value) => {
     setLunchUsers((prevState) => ({ ...prevState, [day]: value || null }));
   };

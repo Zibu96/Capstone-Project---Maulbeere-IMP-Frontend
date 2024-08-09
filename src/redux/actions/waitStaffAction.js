@@ -22,7 +22,6 @@ export const fetchWaitStaffToDoAction = (token) => {
         type: GET_WAITSTAFF_TODO,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -42,7 +41,6 @@ export const fetchWaitStaffCommunicationAction = (token) => {
         type: GET_WAITSTAFF_COMMUNICATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -67,7 +65,6 @@ export const fetchPostWaitStaffToDoAction = (token, newToDo) => {
         type: POST_WAITSTAFF_TODO,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -95,7 +92,6 @@ export const fetchPostWaitStaffCommunicationAction = (
         type: POST_WAITSTAFF_COMMUNICATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -115,7 +111,6 @@ export const fetchDeleteWaitStaffAction = (token, id) => {
         type: DELETE_WAITSTAFF,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -135,7 +130,6 @@ export const fetchWaitStaffShoppingListAction = (token) => {
         type: GET_WAITSTAFF_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -160,7 +154,6 @@ export const fetchPostShoppingListsAction = (token, newShoppingList) => {
         type: POST_WAITSTAFF_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -180,7 +173,6 @@ export const fetchDeleteShoppingListAction = (token, id) => {
         type: DELETE_WAITSTAFF_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

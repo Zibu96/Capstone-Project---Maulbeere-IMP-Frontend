@@ -5,16 +5,19 @@ import {
   fetchEventByDateAction,
 } from "../redux/actions/eventAction";
 import { Button, Col, Dropdown, Placeholder } from "react-bootstrap";
+import EventModify from "./EventModify";
 
 const CalendaEventSm = ({ dateToUse }) => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
   const eventDate = useSelector((state) => state.event?.event_by_date);
-  console.log(eventDate);
-  console.log(dateToUse);
+
   const dispatch = useDispatch();
 
   const [event, setEvent] = useState([]);
   const [id, setId] = useState("");
+  const [modalShowM, setModalShowM] = useState(false);
+  const handleCloseM = () => setModalShowM(false);
+  const handleShowM = () => setModalShowM(true);
 
   const getBackgroundColor = (eventType) => {
     switch (eventType) {
@@ -35,17 +38,15 @@ const CalendaEventSm = ({ dateToUse }) => {
     setEvent(eventDate);
   }, [eventDate]);
 
-  console.log(event);
-
   useEffect(() => {
-    if (token) {
+    if (token && dateToUse) {
       dispatch(fetchEventByDateAction(token, dateToUse));
     }
   }, [dispatch, token, dateToUse]);
 
-  const handleReservationDelete = (deleteId) => {
+  const handleEventDelete = (deleteId) => {
     dispatch(fetchDeleteEventAction(token, deleteId));
-    setEvent((res) => res.filter((reserv) => reserv.id !== deleteId));
+    setEvent((event) => event.filter((ev) => ev.id !== deleteId));
   };
 
   const getTime = (time) => {
@@ -58,13 +59,12 @@ const CalendaEventSm = ({ dateToUse }) => {
 
   return (
     <>
-      {/* <ModifyReservationModal
-          modalShowM={modalShowM}
-          handleCloseM={handleCloseM}
-          id={id}
-          setReservation={setReservation}
-          setId={setId}
-        /> */}
+      <EventModify
+        modalShowM={modalShowM}
+        handleCloseM={handleCloseM}
+        id={id}
+        setEvent={setEvent}
+      />
       <Col className="d-lg-none">
         <h3>Eventi:</h3>
         {!eventDate ? (
@@ -105,6 +105,7 @@ const CalendaEventSm = ({ dateToUse }) => {
                           className="m-1 rounded-pill"
                           onClick={() => {
                             setId(ev.id);
+                            handleShowM();
                           }}
                         >
                           <i className="bi bi-pencil"></i>
@@ -112,7 +113,7 @@ const CalendaEventSm = ({ dateToUse }) => {
                         <Button
                           className="m-1 rounded-pill"
                           variant="danger"
-                          onClick={() => handleReservationDelete(ev.id)}
+                          onClick={() => handleEventDelete(ev.id)}
                         >
                           <i className="bi bi-trash"></i>
                         </Button>

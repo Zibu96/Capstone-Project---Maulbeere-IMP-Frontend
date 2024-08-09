@@ -14,11 +14,9 @@ const WaitStaffComunication = () => {
   const [communications, setCommunications] = useState([]);
   const [text, setText] = useState("");
   const dispatch = useDispatch();
-  console.log(communications);
 
   const handleWaitStaffCommunicationSubmit = (e) => {
     e.preventDefault();
-    console.log("Creating new reservation");
     const newCommunication = {
       staffType: "SALA",
       actionType: "COMMUNICATION",

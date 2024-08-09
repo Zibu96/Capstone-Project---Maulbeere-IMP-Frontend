@@ -13,7 +13,6 @@ const KitchenToDo = () => {
   const [text, setText] = useState("");
   const [toDoes, setToDoes] = useState([]);
   const dispatch = useDispatch();
-  console.log(toDoes);
 
   const handleKitchenToDoSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ const KitchenToDo = () => {
     };
     dispatch(fetchPostKitchenToDoAction(token, newToDo));
     setToDoes((toDoesDb) => [...toDoesDb, newToDo]);
-    console.log(newToDo);
+
     alert("To Do di sala creata con successo");
   };
 

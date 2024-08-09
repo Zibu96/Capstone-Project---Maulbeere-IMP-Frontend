@@ -16,11 +16,9 @@ import RedirectPage from "./RedirectPage";
 
 const MyReservation = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
-  const res = useSelector((state) => state.reservation.reservation.content);
+
   const today = useSelector((state) => state.reservation.today.content);
 
-  console.log(today);
-  console.log(res);
   const [modalShow, setModalShow] = useState(false);
   const [modalShowM, setModalShowM] = useState(false);
   const [reservation, setReservation] = useState([]);

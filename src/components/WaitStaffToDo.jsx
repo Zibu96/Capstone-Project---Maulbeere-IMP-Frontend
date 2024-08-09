@@ -15,7 +15,6 @@ const WaitStaffToDo = () => {
   const [text, setText] = useState("");
   const [toDoes, setToDoes] = useState([]);
   const dispatch = useDispatch();
-  console.log(toDoes);
 
   const handleWaitStaffToDoSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const WaitStaffToDo = () => {
     };
     dispatch(fetchPostWaitStaffToDoAction(token, newToDo));
     setToDoes((toDoesDb) => [...toDoesDb, newToDo]);
-    console.log(newToDo);
+
     alert("To Do di cucina creata con successo");
   };
 

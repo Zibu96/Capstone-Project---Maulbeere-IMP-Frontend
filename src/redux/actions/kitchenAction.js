@@ -22,7 +22,6 @@ export const fetchKitchenToDoAction = (token) => {
         type: GET_KITCHEN_TODO,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -42,7 +41,6 @@ export const fetchKitchenCommunicationAction = (token) => {
         type: GET_KITCHEN_COMMUNICATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -67,7 +65,6 @@ export const fetchPostKitchenToDoAction = (token, newToDo) => {
         type: POST_KITCHEN_TODO,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -95,7 +92,6 @@ export const fetchPostKitchenCommunicationAction = (
         type: POST_KITCHEN_COMMUNICATION,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -115,7 +111,6 @@ export const fetchDeleteKitchenAction = (token, id) => {
         type: DELETE_KITCHEN,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -135,7 +130,6 @@ export const fetchShoppingListAction = (token) => {
         type: GET_KITCHEN_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -160,7 +154,6 @@ export const fetchPostShoppingListsAction = (token, newShoppingList) => {
         type: POST_KITCHEN_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }
@@ -180,7 +173,6 @@ export const fetchDeleteShoppingListAction = (token, id) => {
         type: DELETE_KITCHEN_SHOPPING_LIST,
         payload: response.data,
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err.message);
     }

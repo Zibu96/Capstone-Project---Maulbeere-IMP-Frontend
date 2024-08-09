@@ -13,8 +13,7 @@ const CalendarReservation = ({ dateToUse }) => {
   const resDate = useSelector(
     (state) => state.reservation?.reservation_by_date
   );
-  console.log(resDate);
-  console.log(dateToUse);
+
   const dispatch = useDispatch();
   const [modalShowM, setModalShowM] = useState(false);
   const [reservation, setReservation] = useState([]);
@@ -53,7 +52,7 @@ const CalendarReservation = ({ dateToUse }) => {
   }, [resDate]);
 
   useEffect(() => {
-    if (token) {
+    if (token && dateToUse) {
       dispatch(fetchReservationsByDateAction(token, dateToUse));
     }
   }, [dispatch, token, dateToUse]);
