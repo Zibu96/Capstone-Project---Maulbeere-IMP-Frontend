@@ -11,10 +11,11 @@ import {
   fetchWeekAction,
 } from "../redux/actions/workShiftAction";
 import RedirectPage from "./RedirectPage";
+import LoadingPage from "./LoadingPage";
 
 const WorkShift = () => {
   const token = useSelector((state) => state?.user?.user_bearer?.accessToken);
-  const weeks = useSelector((state) => state.workShift.workShift);
+  const weeks = useSelector((state) => state?.workShift?.workShift);
   const me = useSelector((state) => state.user.state);
   const [sortedWeeks, setSortedWeeks] = useState([]);
   const dispatch = useDispatch();
@@ -70,6 +71,8 @@ const WorkShift = () => {
 
                     <tbody>
                       {sortedWeeks.length == 0 ? (
+                        <LoadingPage />
+                      ) : !sortedWeeks ? (
                         <p>Turni non disponibili</p>
                       ) : (
                         sortedWeeks.map((week, i) => (
@@ -97,7 +100,7 @@ const WorkShift = () => {
                 <div></div>
               )}
               {["GESTORE", "ADMIN"].includes(me.role) ? (
-                <WorkShiftTable />
+                <WorkShiftTable setSortedWeeks={setSortedWeeks} />
               ) : (
                 <div></div>
               )}

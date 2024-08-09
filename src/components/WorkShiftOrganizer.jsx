@@ -25,8 +25,7 @@ const WorkShiftOrganizer = () => {
   const [saturdayDinner, setSaturdayDinner] = useState(false);
   const [sundayDinner, setSundayDinner] = useState(false);
 
-  const handleShiftSubmit = (e) => {
-    e.preventDefault();
+  const handleShiftSubmit = () => {
     console.log("Creating new shift disponibility");
     const newLunch = {
       monday: mondayLunch,

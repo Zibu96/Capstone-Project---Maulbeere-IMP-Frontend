@@ -1,6 +1,6 @@
-import { Button, Col, Form, Table } from "react-bootstrap";
+import { Button, Col, Form, Placeholder, Table } from "react-bootstrap";
 import { fetchPostWeekAction } from "../redux/actions/workShiftAction";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const WorkShiftTable = () => {
@@ -12,6 +12,13 @@ const WorkShiftTable = () => {
   const [dinnerUsersOne, setDinnerUsersOne] = useState({});
   const [dinnerUsersTwo, setDinnerUsersTwo] = useState({});
   const [dinnerUsersThree, setDinnerUsersThree] = useState({});
+  const [lun, setLun] = useState([]);
+  const [din, setDin] = useState([]);
+
+  useEffect(() => {
+    setLun(lunches);
+    setDin(dinners);
+  }, [lunches, dinners]);
 
   const handleLunchUserChange = (day, value) => {
     setLunchUsers((prevState) => ({ ...prevState, [day]: value || null }));
@@ -53,8 +60,7 @@ const WorkShiftTable = () => {
     "Domenica",
   ];
 
-  const handleWeektSubmit = (e) => {
-    e.preventDefault();
+  const handleWeektSubmit = () => {
     console.log("Creating new shifts");
     newWeeks.forEach((newWeek) => {
       dispatch(fetchPostWeekAction(token, newWeek));
@@ -108,7 +114,14 @@ const WorkShiftTable = () => {
             </thead>
 
             <tbody>
-              {!dinners || !lunches ? (
+              {!lun || !din ? (
+                <>
+                  <Placeholder xs={12} size="lg" />
+                  <Placeholder xs={12} />
+                  <Placeholder xs={12} size="sm" />
+                  <Placeholder xs={12} size="xs" />
+                </>
+              ) : !dinners || !lunches ? (
                 <h2>Non ci sono disponibilità</h2>
               ) : (
                 daysOfWeek.map((day, index) => (
@@ -124,7 +137,7 @@ const WorkShiftTable = () => {
                         }
                       >
                         <option>Dipendente</option>
-                        {lunches
+                        {lun
                           .map((lunch, i) => {
                             const user = existLunchByDay(lunch, day);
                             return (
