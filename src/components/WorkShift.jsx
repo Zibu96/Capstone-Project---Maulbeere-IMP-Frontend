@@ -70,15 +70,10 @@ const WorkShift = () => {
                     </thead>
 
                     <tbody>
-                      {sortedWeeks.length == 0 ? (
-                        <LoadingPage />
-                      ) : !sortedWeeks ? (
-                        <p>Turni non disponibili</p>
-                      ) : (
+                      {Array.isArray(sortedWeeks) ? (
                         sortedWeeks.map((week, i) => (
                           <tr key={week.id}>
                             <td>{daysOfWeekToUse[i]}</td>
-
                             <td>{week.lunchUser}</td>
                             <td className="d-flex justify-content-between ">
                               <p className="m-0 widget">{week.dinnerUserOne}</p>
@@ -89,6 +84,8 @@ const WorkShift = () => {
                             </td>
                           </tr>
                         ))
+                      ) : (
+                        <p>Turni non disponibili</p>
                       )}
                     </tbody>
                   </Table>

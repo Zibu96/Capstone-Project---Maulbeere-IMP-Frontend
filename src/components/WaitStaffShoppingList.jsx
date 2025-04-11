@@ -65,7 +65,7 @@ const WaitStaffShoppingList = () => {
             </div>
           </div>
           {!shoppingList ? (
-            <div className="ws-table-principal border-end p-2">
+            <div className="ws-table-principal border-end p-2 text-center">
               <p className="m-0">Niente in lista</p>
             </div>
           ) : (
